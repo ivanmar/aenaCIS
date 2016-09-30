@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>COLLAB - A1 SERVIS</title>
+        <title>aenaCIS - A1 Informatika d.o.o.</title>
         {!! HTML::style('css/jquery-ui.min.css') !!}
         {!! HTML::style('css/bootstrap.min.css') !!}
         {!! HTML::style('css/font-awesome.min.css') !!}
@@ -26,11 +26,10 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class=" {!! $actOrd or ''!!}"><a href="{!! URL::to('order') !!}">Naročil</a></li>
-
-                        <li class="dropdown {!! $actCus or ''!!}">
-                            <a href="{!! URL::to('customer') !!}">Stranke</a>
-                        </li>
+                        <li class="{!! $actTick or ''!!}"><a href="{!! URL::to('ticket') !!}">Naloge</a></li>
+                        <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('projekt') !!}">Projekti</a></li>
+                        <li class="{!! $actComp or ''!!}"><a href="{!! URL::to('company') !!}">Podjetja</a></li>
+                        <li class="{!! $actCont or ''!!}"><a href="{!! URL::to('contact') !!}">Kontakti</a></li>
                     </ul>
                     <ul class="navbar-right navbar-nav nav">
                         <li><a href="#"> </a></li>

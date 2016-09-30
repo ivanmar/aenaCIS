@@ -21,8 +21,14 @@ class CompanyController extends Controller {
         $company->tel = $this->request->input('tel');
         $company->email = $this->request->input('email');
         $company->address = $this->request->input('address');
-        $company->company = $this->request->input('company');
-        $company->ddvCompany = $this->request->input('ddvCompany');
+        $company->zipCode = $this->request->input('zipCode');
+        $company->city = $this->request->input('city');
+        $company->country = $this->request->input('country');
+        $company->ddvCode = $this->request->input('ddvCode');
+        $company->regCode = $this->request->input('regCode');
+        $company->indTax = $this->request->input('indTax');
+        $company->bankAccount = $this->request->input('bankAccount');
+        $company->b2b2Access = $this->request->input('b2bAccess');
         $company->note = $this->request->input('note');
         $company->save();
         
@@ -30,27 +36,26 @@ class CompanyController extends Controller {
     }
 
     public function index() {
-        $nameCust = ($this->request->has('nameCust')) ?  $this->request->input('nameCust') : '';
+        $nameComp = ($this->request->has('nameComp')) ?  $this->request->input('nameComp') : '';
         
         $company = DB::table('company')->select('company.id','company.name',
-                'company.tel','company.email','company.address','company.company','company.ddvCompany','company.note')
-                ->where('company.name','LIKE', '%'.$nameCust.'%')
+                'company.tel','company.email','company.address','company.city','company.ddvCode','company.note')
+                ->where('company.name','LIKE', '%'.$nameComp.'%')
                 ->orderBy('company.name')->paginate(30);
 
         return view('company.index')
-                        ->with('actCus', 'active')
-                        ->with('nameCust', $nameCust)
+                        ->with('actComp', 'active')
+                        ->with('nameComp', $nameComp)
                         ->with('company', $company);
     }
 
     public function create() {
-        
         return view('company.form')
                         ->with('formAction', 'company.store')
                         ->with('formMethod', 'POST')
-                        ->with('formTitle', 'Vnos stranke')
+                        ->with('formTitle', 'Vnos organizacije')
                         ->with('indCreate', true)
-                        ->with('actCus', 'active')
+                        ->with('actComp', 'active')
                         ->with('company', new \App\Company);
     }
 
@@ -68,7 +73,7 @@ class CompanyController extends Controller {
                         ->with('formTitle', 'Spremeni vnos')
                         ->with('displayCancel', 'inline')
                         ->with('indCreate', false)
-                        ->with('actCus', 'active')
+                        ->with('actComp', 'active')
                         ->with('company', \App\Company::find($id));
     }
 
@@ -82,7 +87,11 @@ class CompanyController extends Controller {
 
     public function destroy($id) {
         $cnt=0;
-        $cnt += DB::table('order')->where('idCompany',$id)->count();
+        $cnt += DB::table('ticket')->where('idCompany',$id)->count();
+        $cnt += DB::table('project')->where('idCompany',$id)->count();
+        $cnt += DB::table('invoiceIN')->where('idCompany',$id)->count();
+        $cnt += DB::table('invoiceOUT')->where('idCompany',$id)->count();
+        $cnt += DB::table('contact')->where('idCompany',$id)->count();
         if($cnt==0) {
             DB::transaction(function($id) use ($id) {
                 DB::table('company')->where('id',$id)->delete();
