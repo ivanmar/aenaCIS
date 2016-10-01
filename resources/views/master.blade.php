@@ -22,12 +22,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{!! URL::to('/') !!}" title="OVR varnosne meritve"> <i class="fa fa-chrome collab-logo"></i> </a>
+                    <a class="navbar-brand" href="{!! URL::to('/') !!}" title="aenaCIS info system"> <i class="fa fa-chrome collab-logo"></i> </a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="{!! $actTick or ''!!}"><a href="{!! URL::to('ticket') !!}">Naloge</a></li>
-                        <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('projekt') !!}">Projekti</a></li>
+                        <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('project') !!}">Projekti</a></li>
                         <li class="{!! $actComp or ''!!}"><a href="{!! URL::to('company') !!}">Podjetja</a></li>
                         <li class="{!! $actCont or ''!!}"><a href="{!! URL::to('contact') !!}">Kontakti</a></li>
                     </ul>

@@ -18,7 +18,7 @@ class CompanyController extends Controller {
             $company = new \App\Company;
         }
         $company->name = $this->request->input('name');
-        $company->tel = $this->request->input('tel');
+        $company->phone = $this->request->input('phone');
         $company->email = $this->request->input('email');
         $company->address = $this->request->input('address');
         $company->zipCode = $this->request->input('zipCode');
@@ -26,10 +26,14 @@ class CompanyController extends Controller {
         $company->country = $this->request->input('country');
         $company->ddvCode = $this->request->input('ddvCode');
         $company->regCode = $this->request->input('regCode');
-        $company->indTax = $this->request->input('indTax');
         $company->bankAccount = $this->request->input('bankAccount');
-        $company->b2b2Access = $this->request->input('b2bAccess');
+        $company->b2bAccess = $this->request->input('b2bAccess');
         $company->note = $this->request->input('note');
+        if($this->request->input('indTax')) {
+            $company->indTax = $this->request->input('indTax');
+        } else {
+            $company->indTax = 0;
+        }
         $company->save();
         
         return $company->id;
@@ -39,7 +43,7 @@ class CompanyController extends Controller {
         $nameComp = ($this->request->has('nameComp')) ?  $this->request->input('nameComp') : '';
         
         $company = DB::table('company')->select('company.id','company.name',
-                'company.tel','company.email','company.address','company.city','company.ddvCode','company.note')
+                'company.phone','company.email','company.address','company.city','company.ddvCode','company.note')
                 ->where('company.name','LIKE', '%'.$nameComp.'%')
                 ->orderBy('company.name')->paginate(30);
 
@@ -53,7 +57,7 @@ class CompanyController extends Controller {
         return view('company.form')
                         ->with('formAction', 'company.store')
                         ->with('formMethod', 'POST')
-                        ->with('formTitle', 'Vnos organizacije')
+                        ->with('formTitle', 'Vnos podjetja')
                         ->with('indCreate', true)
                         ->with('actComp', 'active')
                         ->with('company', new \App\Company);
