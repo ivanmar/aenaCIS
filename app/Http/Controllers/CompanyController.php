@@ -9,6 +9,7 @@ class CompanyController extends Controller {
 
     public function __construct(Request $request){
         $this->request = $request;
+        $this->middleware('auth');
     }
     
     private function insertMainSql($id = 0) {

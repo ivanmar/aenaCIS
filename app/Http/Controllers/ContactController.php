@@ -9,6 +9,7 @@ class ContactController extends Controller {
 
     public function __construct(Request $request){
         $this->request = $request;
+        $this->middleware('auth');
     }
     
     private function insertMainSql($id = 0) {
@@ -21,8 +22,9 @@ class ContactController extends Controller {
         $contact->tel = $this->request->input('tel');
         $contact->email = $this->request->input('email');
         $contact->address = $this->request->input('address');
-        $contact->company = $this->request->input('company');
-        $contact->ddvCompany = $this->request->input('ddvCompany');
+        $contact->idCompany = $this->request->input('idCompany');
+        $contact->city = $this->request->input('city');
+        $contact->zipCode = $this->request->input('zipCode');
         $contact->note = $this->request->input('note');
         $contact->save();
         
@@ -30,27 +32,29 @@ class ContactController extends Controller {
     }
 
     public function index() {
-        $nameCust = ($this->request->has('nameCust')) ?  $this->request->input('nameCust') : '';
+        $nameCont = ($this->request->has('nameCont')) ?  $this->request->input('nameCont') : '';
         
         $contact = DB::table('contact')->select('contact.id','contact.name',
-                'contact.tel','contact.email','contact.address','contact.company','contact.ddvCompany','contact.note')
-                ->where('contact.name','LIKE', '%'.$nameCust.'%')
+                'contact.tel','contact.email','contact.address','contact.city','contact.note','company.name as compName')
+                ->leftJoin('company','contact.idCompany','=','company.id')
+                ->where('contact.name','LIKE', '%'.$nameCont.'%')
                 ->orderBy('contact.name')->paginate(30);
 
         return view('contact.index')
-                        ->with('actCus', 'active')
-                        ->with('nameCust', $nameCust)
+                        ->with('actCont', 'active')
+                        ->with('nameCont', $nameCont)
                         ->with('contact', $contact);
     }
 
     public function create() {
-        
+        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('contact.form')
                         ->with('formAction', 'contact.store')
                         ->with('formMethod', 'POST')
-                        ->with('formTitle', 'Vnos stranke')
+                        ->with('formTitle', 'Vnos kontakta')
                         ->with('indCreate', true)
-                        ->with('actCus', 'active')
+                        ->with('compList',$compList)
+                        ->with('actCont', 'active')
                         ->with('contact', new \App\Contact);
     }
 
@@ -62,13 +66,15 @@ class ContactController extends Controller {
     }
 
     public function edit($id) {
+        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('contact.form')
                         ->with('formAction', 'contact.update')
                         ->with('formMethod', 'PUT')
                         ->with('formTitle', 'Spremeni vnos')
                         ->with('displayCancel', 'inline')
+                        ->with('compList',$compList)
                         ->with('indCreate', false)
-                        ->with('actCus', 'active')
+                        ->with('actCont', 'active')
                         ->with('contact', \App\Contact::find($id));
     }
 
@@ -82,7 +88,7 @@ class ContactController extends Controller {
 
     public function destroy($id) {
         $cnt=0;
-        $cnt += DB::table('order')->where('idContact',$id)->count();
+        $cnt += DB::table('ticket')->where('idContact',$id)->count();
         if($cnt==0) {
             DB::transaction(function($id) use ($id) {
                 DB::table('contact')->where('id',$id)->delete();

@@ -11,7 +11,10 @@
 |
 */
 
-Route::any('/', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/', 'DashboardController@index');
 
 
 Route::get('/js/getcontactlist/{reqterm}', 'JsController@getContactList');
@@ -30,3 +33,4 @@ Route::resource('ticket', 'TicketController');
 
 Route::get('/project/{id}/destroy', 'ProjectController@destroy');
 Route::resource('project', 'ProjectController');
+
