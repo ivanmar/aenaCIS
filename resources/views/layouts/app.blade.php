@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    {!! HTML::style('css/app.css') !!}
+    {!! HTML::style('public/css/app.css') !!}
 
     <!-- Scripts -->
     <script>

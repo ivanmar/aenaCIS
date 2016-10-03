@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/aenaCIS'),
+    'url' => env('APP_URL', 'http://localhost/aenaCIS/'),
 
     /*
     |--------------------------------------------------------------------------

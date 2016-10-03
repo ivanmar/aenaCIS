@@ -1,14 +1,14 @@
 @extends('master')
 
 @section('content')
-{!! Form::open(array('route'=>'order.index','method' => 'get','class'=>'form-horizontal')) !!}
+{!! Form::open(array('route'=>'ticket.index','method' => 'get','class'=>'form-horizontal')) !!}
 <div class="row">
-    <div class="col-md-2  col-md-offset-7 ">{!! Form::select('idCustomer', $customer, $idCust, array('class' => 'form-control')) !!} </div>
+    <div class="col-md-2  col-md-offset-7 ">{!! Form::select('idContact', $contact, $idContact, array('class' => 'form-control')) !!} </div>
     <div class="col-md-2">{!! Form::select('year', $years, $year, array('class' => 'form-control')) !!} </div>
     <div class="col-md-1">{!! Form::submit('Filter', array('class' => 'btn btn-success')) !!}</div>
 </div>
 {!! Form::close() !!}
-<p><a class="btn btn-sm btn-primary" href="{!! URL::to('order/create') !!}">add new</a></p>
+<p><a class="btn btn-sm btn-primary" href="{!! URL::to('ticket/create') !!}">add new</a></p>
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -27,16 +27,16 @@
         @foreach($obj as $key => $value)
         <tr>
             <td>{!! $value->id !!}</td>
-            <td>{!! $value->nameDevice !!}</td>
+            <td>{!! $value->name !!}</td>
             <td>{!! $value->cname !!}</td>
             <td>{!! $value->tel !!}</td>
             <td>{!! $value->email !!}</td>
-            <td>{!! $value->statusOrder !!}</td>
-            <td>{!! $value->dateRec !!}</td>
+            <td>{!! $value->status !!}</td>
+            <td>{!! $value->dateOpen !!}</td>
             <td class="text-right">
-            <a class="btn btn-xs btn-success" target="_blank" href="http://collab.aena.si:8080/birt-viewer/run?__report=report/order-01.rpt&__format=odt&parmOrderID={!! $value->id !!}">S</a>
-            <a class="btn btn-xs btn-info" href="{!! URL::to('order/' . $value->id . '/edit') !!}">E</a>
-            <a class="btn btn-xs btn-danger" href="{!! URL::to('order/' . $value->id . '/destroy') !!}"
+            <a class="btn btn-xs btn-success" target="_blank" href="http://collab.aena.si:8080/birt-viewer/run?__report=report/ticket-01.rpt&__format=odt&parmOrderID={!! $value->id !!}">S</a>
+            <a class="btn btn-xs btn-info" href="{!! URL::to('ticket/' . $value->id . '/edit') !!}">E</a>
+            <a class="btn btn-xs btn-danger" href="{!! URL::to('ticket/' . $value->id . '/destroy') !!}"
                    onclick="if(!confirm('Delete this item?')){return false;};">D</a>
             </td>
         </tr>

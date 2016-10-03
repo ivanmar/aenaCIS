@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>aenaCIS - A1 Informatika d.o.o.</title>
-        {!! HTML::style('css/jquery-ui.min.css') !!}
-        {!! HTML::style('css/bootstrap.min.css') !!}
-        {!! HTML::style('css/font-awesome.min.css') !!}
-        {!! HTML::style('css/bootstrap-custom.css') !!}
+        {!! HTML::style('public/css/jquery-ui.min.css') !!}
+        {!! HTML::style('public/css/bootstrap.min.css') !!}
+        {!! HTML::style('public/css/font-awesome.min.css') !!}
+        {!! HTML::style('public/css/bootstrap-custom.css') !!}
 
-        {!! HTML::script('js/jquery.min.js') !!}
-        {!! HTML::script('js/jquery-ui.min.js') !!}
-        {!! HTML::script('js/bootstrap.min.js') !!}
+        {!! HTML::script('public/js/jquery.min.js') !!}
+        {!! HTML::script('public/js/jquery-ui.min.js') !!}
+        {!! HTML::script('public/js/bootstrap.min.js') !!}
     </head>
     <body>
         <div class="container-fluid">

@@ -24,8 +24,9 @@ class JsController extends Controller {
         $contact->tel = $this->request->input('tel');
         $contact->email = $this->request->input('email');
         $contact->address = $this->request->input('address');
+        $contact->city = $this->request->input('city');
+        $contact->zipCode = $this->request->input('zipCode');
         $contact->idCompany = $this->request->input('idCompany');
-        $contact->ddvCompany = $this->request->input('ddvCompany');
         $contact->save();
         return response()->json($contact->id);
     }

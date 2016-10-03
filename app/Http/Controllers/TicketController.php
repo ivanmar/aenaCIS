@@ -1,14 +1,14 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Session, \Validator;
+use \DB, \Session, \Validator, \Auth;
 use Illuminate\Http\Request;
 
 
 
 class TicketController extends Controller {
 
-    protected $input_rules = [ 'idCustomer' => 'required','idUserRec' => 'required','nameDevice' => 'required' ];
-    protected $statusTicket = array('naroceno' => 'Naročeno', 'preklic' => 'Preklicano', 'vteku' => 'V teku', 'narejeno' => 'Narejeno');
+    protected $input_rules = [ 'idContact' => 'required','name' => 'required' ];
+    protected $statusTicket = array('open' => 'Odprto', 'cancel' => 'Preklicano', 'progress' => 'V teku', 'done' => 'Narejeno');
 
     public function __construct(Request $request){
         $this->request = $request;
@@ -17,18 +17,20 @@ class TicketController extends Controller {
 
     private function insertMainSql($id = 0) {
         
-        if($this->request->input('idCustomer') > 0){
-            $idCustomer = $this->request->input('idCustomer');
+        if($this->request->input('idContact') > 0){
+            $idContact = $this->request->input('idContact');
         } else {
-            $customer = new \App\Customer;
-            $customer->name = $this->request->input('name');
-            $customer->email = $this->request->input('email');
-            $customer->address = $this->request->input('address');
-            $customer->tel = $this->request->input('tel');
-            $customer->note = $this->request->input('note');
-            $customer->save();
+            $contact = new \App\Contact;
+            $contact->name = $this->request->input('name');
+            $contact->email = $this->request->input('email');
+            $contact->address = $this->request->input('address');
+            $contact->city = $this->request->input('city');
+            $contact->zipCode = $this->request->input('zipCode');
+            $contact->tel = $this->request->input('tel');
+            $contact->idCompany = $this->request->input('idCompany');
+            $contact->save();
             
-            $idCustomer = $customer->id;
+            $idContact = $contact->id;
         }
         if ($id > 0) {
             $ticket = \App\Ticket::find($id);
@@ -36,56 +38,56 @@ class TicketController extends Controller {
             $ticket = new \App\Ticket;
  //           $ticket->idUser = $this->request->input('idUser');
         }
-        $ticket->nameDevice = $this->request->input('nameDevice');
-        $ticket->statusTicket = $this->request->input('statusTicket');
-        $ticket->dateRec = $this->request->input('dateRec');
-        $ticket->dateFin = $this->request->input('dateFin');
-        $ticket->material = $this->request->input('material');
-        $ticket->workDone = $this->request->input('workDone');
-        $ticket->stateRec = $this->request->input('stateRec');
+        $ticket->name = $this->request->input('name');
+        $ticket->status = $this->request->input('status');
+        $ticket->dateOpen = $this->request->input('dateOpen');
+        $ticket->dateClose = $this->request->input('dateClose');
+        $ticket->partUsed = $this->request->input('partUsed');
+        $ticket->ticketDesc = $this->request->input('ticketDesc');
+        $ticket->ticketRes = $this->request->input('ticketRes');
         $ticket->serialDevice = $this->request->input('serialDevice');
         $ticket->pricePredict = $this->request->input('pricePredict');
-        $ticket->priceCharged = $this->request->input('priceCharged');
         $ticket->note = $this->request->input('note');
-        $ticket->idCustomer = $this->request->input('idCustomer');
-        $ticket->idUserRec = $this->request->input('idUserRec');
-        $ticket->idUserFin = $this->request->input('idUserFin');
+        $ticket->idContact = $this->request->input('idContact');
+        $ticket->idUser = Auth::user();
         $ticket->save();
         return $ticket->id;
     }
 
     public function index() {
-        $idCust = $this->request->input('idCustomer');
+        $idContact = $this->request->input('idContact');
         $year = $this->request->input('year');
 
         $q = DB::table('ticket')
-                ->select('ticket.id', 'ticket.nameDevice', 'ticket.dateRec', 'ticket.dateFin', 'ticket.statusTicket', 'customer.name as cname','customer.tel','customer.email')
-                ->join('customer', 'ticket.idCustomer', '=', 'customer.id');
-        if ($idCust > 0) {
-            $q->where('idCustomer', $idCust);
+                ->select('ticket.id', 'ticket.name', 'ticket.dateOpen', 'ticket.dateClose', 'ticket.status', 'contact.name as cname','contact.tel','contact.email')
+                ->join('contact', 'ticket.idContact', '=', 'contact.id');
+        if ($idContact > 0) {
+            $q->where('idContact', $idContact);
         }
         if ($year > 0) {
-            $q->where('dateRec', '>', $year . '-0-0');
-            $q->where('dateRec', '<', ($year + 1) . '-0-0');
+            $q->where('dateOpen', '>', $year . '-0-0');
+            $q->where('dateClose', '<', ($year + 1) . '-0-0');
         }
-        $ticket = $q->ticketBy('ticket.dateRec','DESC')->get();
+        $ticket = $q->orderBy('ticket.dateOpen','DESC')->get();
 
         return view('ticket.index')
-                        ->with('actOrd', 'active')
-                        ->with('customer', array('0' => 'izberi stranko') + DB::table('customer')->ticketBy('name')->lists('name', 'id'))
+                        ->with('actTick', 'active')
+                        ->with('contact', array('0' => 'izberi stranko') + DB::table('contact')->orderBy('name')->pluck('name', 'id')->toArray())
                         ->with('years', array('0' => 'izberi leto') + array_combine(range(date("Y"), date("Y") - 10), range(date("Y"), date("Y") - 10)))
-                        ->with('idCust', $idCust)
+                        ->with('idContact', $idContact)
                         ->with('year', $year)
                         ->with('obj', $ticket);
     }
     public function create() {
+        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('ticket.form')
                         ->with('formAction', 'ticket.store')
                         ->with('formMethod', 'POST')
                         ->with('items', array())
-                        ->with('statusTicket', $this->statusTicket)
-                        ->with('users', DB::table('user')->lists('name', 'id'))
-                        ->with('actOrd', 'active')
+                        ->with('status', $this->statusTicket)
+                        ->with('users', DB::table('users')->pluck('name', 'id'))
+                        ->with('actTick', 'active')
+                        ->with('compList',$compList)
                         ->with('obj', new \App\Ticket );
     }
     public function store() {
@@ -100,13 +102,15 @@ class TicketController extends Controller {
     }
 
     public function edit($id) {
+        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('ticket.form')
                         ->with('formAction', 'ticket.update')
                         ->with('formMethod', 'PUT')
                         ->with('displayCancel','inline')
-                        ->with('statusTicket', $this->statusTicket)
-                        ->with('users', DB::table('user')->lists('name', 'id'))
-                        ->with('actOrd', 'active')
+                        ->with('status', $this->statusTicket)
+                        ->with('users', DB::table('users')->pluck('name', 'id'))
+                        ->with('actTick', 'active')
+                        ->with('compList',$compList)
                         ->with('obj', \App\Ticket::find($id));
     }
     public function update($id) {
@@ -122,6 +126,7 @@ class TicketController extends Controller {
 
     public function destroy($id) {
         DB::table('ticket')->where('id',$id)->delete();
+        DB::table('comment')->where('idTicket',$id)->delete();
         Session::flash('message', 'Successfully deleted');
         return redirect('ticket');
     }
