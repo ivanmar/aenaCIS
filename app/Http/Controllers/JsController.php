@@ -40,7 +40,6 @@ class JsController extends Controller {
         $comment->text = $this->request->input('text');
         $comment->save();
         return response()->json($comment->id);
-        
     }
     public function addEvent () {
         $event = new \App\Event;
