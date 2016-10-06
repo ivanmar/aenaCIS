@@ -106,7 +106,6 @@ class TicketController extends Controller {
         return view('ticket.form')
                         ->with('formAction', 'ticket.update')
                         ->with('formMethod', 'PUT')
-                        ->with('displayCancel','inline')
                         ->with('status', $this->statusTicket)
                         ->with('users', DB::table('users')->pluck('name', 'id'))
                         ->with('actTick', 'active')

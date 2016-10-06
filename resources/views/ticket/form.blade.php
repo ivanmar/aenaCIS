@@ -21,6 +21,10 @@
                     <span class="cFieldName"> status</span>
                     {!! Form::select('status', $status, $obj->status, array('class' => 'form-control')) !!}
                 </div>
+                <div class='col-md-2 col-md-offset-1'>
+                    <span class="btn btn-sm btn-primary pull-right" id="editForm"> Edit </span>
+                </div>
+                
             </div>
                     
             
@@ -87,7 +91,7 @@
             <div class="form-group">
                 <div class='col-md-5'>
                     <span class="cFieldName"> zahtevano delo in stanje opreme</span>
-                    {!! Form::textarea('ticketDesc', $obj->ticketDesc, array('class' => 'form-control')) !!}
+                    {!! Form::textarea('ticketDesc', $obj->ticketDesc, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
                 <div class='col-md-2'>
                     <span class="cFieldName"> serijska št</span>
@@ -97,30 +101,49 @@
                 </div>
                 <div class='col-md-5'>
                     <span class="cFieldName"> opomba</span>
-                    {!! Form::textarea('note', $obj->note, array('class' => 'form-control')) !!}
+                    {!! Form::textarea('note', $obj->note, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
             </div>
             <div class="form-group">
                 <div class='col-md-5'>
                     <span class="cFieldName"> uporabljeni materijal</span>
-                    {!! Form::textarea('partUsed', $obj->partUsed, array('class' => 'form-control')) !!}
+                    {!! Form::textarea('partUsed', $obj->partUsed, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
                 <div class='col-md-5 col-md-offset-2'>
                     <span class="cFieldName"> opravljeno delo</span>
-                    {!! Form::textarea('ticketRes', $obj->ticketRes, array('class' => 'form-control')) !!}
+                    {!! Form::textarea('ticketRes', $obj->ticketRes, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
             </div>
-
-            <input class="btn btn-md btn-success pull-right" type="submit" value="Submit">
-            <a style="display: {!!$displayCancel or 'none'!!}" class="btn btn-sm btn-danger" href="{!!URL::to('ticket')!!}">Cancel</a>
-            <a href="#" id="resetBtn" class="btn btn-sm btn-warning">Reset</a>
-
+            <div class="row">
+                <div class='col-md-5'>
+                    <span class="btn btn-sm btn-default" id="popAddComm"> Dodaj komentar</span>
+                    <span class="btn btn-sm btn-default" id="popAddEven"> Dodaj dogodek</span>
+                </div>
+                <div class='col-md-2 col-md-offset-2'>
+                    <a class="btn btn-sm btn-danger" href="{!!URL::to('ticket')!!}">Cancel</a> 
+                    <a href="#" id="resetBtn" class="btn btn-sm btn-warning">Reset</a>
+                </div>
+                <div class='col-md-1 col-md-offset-2'>
+                    <input class="btn btn-md btn-success pull-right" type="submit" value="Submit">
+                </div>
+            </div>
+            @include('popcomment')
         </div>
     </div>
 </div>
 {!! Form::close() !!}
 
 <script>
+    
+    $("input").prop('disabled', true);
+    $("select").prop('disabled', true);
+    $("textarea").prop('disabled', true);
+    
+    $("#editForm").click(function() {
+        $("input").prop('disabled', false);
+        $("select").prop('disabled', false);
+        $("textarea").prop('disabled', false);
+    });
 
     $(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
     
@@ -128,6 +151,12 @@
     html: true,
     content: function () {
         return $("#popAddCustCont").html();
+    }});
+    $("#popAddComm").popover({
+    html: true,
+    content: function () {
+        $(".popEnable").prop('disabled', false);
+        return $("#popAddCommCont").html();
     }});
 
     $('html').on('mouseup', function(e) {
