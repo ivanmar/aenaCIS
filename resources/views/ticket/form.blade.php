@@ -9,7 +9,7 @@
 <div class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"> Ticket </h3>
+            <h3 class="panel-title"> Naloga </h3>
         </div>
         <div class="panel-body">
             <div class="form-group">
@@ -54,7 +54,7 @@
                                 e.preventDefault();
                                 var nameCont = $('#popName').val();
                                 $.ajax({type: "POST",
-                                    url: "/aenaCIS/js/addcontact",
+                                    url: "/js/addcontact",
                                     data: { 
                                         name: nameCont,
                                         idCompany: $('#popIdCompany').val(),
@@ -128,16 +128,29 @@
                 </div>
             </div>
             @include('popcomment')
+            @include('popevent')
         </div>
     </div>
 </div>
 {!! Form::close() !!}
 
+@if(isset($comments))
+    @foreach($comments as $key => $value)
+    <blockquote>
+      <p> {!! $value->text !!} </p>
+      <footer>{!! $value->username !!} <cite title="Source Title">{!! $value->dateTime !!}</cite></footer>
+    </blockquote>
+    @endforeach
+@endif
 <script>
     
-    $("input").prop('disabled', true);
-    $("select").prop('disabled', true);
-    $("textarea").prop('disabled', true);
+    $(function() {
+        if ( document.location.href.indexOf('/create') === -1 ) {
+            $("input").prop('disabled', true);
+            $("select").prop('disabled', true);
+            $("textarea").prop('disabled', true);
+        }
+    });
     
     $("#editForm").click(function() {
         $("input").prop('disabled', false);
@@ -157,6 +170,12 @@
     content: function () {
         $(".popEnable").prop('disabled', false);
         return $("#popAddCommCont").html();
+    }});
+    $("#popAddEven").popover({
+    html: true,
+    content: function () {
+        $(".popEnable").prop('disabled', false);
+        return $("#popAddEvenCont").html();
     }});
 
     $('html').on('mouseup', function(e) {

@@ -1,26 +1,23 @@
 <div id="popAddCommCont" class="hide">
     {!! Form::hidden('idTicket', isset($obj->id)?$obj->id:null) !!}
-    {!! Form::hidden('idUser', Auth::user()) !!}
-    {!! Form::textarea('comment', null, array('rows'=>'3','class'=>'popEnable','id'=>'popText')) !!}
-
-    <span class="btn btn-xs btn-primary" id="popSubmit"> Dodaj komentar</span>
+    {!! Form::textarea('comment', null, array('class'=>'popEnable form-control input-xs','id'=>'popText')) !!}
+    <span class="btn btn-xs btn-primary" id="popSubmitComm"> Dodaj komentar</span>
         <script>
-            $('#popSubmit').click(function (e) {
-            e.preventDefault();
-            var comment = $('#popText').val();
-            $.ajax({type: "POST",
-                url: "/aenaCIS/js/addcomment",
-                data: { 
-                    name: comment,
-                    _token: $('input[name=_token]').val()
-                },
-                success:function(data)
-                {
-                }
-            });
-
-            $("#popAddComm").popover('hide');
-
+            $('#popSubmitComm').click(function (e) {
+                e.preventDefault();
+                var comment = $('#popText').val();
+                $.ajax({type: "POST",
+                    url: "/js/addcomment",
+                    data: { 
+                        name: comment,
+                        idTicket: $('input[name=idTicket]').val(),
+                        _token: $('input[name=_token]').val()
+                    },
+                    success:function(data)
+                    {
+                    }
+                });
+                $("#popAddComm").popover('hide');
             });
         </script>
 </div>

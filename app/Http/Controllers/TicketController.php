@@ -103,6 +103,9 @@ class TicketController extends Controller {
 
     public function edit($id) {
         $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $comments=DB::table('comment')->select('comment.text','comment.dateTime','users.name AS username')
+                    ->join('users','comment.idUser','=','users.id')
+                    ->where('idTicket',$id)->orderBy('dateTime')->get();
         return view('ticket.form')
                         ->with('formAction', 'ticket.update')
                         ->with('formMethod', 'PUT')
@@ -110,6 +113,7 @@ class TicketController extends Controller {
                         ->with('users', DB::table('users')->pluck('name', 'id'))
                         ->with('actTick', 'active')
                         ->with('compList',$compList)
+                        ->with('comments',$comments)
                         ->with('obj', \App\Ticket::find($id));
     }
     public function update($id) {

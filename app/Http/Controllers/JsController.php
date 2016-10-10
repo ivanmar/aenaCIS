@@ -37,7 +37,7 @@ class JsController extends Controller {
         $comment->idTicket = $this->request->input('idTicket');
         $comment->idProject = $this->request->input('idProject');
         $comment->dateTime = date("Y-m-d H:i:s");
-        $comment->text = $this->request->input('text');
+        $comment->text = $this->request->input('name');
         $comment->save();
         return response()->json($comment->id);
     }
@@ -48,11 +48,10 @@ class JsController extends Controller {
         $event->idProject = $this->request->input('idProject');
         $event->name = $this->request->input('name');
         $event->dateTimeFrom = $this->request->input('dateTimeFrom');
-        $event->dateTimeTo = $this->request->input('dateTimeTo2');
+        $event->dateTimeTo = $this->request->input('dateTimeTo');
         $event->text = $this->request->input('text');
         $event->save();
         return response()->json($event->id);
-        
     }
 
 }
