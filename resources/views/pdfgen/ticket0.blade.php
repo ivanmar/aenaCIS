@@ -2,7 +2,7 @@
     <head>
         <title>DELOVNI NALOG</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        {!! HTML::style('css/pdfgen.css') !!}
+        {!! HTML::style('public/css/pdfgen.css') !!}
     </head>
     <body>
         <div class="page"> 
@@ -11,7 +11,6 @@
 
                     <td colspan="3" class="top-date">
                         <p><span class="name-row"> Datum poročila: </span> <span class="itxt"> {!! date('d-m-Y') !!} </span></p>
-                        <p><span class="name-row"> Št. poročila: </span> <span class="itxt"> {!! 'tck-'. $id !!} </span></p>
                     </td>
                 </tr>
                 <tr><td colspan="10" id="brd-no"><h1 class="txt-center"> DELOVNI NALOG </h1></td> </tr>

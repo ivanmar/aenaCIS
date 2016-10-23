@@ -62,7 +62,7 @@ class TicketController extends Controller {
                     ->join('users','ticket.idUser','=','users.id')
                     ->where('ticket.id',$id)->first();
         $pdf = PDF::loadView('pdfgen.ticket0', $data);
-        $pdf->download('ticket_' .$id . '.pdf');
+        return $pdf->download('ticket_' .$id . '.pdf');
     }
 
     public function index() {
