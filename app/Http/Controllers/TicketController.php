@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Session, \Validator, \Auth;
+use \DB, \Session, \Validator, \Auth, \PDF;
 use Illuminate\Http\Request;
 
 
@@ -36,7 +36,6 @@ class TicketController extends Controller {
             $ticket = \App\Ticket::find($id);
         } else {
             $ticket = new \App\Ticket;
- //           $ticket->idUser = $this->request->input('idUser');
         }
         $ticket->name = $this->request->input('name');
         $ticket->status = $this->request->input('status');
@@ -52,6 +51,18 @@ class TicketController extends Controller {
         $ticket->idUser = Auth::user();
         $ticket->save();
         return $ticket->id;
+    }
+    public function show($id) {
+        $data = (array) DB::table('ticket')->select('ticket.id','ticket.name','ticket.dateOpen','ticket.dateClose',
+                                            'ticket.ticketDesc','ticket.ticketRes','ticket.partUsed','ticket.note',
+                                            'ticket.indBag','ticket.indCharger',
+                                            'contact.name as cname','contact.address','contact.tel','contact.email',
+                                            'users.name as uname')
+                    ->join('contact','ticket.idContact','=','contact.id')
+                    ->join('users','ticket.idUser','=','users.id')
+                    ->where('ticket.id',$id)->first();
+        $pdf = PDF::loadView('pdfgen.ticket0', $data);
+        $pdf->download('ticket_' .$id . '.pdf');
     }
 
     public function index() {

@@ -5,6 +5,7 @@
     {!! Form::text('dateTimeTo', null, array('class'=>'popEnable form-control','id'=>'popDateTimeTo','placeholder'=>'Datum do')) !!}
     {!! Form::textarea('text', null, array('class'=>'popEnable form-control','id'=>'popTextEven','placeholder'=>'Text')) !!}
     <span class="btn btn-xs btn-primary" id="popSubmitEven"> Dodaj dogodek</span>
+    <span class="btn btn-xs btn-warning pull-right" onclick="$('#popAddEven').popover('hide');"> Zapri</span>
         <script>
             $('#popSubmitEven').click(function (e) {
                 e.preventDefault();

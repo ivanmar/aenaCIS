@@ -2,6 +2,7 @@
     {!! Form::hidden('idTicket', isset($obj->id)?$obj->id:null) !!}
     {!! Form::textarea('comment', null, array('class'=>'popEnable form-control input-xs','id'=>'popText')) !!}
     <span class="btn btn-xs btn-primary" id="popSubmitComm"> Dodaj komentar</span>
+    <span class="btn btn-xs btn-warning pull-right" onclick="$('#popAddComm').popover('hide');"> Zapri</span>
         <script>
             $('#popSubmitComm').click(function (e) {
                 e.preventDefault();

@@ -39,44 +39,8 @@
                     <br>
                     <span class="btn btn-sm btn-primary" id="popAddCont"> dodaj stranko >> </span>
                     
+@include('popcontact')              
                     
-                    <div id="popAddCustCont" class="hide">
-                        <input type='text' name="hid_name" placeholder="ime in primek" id="popName">
-                        {!! Form::select('hid_idCompany', $compList, null, array('id' => 'popIdCompany')) !!}
-                        <input type='text' name="hid_tel" placeholder="Telefon" id="popTel">
-                        <input type='text' name="hid_email" placeholder="Email" id="popEmail">
-                        <input type='text' name="hid_address" placeholder="Naslov" id="popAddress">
-                        <input type='text' name="hid_city" placeholder="Mesto" id="popCity">
-                        <input type='text' name="hid_zipCode" placeholder="ZIP" id="popZipCode">
-                        <input type='button' value="dodaj" id="popSubmit">
-                            <script>
-                                $('#popSubmit').click(function (e) {
-                                e.preventDefault();
-                                var nameCont = $('#popName').val();
-                                $.ajax({type: "POST",
-                                    url: "/js/addcontact",
-                                    data: { 
-                                        name: nameCont,
-                                        idCompany: $('#popIdCompany').val(),
-                                        tel: $('#popTel').val(),
-                                        email: $('#popEmail').val(),
-                                        address: $('#popAddress').val(),
-                                        city: $('#popCity').val(),
-                                        zipCode: $('#popZipCode').val(),
-                                        _token: $('input[name=_token]').val()
-                                    },
-                                    success:function(data)
-                                    {
-                                        $('#idContact').val(data);
-                                        $('#selCont').val(nameCont);
-                                    }
-                                });
-
-                                $("#popAddCont").popover('hide');
-
-                                });
-                            </script>
-                    </div>
                 </div>
                 <div class='col-md-2'>
                     <span class="cFieldName"> datum sprejeto</span>
@@ -143,7 +107,7 @@
     @endforeach
 @endif
 <script>
-    
+
     $(function() {
         if ( document.location.href.indexOf('/create') === -1 ) {
             $("input").prop('disabled', true);
@@ -171,20 +135,17 @@
         $(".popEnable").prop('disabled', false);
         return $("#popAddCommCont").html();
     }});
+
     $("#popAddEven").popover({
     html: true,
     content: function () {
         $(".popEnable").prop('disabled', false);
         return $("#popAddEvenCont").html();
-    }});
-
-    $('html').on('mouseup', function(e) {
-        if(!$(e.target).closest('.popover').length) {
-            $('.popover').each(function(){
-                $(this.previousSibling).popover('hide');
-            });
-        }
+    }}).on('shown.bs.popover', function () {
+        $('#popDateTimeFrom').datepicker({dateFormat: 'yy-mm-dd'});
+        $('#popDateTimeTo').datepicker({dateFormat: 'yy-mm-dd'});
     });
+
 </script> 
 @stop
 
