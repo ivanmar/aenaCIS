@@ -15,9 +15,13 @@
             <div class="form-group">
                 <div class='col-md-5'>
                     <span class="cFieldName"> naziv *</span>
-                    {!! Form::text('name', $obj->name, array('class' => 'form-control')) !!}
+                    {!! Form::text('tname', $obj->name, array('class' => 'form-control')) !!}
                 </div>
-                <div class='col-md-2 col-md-offset-2'>
+                <div class='col-md-2'>
+                <span class="cFieldName"> serijska št</span>
+                    {!! Form::text('serialDevice', $obj->serialDevice, array('class' => 'form-control')) !!}
+                </div>
+                <div class='col-md-2'>
                     <span class="cFieldName"> status</span>
                     {!! Form::select('status', $status, $obj->status, array('class' => 'form-control')) !!}
                 </div>
@@ -26,8 +30,7 @@
                 </div>
                 
             </div>
-                    
-            
+
             <div class="form-group">
                 <div class='col-md-5'>
                     <span class="cFieldName"> stranka *</span>
@@ -57,11 +60,13 @@
                     <span class="cFieldName"> zahtevano delo in stanje opreme</span>
                     {!! Form::textarea('ticketDesc', $obj->ticketDesc, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
-                <div class='col-md-2'>
-                    <span class="cFieldName"> serijska št</span>
-                    {!! Form::text('serialDevice', $obj->serialDevice, array('class' => 'form-control')) !!} <br>
-                    <span class="cFieldName"> cena napovedana</span>
-                    {!! Form::text('pricePredict', $obj->pricePredict, array('class' => 'form-control')) !!}
+                <div class='col-md-1'>
+                    <span class="cFieldName"> Torba</span>
+                    {!! Form::checkbox('indBag', 1, $obj->indBag) !!}<br>
+                </div>
+                <div class='col-md-1'>
+                    <span class="cFieldName"> Polnilec</span>
+                    {!! Form::checkbox('indCharger', 1, $obj->indCharger) !!}<br>
                 </div>
                 <div class='col-md-5'>
                     <span class="cFieldName"> opomba</span>
@@ -73,7 +78,11 @@
                     <span class="cFieldName"> uporabljeni materijal</span>
                     {!! Form::textarea('partUsed', $obj->partUsed, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
-                <div class='col-md-5 col-md-offset-2'>
+                <div class='col-md-2'>
+                <span class="cFieldName"> cena napovedana</span>
+                    {!! Form::text('pricePredict', $obj->pricePredict, array('class' => 'form-control')) !!}
+                </div>
+                <div class='col-md-5'>
                     <span class="cFieldName"> opravljeno delo</span>
                     {!! Form::textarea('ticketRes', $obj->ticketRes, array('class' => 'form-control', 'rows' => '5')) !!}
                 </div>
@@ -120,6 +129,7 @@
         $("input").prop('disabled', false);
         $("select").prop('disabled', false);
         $("textarea").prop('disabled', false);
+        $("checkbox").prop('disabled', false);
     });
 
     $(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Session, \Validator;
+use \DB, \Session, \Auth, \PDF;
 use Illuminate\Http\Request;
 
 
@@ -16,20 +16,7 @@ class ProjectController extends Controller {
     }
 
     private function insertMainSql($id = 0) {
-        
-        if($this->request->input('idCustomer') > 0){
-            $idCustomer = $this->request->input('idCustomer');
-        } else {
-            $customer = new \App\Customer;
-            $customer->name = $this->request->input('name');
-            $customer->email = $this->request->input('email');
-            $customer->address = $this->request->input('address');
-            $customer->tel = $this->request->input('tel');
-            $customer->note = $this->request->input('note');
-            $customer->save();
-            
-            $idCustomer = $customer->id;
-        }
+
         if ($id > 0) {
             $project = \App\Project::find($id);
         } else {
@@ -48,8 +35,7 @@ class ProjectController extends Controller {
         $project->priceCharged = $this->request->input('priceCharged');
         $project->note = $this->request->input('note');
         $project->idCustomer = $this->request->input('idCustomer');
-        $project->idUserRec = $this->request->input('idUserRec');
-        $project->idUserFin = $this->request->input('idUserFin');
+        $project->idUser = Auth::user()->id;
         $project->save();
         return $project->id;
     }
@@ -89,10 +75,7 @@ class ProjectController extends Controller {
                         ->with('obj', new \App\Project );
     }
     public function store() {
-        $v = Validator::make($this->request->all(), $this->input_rules);
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors());
-        }
+        $this->validate($this->request, $this->input_rules);
         $this->insertMainSql();
         Session::flash('message', 'Successfully created');
         return redirect('project');
@@ -110,10 +93,7 @@ class ProjectController extends Controller {
                         ->with('obj', \App\Project::find($id));
     }
     public function update($id) {
-        $v = Validator::make($this->request->all(), $this->input_rules);
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors());
-        }
+        $this->validate($this->request, $this->input_rules);
         $this->insertMainSql($id);
         Session::flash('message', 'Successfully updated');
         return redirect('project');

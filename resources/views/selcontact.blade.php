@@ -5,7 +5,7 @@
         $('#selCont').autocomplete({
             minLength: 2,
             source: function (request, respond) {
-                $.get('/aenaCIS/js/getcontactlist/' + request.term, function (data) { respond(data);} );
+                $.get('/js/getcontactlist/' + request.term, function (data) { respond(data);} );
             },
             select: function (event, ui) {
                 $( this ).val( ui.item.label );

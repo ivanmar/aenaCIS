@@ -5,7 +5,7 @@
         {!! HTML::style('public/css/pdfgen.css') !!}
     </head>
     <body>
-        <div class="page"> 
+        <div class="page last"> 
             <table class="front">
                 <tr><td colspan="7"><img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
 
@@ -30,13 +30,21 @@
                     <td colspan="5"> {!! $ticketRes !!} </td> 
                 </tr>
                 <tr><td colspan="5" class="name-row"> Dodatna oprema</td> 
-                    <td colspan="5"> </td> 
+                    <td colspan="5"> 
+                        
+                            @if(isset($indBag) && $indBag)
+                            <p class="pad5"><b> &#9635; </b> Torba </p> 
+                            @endif
+                            @if(isset($indCharger) && $indCharger)
+                            <p class="pad5"><b> &#9635; </b> Polnilec </p> 
+                            @endif
+                    </td> 
                 </tr>
                 <tr><td colspan="10" class="desc"> <p class="name-row"> Opombe</p>
                         {!!$note!!} </td> 
                 </tr>
                 <tr><td colspan="5" class="name-row"> Opravil / Datum</td> 
-                    <td colspan="5"> {!! $uname !!} / {!! date('d-m-Y',strtotime($dateClose)) !!} </td> 
+                    <td colspan="5"> {!! $uname !!} / {!! date('d-m-Y') !!} </td> 
                 </tr>
             </table>
         </div>

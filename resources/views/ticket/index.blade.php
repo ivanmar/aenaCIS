@@ -34,7 +34,7 @@
             <td>{!! $value->status !!}</td>
             <td>{!! $value->dateOpen !!}</td>
             <td class="text-right">
-            <a class="btn btn-xs btn-success" href="{!! URL::to('ticket/' . $value->id)!!}">P</a>
+            <a class="btn btn-xs btn-success" target="_blank" href="{!! URL::to('ticket/' . $value->id)!!}">P</a>
             <a class="btn btn-xs btn-info" href="{!! URL::to('ticket/' . $value->id . '/edit') !!}">E</a>
             <a class="btn btn-xs btn-danger" href="{!! URL::to('ticket/' . $value->id . '/destroy') !!}"
                    onclick="if(!confirm('Delete this item?')){return false;};">D</a>

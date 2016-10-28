@@ -1,5 +1,5 @@
 * {margin: 0; padding: 0;}
-body { background-color: #fff; font-size: 12px; font-family: "Arial";}
+body { background-color: #fff; font-size: 12px; font-family: DejaVu Sans;}
 .clr{clear:both;}
 table {width:100%; vertical-align: top; border:solid 1px black;font-size: 12px;}
 table,th,td { border-collapse:collapse;}
@@ -47,18 +47,9 @@ h4{font-size: 12px;font-weight: 400;padding:8px 0; color: #222}
 
 img.elpr {border: 0; padding: 20px 0;}
 
-.page { page-break-after: always; height: 270mm; width: 195mm; overflow:hidden;  display:block;}
-
-.landscape { position:relative;
-             margin: 260mm 0;
-             padding:  0 20mm 80mm 0;
-             width: 260mm;
-             height: 180mm;
-             -webkit-transform: rotate(-90deg);
-
-}
-
+.page { page-break-after: always; width: 100%; display:block; padding:25px;}
 .last { page-break-after: avoid;}
+
 div#pbottom {position: absolute;bottom: 0;width: 100%;}
 div#pbottom p.left {width: 40%; float: left}
 div#pbottom p.right {width: 40%; float: right}

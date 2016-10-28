@@ -1,13 +1,13 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Session, \Validator, \Auth, \PDF;
+use \DB, \Session, \Auth, \PDF;
 use Illuminate\Http\Request;
 
 
 
 class TicketController extends Controller {
 
-    protected $input_rules = [ 'idContact' => 'required','name' => 'required' ];
+    protected $input_rules = [ 'idContact' => 'required','tname' => 'required' ];
     protected $statusTicket = array('open' => 'Odprto', 'cancel' => 'Preklicano', 'progress' => 'V teku', 'done' => 'Narejeno');
 
     public function __construct(Request $request){
@@ -17,27 +17,12 @@ class TicketController extends Controller {
 
     private function insertMainSql($id = 0) {
         
-        if($this->request->input('idContact') > 0){
-            $idContact = $this->request->input('idContact');
-        } else {
-            $contact = new \App\Contact;
-            $contact->name = $this->request->input('name');
-            $contact->email = $this->request->input('email');
-            $contact->address = $this->request->input('address');
-            $contact->city = $this->request->input('city');
-            $contact->zipCode = $this->request->input('zipCode');
-            $contact->tel = $this->request->input('tel');
-            $contact->idCompany = $this->request->input('idCompany');
-            $contact->save();
-            
-            $idContact = $contact->id;
-        }
         if ($id > 0) {
             $ticket = \App\Ticket::find($id);
         } else {
             $ticket = new \App\Ticket;
         }
-        $ticket->name = $this->request->input('name');
+        $ticket->name = $this->request->input('tname');
         $ticket->status = $this->request->input('status');
         $ticket->dateOpen = $this->request->input('dateOpen');
         $ticket->dateClose = $this->request->input('dateClose');
@@ -48,7 +33,17 @@ class TicketController extends Controller {
         $ticket->pricePredict = $this->request->input('pricePredict');
         $ticket->note = $this->request->input('note');
         $ticket->idContact = $this->request->input('idContact');
-        $ticket->idUser = Auth::user();
+        $ticket->idUser = Auth::user()->id;
+        if($this->request->input('indBag')) {
+            $ticket->indBag = $this->request->input('indBag');
+        } else {
+            $ticket->indBag = 0;
+        }
+        if($this->request->input('indCharger')) {
+            $ticket->indCharger = $this->request->input('indCharger');
+        } else {
+            $ticket->indCharger = 0;
+        }
         $ticket->save();
         return $ticket->id;
     }
@@ -61,8 +56,8 @@ class TicketController extends Controller {
                     ->join('contact','ticket.idContact','=','contact.id')
                     ->join('users','ticket.idUser','=','users.id')
                     ->where('ticket.id',$id)->first();
-        $pdf = PDF::loadView('pdfgen.ticket0', $data);
-        return $pdf->download('ticket_' .$id . '.pdf');
+        $pdf = PDF::loadView('pdfgen.ticket0', $data)->setPaper('a4', 'portial');
+        return $pdf->stream('ticket_' .$id . '.pdf');
     }
 
     public function index() {
@@ -96,16 +91,12 @@ class TicketController extends Controller {
                         ->with('formMethod', 'POST')
                         ->with('items', array())
                         ->with('status', $this->statusTicket)
-                        ->with('users', DB::table('users')->pluck('name', 'id'))
                         ->with('actTick', 'active')
                         ->with('compList',$compList)
                         ->with('obj', new \App\Ticket );
     }
     public function store() {
-        $v = Validator::make($this->request->all(), $this->input_rules);
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors());
-        }
+        $this->validate($this->request, $this->input_rules);
         $this->insertMainSql();
         Session::flash('message', 'Successfully created');
         return redirect('ticket');
@@ -121,17 +112,13 @@ class TicketController extends Controller {
                         ->with('formAction', 'ticket.update')
                         ->with('formMethod', 'PUT')
                         ->with('status', $this->statusTicket)
-                        ->with('users', DB::table('users')->pluck('name', 'id'))
                         ->with('actTick', 'active')
                         ->with('compList',$compList)
                         ->with('comments',$comments)
                         ->with('obj', \App\Ticket::find($id));
     }
     public function update($id) {
-        $v = Validator::make($this->request->all(), $this->input_rules);
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors());
-        }
+        $this->validate($this->request, $this->input_rules);
         $this->insertMainSql($id);
         Session::flash('message', 'Successfully updated');
         return redirect('ticket');
