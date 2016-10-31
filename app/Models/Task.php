@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Event extends Eloquent {
+class Task extends Eloquent {
 
-    protected $table = 'event';
+    protected $table = 'task';
     public $timestamps = false;
 
     public function project() {

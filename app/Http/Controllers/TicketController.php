@@ -115,6 +115,7 @@ class TicketController extends Controller {
                         ->with('actTick', 'active')
                         ->with('compList',$compList)
                         ->with('comments',$comments)
+                        ->with('idTicket',$id)
                         ->with('obj', \App\Ticket::find($id));
     }
     public function update($id) {
@@ -128,6 +129,7 @@ class TicketController extends Controller {
     public function destroy($id) {
         DB::table('ticket')->where('id',$id)->delete();
         DB::table('comment')->where('idTicket',$id)->delete();
+        DB::table('task')->where('idTicket',$id)->delete();
         Session::flash('message', 'Successfully deleted');
         return redirect('ticket');
     }

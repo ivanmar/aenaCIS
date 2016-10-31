@@ -41,17 +41,17 @@ class JsController extends Controller {
         $comment->save();
         return response()->json($comment->id);
     }
-    public function addEvent () {
-        $event = new \App\Event;
-        $event->idUser = Auth::id();
-        $event->idTicket = $this->request->input('idTicket');
-        $event->idProject = $this->request->input('idProject');
-        $event->name = $this->request->input('name');
-        $event->dateTimeFrom = $this->request->input('dateTimeFrom');
-        $event->dateTimeTo = $this->request->input('dateTimeTo');
-        $event->text = $this->request->input('text');
-        $event->save();
-        return response()->json($event->id);
+    public function addTask () {
+        $task = new \App\Task;
+        $task->idUser = Auth::id();
+        $task->idTicket = $this->request->input('idTicket');
+        $task->idProject = $this->request->input('idProject');
+        $task->name = $this->request->input('name');
+        $task->dateTimeFrom = $this->request->input('dateTimeFrom');
+        $task->dateTimeTo = $this->request->input('dateTimeTo');
+        $task->text = $this->request->input('text');
+        $task->save();
+        return response()->json($task->id);
     }
 
 }

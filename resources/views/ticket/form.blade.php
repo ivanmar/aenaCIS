@@ -90,7 +90,7 @@
             <div class="row">
                 <div class='col-md-5'>
                     <span class="btn btn-sm btn-default" id="popAddComm"> Dodaj komentar</span>
-                    <span class="btn btn-sm btn-default" id="popAddEven"> Dodaj dogodek</span>
+                    <span class="btn btn-sm btn-default" id="popAddTask"> Dodaj nalogo</span>
                 </div>
                 <div class='col-md-2 col-md-offset-2'>
                     <a class="btn btn-sm btn-danger" href="{!!URL::to('ticket')!!}">Cancel</a> 
@@ -101,7 +101,7 @@
                 </div>
             </div>
             @include('popcomment')
-            @include('popevent')
+            @include('poptask')
         </div>
     </div>
 </div>
@@ -146,11 +146,11 @@
         return $("#popAddCommCont").html();
     }});
 
-    $("#popAddEven").popover({
+    $("#popAddTask").popover({
     html: true,
     content: function () {
         $(".popEnable").prop('disabled', false);
-        return $("#popAddEvenCont").html();
+        return $("#popAddTaskCont").html();
     }}).on('shown.bs.popover', function () {
         $('#popDateTimeFrom').datepicker({dateFormat: 'yy-mm-dd'});
         $('#popDateTimeTo').datepicker({dateFormat: 'yy-mm-dd'});

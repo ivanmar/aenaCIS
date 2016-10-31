@@ -2,15 +2,15 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Project extends Eloquent {
+class Kb extends Eloquent {
 
-    protected $table = 'project';
+    protected $table = 'kb';
     public $timestamps = false;
 
     public function company() {
         return $this->hasOne('App\Company', 'id', 'idCompany');
     }
-    public function user() {
-        return $this->hasOne('App\User', 'id', 'idUser');
+    public function contact() {
+        return $this->hasOne('App\Project', 'id', 'idProject');
     }
 }

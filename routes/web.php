@@ -20,7 +20,7 @@ Route::get('/', 'DashboardController@index');
 Route::get('/js/getcontactlist/{reqterm}', 'JsController@getContactList');
 Route::post('/js/addcontact', array('as'=>'js.addcontact','uses' => 'JsController@addContact'));
 Route::post('/js/addcomment', array('as'=>'js.addcomment','uses' => 'JsController@addComment'));
-Route::post('/js/addevent', array('as'=>'js.addevent','uses' => 'JsController@addEvent'));
+Route::post('/js/addtask', array('as'=>'js.addtask','uses' => 'JsController@addTask'));
 
 Route::get('/company/{id}/destroy', 'CompanyController@destroy');
 Route::resource('company', 'CompanyController');
@@ -33,4 +33,7 @@ Route::resource('ticket', 'TicketController');
 
 Route::get('/project/{id}/destroy', 'ProjectController@destroy');
 Route::resource('project', 'ProjectController');
+
+Route::get('/kb/{id}/destroy', 'KbController@destroy');
+Route::resource('kb', 'KbController');
 
