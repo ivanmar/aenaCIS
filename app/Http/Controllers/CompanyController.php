@@ -46,7 +46,7 @@ class CompanyController extends Controller {
         $company = DB::table('company')->select('company.id','company.name',
                 'company.phone','company.email','company.address','company.city','company.ddvCode','company.note')
                 ->where('company.name','LIKE', '%'.$nameComp.'%')
-                ->orderBy('company.name')->paginate(30);
+                ->orderBy('company.name')->paginate(40);
 
         return view('company.index')
                         ->with('actComp', 'active')

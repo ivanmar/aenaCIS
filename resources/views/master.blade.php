@@ -31,6 +31,13 @@
                         <li class="{!! $actComp or ''!!}"><a href="{!! URL::to('company') !!}">Podjetja</a></li>
                         <li class="{!! $actCont or ''!!}"><a href="{!! URL::to('contact') !!}">Kontakti</a></li>
                         <li class="{!! $actKb or ''!!}">  <a href="{!! URL::to('kb') !!}">KB</a></li>
+                        <li class="{!! $actProd or ''!!}">  <a href="{!! URL::to('product') !!}">Produkti</a></li>
+                         <li class="dropdown {!! $actSett or ''!!}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nastavitve <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{!! URL::to('productgroup') !!}">Produkt grupe</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="navbar-right navbar-nav nav">
                         <li><a href="#"> </a></li>

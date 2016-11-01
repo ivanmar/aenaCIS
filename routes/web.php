@@ -37,3 +37,8 @@ Route::resource('project', 'ProjectController');
 Route::get('/kb/{id}/destroy', 'KbController@destroy');
 Route::resource('kb', 'KbController');
 
+Route::get('/product/{id}/destroy', 'ProductController@destroy');
+Route::resource('product', 'ProductController');
+
+Route::get('/productgroup/{id}/destroy', 'ProductGroupController@destroy');
+Route::resource('productgroup', 'ProductGroupController');

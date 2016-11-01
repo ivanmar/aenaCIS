@@ -8,7 +8,7 @@
     {!! Form::close() !!}
 </div>
 <div class="row">
-    <div class="col-sm-2"><a class="btn btn-sm btn-primary" href="{!! URL::to('company/create') !!}">dodaj stranko</a></div>
+    <div class="col-sm-2"><p><a class="btn btn-sm btn-primary" href="{!! URL::to('company/create') !!}">add new</a></p></div>
     <div class="col-sm-10 text-right"><?php echo $company->render(); ?></div>
 </div>
 

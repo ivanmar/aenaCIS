@@ -10,6 +10,8 @@ return array(
     'App\\Company' => $baseDir . '/app/Models/Company.php',
     'App\\Contact' => $baseDir . '/app/Models/Contact.php',
     'App\\Kb' => $baseDir . '/app/Models/Kb.php',
+    'App\\Product' => $baseDir . '/app/Models/Product.php',
+    'App\\ProductGroup' => $baseDir . '/app/Models/ProductGroup.php',
     'App\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Task' => $baseDir . '/app/Models/Task.php',
     'App\\Ticket' => $baseDir . '/app/Models/Ticket.php',

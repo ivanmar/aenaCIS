@@ -315,6 +315,8 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'App\\Company' => __DIR__ . '/../..' . '/app/Models/Company.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
         'App\\Kb' => __DIR__ . '/../..' . '/app/Models/Kb.php',
+        'App\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\ProductGroup' => __DIR__ . '/../..' . '/app/Models/ProductGroup.php',
         'App\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Task' => __DIR__ . '/../..' . '/app/Models/Task.php',
         'App\\Ticket' => __DIR__ . '/../..' . '/app/Models/Ticket.php',
