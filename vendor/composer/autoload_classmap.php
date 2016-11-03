@@ -13,6 +13,7 @@ return array(
     'App\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\ProductGroup' => $baseDir . '/app/Models/ProductGroup.php',
     'App\\Project' => $baseDir . '/app/Models/Project.php',
+    'App\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Task' => $baseDir . '/app/Models/Task.php',
     'App\\Ticket' => $baseDir . '/app/Models/Ticket.php',
     'App\\User' => $baseDir . '/app/Models/User.php',

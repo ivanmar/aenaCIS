@@ -36,6 +36,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nastavitve <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{!! URL::to('productgroup') !!}">Produkt grupe</a></li>
+                                <li><a href="{!! URL::to('service') !!}">Storitve</a></li>
                             </ul>
                         </li>
                     </ul>
