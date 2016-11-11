@@ -17,20 +17,25 @@ h4{font-size: 12px;font-weight: 400;padding:8px 0; color: #222}
 .brd-top {border-top: 1px solid black;}
 .brd-down {border-bottom: 1px solid #555;}
 .brd-right {border-right: 1px solid #555;}
-#brd-no {border: 0;}
+#brd-no0 {border: 0;}
+#brd-no1 {border: 0;}
+#brd-no2 {border: 0;}
+#brd-no3 {border: 0;}
 .result-tbl {border: none;}
 .txt-right {text-align: right;}
 .txt-left {text-align: left;}
 .txt-center {text-align:center;}
 .txt-small {font-size:10px;}
-.txt-xsmall {font-size:8px;}
+.txt-xsmall {font-size:8px; line-height: 10px}
 .txt-italic {font-style:italic;}
 .txt-bold {font-weight: 600;}
 .txt-upper {text-transform:uppercase;}
 .txt-lower {text-transform:lowercase;}
+.float-left {display: inline-block; float: left}
+.float-right {display: inline-block; float: right}
 .h20{height:20px;}
-.h40{height:40px;}
-.h60{height:60px;}
+.h40{height:40px;display: inline-block;}
+.h60{height:60px;display: inline-block;}
 .pad5{padding:5px;}
 .pad10{padding:10px;}
 .pad20{padding:20px;}
@@ -57,7 +62,7 @@ div#pbottom p.right {width: 40%; float: right}
 table.front {border: 0; color:#333;
        font-size: 11px; letter-spacing: 2px; line-height: 20px;}
 table.front td{ text-align: left; vertical-align: top; border: solid 1px #888; padding: 10px;}
-table.front .desc {height: 200px;}
+table.front .desc {height: 150px;}
 table.front td.top-date p {margin: 10px 0; display: block;}
 table.front td.top-date span.itxt {float:right; display: inline-block;}
 table .name-row {color: #003366; font-weight: 600;}

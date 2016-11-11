@@ -7,13 +7,18 @@
     <body>
         <div class="page last"> 
             <table class="front">
-                <tr><td colspan="7"><img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
+                <tr><td colspan="2" id="brd-no0"> <img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"> </td>
+                    <td colspan="6" id="brd-no1"> 
+                            A1 INFORMATIKA D.O.O. <br>
+                            <span class="txt-xsmall">Dolenjska cesta 242, 1000 Ljubljana<br>
+                                  064 170003 / www.aena.si </span>
+                    </td>
 
-                    <td colspan="3" class="top-date">
-                        <p><span class="name-row"> Datum poročila: </span> <span class="itxt"> {!! date('d-m-Y') !!} </span></p>
+                    <td colspan="2" class="top-date" id="brd-no2">
+                        <p><span class="name-row"> Datum poročila :</span> <span class="itxt"> {!! date('d-m-Y') !!} </span></p>
                     </td>
                 </tr>
-                <tr><td colspan="10" id="brd-no"><h1 class="txt-center"> DELOVNI NALOG </h1></td> </tr>
+                <tr><td colspan="10" id="brd-no3"><h1 class="txt-center"> DELOVNI NALOG ŠT: {!! date('Y').'-'.$id !!} </h1></td> </tr>
                 <tr><td colspan="5" class="name-row"> Naročnik</td> 
                     <td colspan="5"> {!!$cname.'<br>'.$tel.'<br>'.$address!!}</td> 
                 </tr>
@@ -26,8 +31,8 @@
                 <tr><td colspan="5" class="name-row"> Zahtevano delo</td> 
                     <td colspan="5"> {!! $ticketDesc !!} </td> 
                 </tr>
-                <tr><td colspan="5" class="name-row"> Opravljeno delo</td> 
-                    <td colspan="5"> {!! $ticketRes !!} </td> 
+                <tr><td colspan="5" class="name-row decs"> Opravljeno delo</td> 
+                    <td colspan="5" class="desc"> {!! $ticketRes !!} </td> 
                 </tr>
                 <tr><td colspan="5" class="name-row"> Dodatna oprema</td> 
                     <td colspan="5"> 
@@ -47,6 +52,13 @@
                     <td colspan="5"> {!! $uname !!} / {!! date('d-m-Y') !!} </td> 
                 </tr>
             </table>
+            <p class="txt-italic txt-xsmall txt-right">
+                * Veljajo splošni pogoji servisiranja, vključno se ogradimo od kakršnekoli posredne ali neposredne odgovornosti zaradi izgube podatkov.<br>
+                * Jamstvo za opravljeno delo in vgrajeno opremo je 30 dni, če ni drugače definirano od proizvajalca opreme.<br>
+                * Rok za prevzam opreme je 20 dni po koncu dela. Po poteku roka, ne jamčimo za opremo.
+            </p>
+            <p class="h60"></p>
+            <p>Podpis klijenta: ______________________</p>
         </div>
     </body>
 </html>
