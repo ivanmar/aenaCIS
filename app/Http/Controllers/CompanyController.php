@@ -30,11 +30,10 @@ class CompanyController extends Controller {
         $company->bankAccount = $this->request->input('bankAccount');
         $company->b2bAccess = $this->request->input('b2bAccess');
         $company->note = $this->request->input('note');
-        if($this->request->input('indTax')) {
-            $company->indTax = $this->request->input('indTax');
-        } else {
-            $company->indTax = 0;
-        }
+        
+        $company->indTax = ($this->request->input('indTax')) ? 1 : 0;
+        $company->indVendor = ($this->request->input('indVendor')) ? 1 : 0;
+
         $company->save();
         
         return $company->id;

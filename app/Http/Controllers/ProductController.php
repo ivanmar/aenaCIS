@@ -55,7 +55,7 @@ class ProductController extends Controller {
                         ->with('obj', $product);
     }
     public function create() {
-        $compList = array(''=>'podjetje') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array(''=>'podjetje') + DB::table('company')->where('indVendor',1)->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
         return view('product.form')
                         ->with('formAction', 'product.store')
