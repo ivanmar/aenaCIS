@@ -27,12 +27,19 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="{!! $actTick or ''!!}"><a href="{!! URL::to('ticket') !!}">Naloge</a></li>
+                        <li class="dropdown {!! $actInvo or ''!!}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Računi <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{!! URL::to('invoiceout') !!}">Računi oddaja</a></li>
+                                <li><a href="{!! URL::to('invoicein') !!}">Računi prejem</a></li>
+                            </ul>
+                        </li>
                         <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('project') !!}">Projekti</a></li>
                         <li class="{!! $actComp or ''!!}"><a href="{!! URL::to('company') !!}">Podjetja</a></li>
                         <li class="{!! $actCont or ''!!}"><a href="{!! URL::to('contact') !!}">Kontakti</a></li>
                         <li class="{!! $actKb or ''!!}">  <a href="{!! URL::to('kb') !!}">KB</a></li>
                         <li class="{!! $actProd or ''!!}">  <a href="{!! URL::to('product') !!}">Produkti</a></li>
-                         <li class="dropdown {!! $actSett or ''!!}">
+                        <li class="dropdown {!! $actSett or ''!!}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nastavitve <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{!! URL::to('productgroup') !!}">Produkt grupe</a></li>

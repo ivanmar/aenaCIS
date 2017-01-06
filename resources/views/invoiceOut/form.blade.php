@@ -2,35 +2,28 @@
 
 @section('content')
 
-<!-- if there are creation errors, they will show here -->
 {!! HTML::ul($errors->all()) !!}
 
-{!! Form::open(array('route'=>array($formAction,$bill->id),'method'=>$formMethod,'id'=>'billForm', 'class'=>'form-horizontal')) !!}
+{!! Form::open(array('route'=>array($formAction,$obj->id),'method'=>$formMethod,'id'=>'invForm', 'class'=>'form-horizontal','autocomplete'=>'off')) !!}
 
 
 <div class="form-group">
     <label class="col-md-1"> Stranka</label>
     <div class='col-md-4'>
-        {!! Form::select('idCustomer', $customer, $bill->idCustomer, array('class' => 'form-control')) !!}</div>
-    <label class="col-md-1"> Opis </label>
-    <div class='col-md-6'>
-        {!! Form::text('desc', $bill->desc, array('class' => 'form-control')) !!}</div>
+        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control')) !!}</div>
 </div>
 <div class="form-group">
-    <label class="col-md-7"> Storitev</label>
+    <label class="col-md-8"> Storitev</label>
     <label class="col-md-1"> Količina</label>
-    <label class="col-md-1"> Rabat(%) </label>
     <label class="col-md-1"> DDV </label>
     <label class="col-md-2"> Cena en </label>
 </div>
 @for($i=0; $i<5; $i++)
 <div class="form-group">
-    <div class='col-md-6 col-md-offset-1'>
-        {!! Form::select('idService[]', $service, $bill->idService, array('class' => 'form-control','id'=>'idSer'.$i)) !!}</div>
+    <div class='col-md-7 col-md-offset-1'>
+        {!! Form::select('idService[]', $service, $objart->idService, array('class' => 'form-control','id'=>'idSer'.$i)) !!}</div>
     <div class='col-md-1'>
-        {!! Form::text('qty[]', isset($bill->qty) ? $bill->qty : '1', array('class' => 'form-control','id'=>'qty'.$i)) !!}</div>
-    <div class='col-md-1'>
-        {!! Form::text('rDisSingle[]', isset($bill->qty) ? $bill->rDiscount : '0', array('class' => 'form-control','id'=>'rDisSingle'.$i)) !!}</div>
+        {!! Form::text('qty[]', isset($objart->qty) ? $objart->qty : '1', array('class' => 'form-control','id'=>'qty'.$i)) !!}</div>
     <div class='col-md-1'> <span id="tax{!!$i!!}"></span> </div>
     <div class='col-md-2 bg-info'> <span id="price{!!$i!!}" class="form-control"></span> </div>
 </div>
@@ -65,7 +58,7 @@
 <script>
     
 
-    $("#resetBtn").click(function() {$('#billForm')[0].reset(); calcPrice();});
+    $("#resetBtn").click(function() {$('#invForm')[0].reset(); calcPrice();});
     $("#calcBtn").click(function() {calcPrice();});
 
     function isNumber(n) { return !isNaN(parseFloat(n)) && isFinite(n);}

@@ -13,23 +13,26 @@ class InvoiceOutController extends Controller {
     }
     
     public function index() {
-        $Invoiceout = \App\InvoiceOut::with('customer')->get();
+        $invoiceout = \App\InvoiceOut::with('contact','company')->get();
 
-        return view('Invoiceout.index')
-                        ->with('actCus', 'active')
-                        ->with('Invoiceout', $Invoiceout);
+        return view('invoiceOut.index')
+                        ->with('actInvo', 'active')
+                        ->with('obj', $invoiceout);
     }
 
     public function create() {
-
-        $service = array('0' => 'izberi storitev') + Service::lists('name', 'id')->all();
-        return view('Invoiceout.form')
-                        ->with('formAction', 'Invoiceout.store')
+        $service = array('0' => 'izberi storitev') + DB::table('service')->pluck('name','id')->toArray();
+        $product = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
+        $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        return view('invoiceOut.form')
+                        ->with('formAction', 'invoiceout.store')
                         ->with('formMethod', 'POST')
-                        ->with('customer', ovrGetCustList())
+                        ->with('customer', $customer)
                         ->with('service', $service)
-                        ->with('actCus', 'active')
-                        ->with('Invoiceout', new \App\InvoiceOut);
+                        ->with('product', $product)
+                        ->with('actInvo', 'active')
+                        ->with('objart', new \App\InvoiceOutArt)
+                        ->with('obj', new \App\InvoiceOut);
     }
 
     public function store() {
@@ -62,7 +65,7 @@ class InvoiceOutController extends Controller {
             }
         // redirect
         Session::flash('message', 'Successfully created');
-        return redirect('Invoiceout');
+        return redirect('InvoiceOut');
         }
     }
 
@@ -101,7 +104,7 @@ class InvoiceOutController extends Controller {
                         ->with('customer', $customer)
                         ->with('service', $service)
                         ->with('actCus', 'active')
-                        ->with('Invoiceout', \App\InvoiceOut::find($id));
+                        ->with('obj', \App\InvoiceOut::find($id));
     }
 
     /**

@@ -45,3 +45,9 @@ Route::resource('productgroup', 'ProductGroupController');
 
 Route::get('/service/{id}/destroy', 'ServiceController@destroy');
 Route::resource('service', 'ServiceController');
+
+Route::get('/invoiceout/{id}/destroy', 'InvoiceOutController@destroy');
+Route::resource('invoiceout', 'InvoiceOutController');
+
+Route::get('/invoicein/{id}/destroy', 'InvoiceInController@destroy');
+Route::resource('invoicein', 'InvoiceInController');
