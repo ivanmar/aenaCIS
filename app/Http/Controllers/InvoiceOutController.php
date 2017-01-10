@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class InvoiceOutController extends Controller {
 
-    var $input_rules = ['idCustomer' => 'required|integer|min:10'];
+    var $input_rules = ['idCompany' => 'required'];
 
     public function __construct(Request $request){
         $this->middleware('auth');
@@ -21,15 +21,15 @@ class InvoiceOutController extends Controller {
     }
 
     public function create() {
-        $service = array('0' => 'izberi storitev') + DB::table('service')->pluck('name','id')->toArray();
-        $product = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
+        $services = array('0' => 'izberi storitev') + DB::table('service')->pluck('name','id')->toArray();
+        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
         $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('invoiceOut.form')
                         ->with('formAction', 'invoiceout.store')
                         ->with('formMethod', 'POST')
                         ->with('customer', $customer)
-                        ->with('service', $service)
-                        ->with('product', $product)
+                        ->with('services', $services)
+                        ->with('products', $products)
                         ->with('actInvo', 'active')
                         ->with('objart', new \App\InvoiceOutArt)
                         ->with('obj', new \App\InvoiceOut);
@@ -40,13 +40,24 @@ class InvoiceOutController extends Controller {
         $this->validate($this->request, $this->input_rules);
 
         $Invoiceout = new \App\InvoiceOut;
-        $Invoiceout->sInvoiceOut = 'R' . date('Ymd-His');
+        $Invoiceout->nrInvoice = 'R' . date('Ymd-His');
+        $Invoiceout->idCompany = $this->request->input('idCompany');
+        $Invoiceout->dateIssue = $this->request->input('dateIssue');
         $Invoiceout->desc = $this->request->input('desc');
-        $Invoiceout->rDiscount = $this->request->input('rDiscount');
-        $Invoiceout->idCustomer = $this->request->input('idCustomer');
         $Invoiceout->save();
+        
+        
 
         $idInvoiceOut = $Invoiceout->id;
+        
+      if (Session::has('sessDataProduct')) {
+          $Invoiceoutart = new \App\InvoiceOutArt;
+          $sessDataProduct = Session::get('sessDataProduct');
+          foreach( $sessDataProduct as $idProduct => $qty ) {
+              $Invoiceoutart->idProduct = $idProduct;
+              $Invoiceoutart->qty = $qty;
+          }
+      }
         $items = $this->request->input('idService');
         $qtys = $this->request->input('qty');
         $disSingle = $this->request->input('rDisSingle');

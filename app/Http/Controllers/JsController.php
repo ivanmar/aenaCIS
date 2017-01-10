@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Auth;
+use \DB, \Auth, \Session;
 use Illuminate\Http\Request;
 
 class JsController extends Controller {
@@ -52,6 +52,24 @@ class JsController extends Controller {
         $task->text = $this->request->input('text');
         $task->save();
         return response()->json($task->id);
+    }
+    public function addSessProduct () {
+        $idProduct = $this->request->input('idProduct');
+        $qty = $this->request->input('qty');
+        Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $idProduct, $qty));
+    }
+    public function addSessService () {
+        $idService = $this->request->input('idService');
+        $qty = $this->request->input('qty');
+        Session::put('sessDataService', array_add($sessDataService = Session::get('sessDataService'), $idService, $qty));
+    }
+    public function delSessProduct () {
+        $idProduct = $this->request->input('idProduct');
+        Session::forget('sessDataProduct.' . $idProduct );
+    }
+    public function delSessService() {
+        $idService= $this->request->input('idService');
+        Session::forget('sessDataService.' . $idService );
     }
 
 }
