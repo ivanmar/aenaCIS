@@ -15,21 +15,21 @@
                 <div class="form-group">
                     <div class="col-md-5">
                         <span class="cFieldName">Stranka</span>
-                        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control')) !!}
+                        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-2">
                         <span class="cFieldName">Št. računa</span>
-                        {!! Form::text('nrInvoice', $obj->nrInvoice, array('class' => 'form-control input-sm')) !!}
+                        {!! Form::text('nrInvoice', $obj->nrInvoice, array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-1">
                         <span class="cFieldName"> Datum oddaje</span>
-                        {!! Form::text('dateIssue', $obj->dateIssue, array('class' => 'form-control input-sm dateSel')) !!}
+                        {!! Form::text('dateIssue', $obj->dateIssue, array('class' => 'form-control input-sm dateSel','id'=>'dateIssue')) !!}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5 col-md-offset-7">
                         <span class="cFieldName">Opis</span>
-                        {!! Form::textarea('desc', $obj->desc, array('class' => 'form-control','rows'=>'5')) !!}
+                        {!! Form::textarea('desc', $obj->desc, array('class' => 'form-control','rows'=>'5','id'=>'desc')) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,11 +138,6 @@
 
 <div class="form-group"> <div class="col-md-2 col-md-offset-10"> <b>TOTAL: {!! $priceTot or '0' !!} EUR </b> </div> </div>
 
-
-
-
-
-
     <input class="btn btn-md btn-success pull-right" type="submit" value="Submit">
     <a style="display: {!!$displayCancel or 'none'!!}" class="btn btn-sm btn-danger pull-left" href="{!!URL::to('invoiceout')!!}">Cancel</a>
 </div>
@@ -151,8 +146,34 @@
 {!! Form::close() !!}
 
 <script>
-$(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
+    window.onload = function() {
+        // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
+        if (sessionStorage.getItem('idCompany') === "idCompany") {
+            return;
+        }
+        // If values are not blank, restore them to the fields
+        var idCompany = sessionStorage.getItem('idCompany');
+        if (idCompany !== null) $('#idCompany').val(idCompany);
 
+        var nrInvoice = sessionStorage.getItem('nrInvoice');
+        if (nrInvoice !== null) $('#nrInvoice').val(nrInvoice);
+
+        var dateIssue= sessionStorage.getItem('dateIssue');
+        if (dateIssue !== null) $('#dateIssue').val(dateIssue);
+
+        var desc= sessionStorage.getItem('desc');
+        if (desc !== null) $('#desc').val(desc);
+    }
+
+    // Before refreshing the page, save the form data to sessionStorage
+    window.onbeforeunload = function() {
+        sessionStorage.setItem("idCompany", $('#idCompany').val());
+        sessionStorage.setItem("nrInvoice", $('#nrInvoice').val());
+        sessionStorage.setItem("dateIssue", $('#dateIssue').val());
+        sessionStorage.setItem("desc", $('#desc').val());
+    }
+    
+$(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
 $('#addProduct').click(function (e) {
     e.preventDefault();
     var idProduct = $('#idProduct').val();
@@ -166,7 +187,7 @@ $('#addProduct').click(function (e) {
         },
         success: function (data)
         {
-           location.reload();
+           window.location.reload();
         }
     });
 } else { alert('izberite iz seznama'); }
@@ -185,7 +206,7 @@ $('#addService').click(function (e) {
         },
         success: function (data)
         {
-           location.reload();
+           window.location.reload();
         }
     });
 } else { alert('izberite iz seznama'); }

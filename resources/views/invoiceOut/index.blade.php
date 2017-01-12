@@ -12,7 +12,6 @@
             <td>Račun</td>
             <td>Datum oddaje</td>
             <td>Rok plačila</td>
-            <td>Stranka</td>
             <td>Podjetje</td>
             <td>Sklic</td>
             <td>Iznos NET</td>
@@ -26,8 +25,11 @@
             <td>{!! $value->nrInvoice !!}</td>
             <td>{!! $value->dateIssue !!}</td>
             <td>{!! $value->dateDue !!}</td>
-            <td>{!! $value->contact->name !!}</td>
-            <td>{!! $value->company->name !!}</td>
+          @if (isset($value->company->name))
+            <td>{!! $value->company->name  !!}</td>
+          @else
+            <td> končni kupec </td>
+          @endif
             <td>{!! $value->nrRef !!}</td>
             <td>{!! $value->priceNet !!}</td>
 
@@ -42,4 +44,10 @@
         @endforeach
     </tbody>
 </table>
+<script>
+    // CLEAR items from invoice page
+    window.onload = function() {
+        sessionStorage.clear();
+    }
+</script>
 @stop
