@@ -19,11 +19,11 @@
                     </div>
                     <div class="col-md-2 col-md-offset-2">
                         <span class="cFieldName">Št. računa</span>
-                        {!! Form::text('nrInvoice', $obj->nrInvoice, array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
+                        {!! Form::text('nrInvoice', (isset($lastNrInvoice) ? $lastNrInvoice : $obj->nrInvoice), array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-1">
                         <span class="cFieldName"> Datum oddaje</span>
-                        {!! Form::text('dateIssue', $obj->dateIssue, array('class' => 'form-control input-sm dateSel','id'=>'dateIssue')) !!}
+                        {!! Form::text('dateIssue', (isset($obj->dateIssue) ? $obj->dateIssue : date('Y-m-d')), array('class' => 'form-control input-sm dateSel','id'=>'dateIssue')) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-md-2">
                         <span class="cFieldName">Izdelek</span>
                         {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
                     </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-md-2">
                         <span class="cFieldName">Storitev</span>
                         {!! Form::select('idService', $services, null, array('class' => 'form-control input-sm','id'=>'idService')) !!}
                     </div>

@@ -25,7 +25,7 @@ h4{font-size: 12px;font-weight: 400;padding:8px 0; color: #222}
 .txt-right {text-align: right;}
 .txt-left {text-align: left;}
 .txt-center {text-align:center;}
-.txt-small {font-size:10px;}
+.txt-small {font-size:10px;line-height: 12px}
 .txt-xsmall {font-size:8px; line-height: 10px}
 .txt-italic {font-style:italic;}
 .txt-bold {font-weight: 600;}
@@ -59,13 +59,16 @@ div#pbottom {position: absolute;bottom: 0;width: 100%;}
 div#pbottom p.left {width: 40%; float: left}
 div#pbottom p.right {width: 40%; float: right}
 
-table.front {border: 0; color:#333;
-       font-size: 11px; letter-spacing: 2px; line-height: 20px;}
-table.front td{ text-align: left; vertical-align: top; border: solid 1px #888; padding: 10px;}
+table.front {border: 0; color:#333; font-size: 11px; letter-spacing: 2px; line-height: 20px;}
+table.front td{ text-align: left; border: solid 1px #888; padding: 10px;}
 table.front .desc {height: 150px;}
 table.front td.top-date p {margin: 10px 0; display: block;}
 table.front td.top-date span.itxt {float:right; display: inline-block;}
 table .name-row {color: #003366; font-weight: 600;}
+
+table.article0{border:0; margin-bottom: 15px; font-size:10px; line-height: 22px; }
+table.article0 th {word-wrap:break-word;  border:solid 1px #888; font-weight:400; background:#ddd;text-align:center;vertical-align: top;}
+table.article0 td {border:solid 1px #888;}
 
 table.res0{border:0; margin-bottom: 15px; font-size:10px; }
 table.res0 th {word-wrap:break-word;  border:solid 1px #888; font-weight:400; background:#eee;text-align:center;vertical-align: top;}

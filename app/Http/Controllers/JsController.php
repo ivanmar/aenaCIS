@@ -65,10 +65,12 @@ class JsController extends Controller {
     }
     public function delSessProduct () {
         $idProduct = $this->request->input('idProduct');
+        DB::table('invoiceOutArt')->where('idProduct',$idProduct)->delete();
         Session::forget('sessDataProduct.' . $idProduct );
     }
     public function delSessService() {
         $idService= $this->request->input('idService');
+        DB::table('invoiceOutArt')->where('idService',$idService)->delete();
         Session::forget('sessDataService.' . $idService );
     }
 

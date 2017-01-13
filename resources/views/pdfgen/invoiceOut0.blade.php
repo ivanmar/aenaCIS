@@ -1,95 +1,77 @@
 <html>
     <head>
-        <title>Ponudba</title>
+        <title>Račun</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        {!! HTML::style('css/pdfgen.css') !!}
+        {!! HTML::style('public/css/pdfgen.css') !!}
     </head>
     <body>
-        <script type="text/php">
-            if ( isset($pdf) ) {
-            $font = Font_Metrics::get_font("helvetica", "bold");
-            $pdf->page_text(70, 15, "Strana {PAGE_NUM} od {PAGE_COUNT}", $font, 6, array(0,0,0));
-            }
-        </script>
         <div class="page last">
-
-
             <table class="front">
-                <tr><td colspan="2"> <img src="{!!base_path('public/img/real-logo.gif')!!}" width="300"></td></tr>
-                <tr><td colspan="2"> <h1 class="txt-center"> PONUDBA {!!$sBill!!} </h1></td> </tr>
-                <tr><td class="name-row"> Ponudba za </td>  <td> {!!$customer!!}</td> </tr>
-                <tr><td class="name-row"> Naslov </td> <td> {!!$address!!} </td> </tr>
-                <tr><td class="name-row"> DDV št </td> <td> {!!$sTax!!} </td> </tr>
+                <tr>
+                    <td colspan="3" class="txt-xsmall"> A1 INFORMATIKA D.O.O. <br> DŠ: 88334244 <br> Naslov: Preglov trg 2, Ljubljana <br> TRR: SI56 1010 0005 3116 904 pri banki Koper</td>
+                    <td> <img  class='float-right' src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
+                </tr>
+                <tr><td colspan="4"> <h1 class="txt-center"> RAČUN {!!$nrInvoice!!} </h1></td> </tr>
+                <tr><td class="txt-small"><b> Kupec </b> </td>  <td class="txt-small"> <b> {!!$company or 'končni kupec'!!} </b></td>
+                    <td class="txt-small" colspan="2"> <p class="txt-right">Datum : {!!$dateIssue!!}</p> </td> 
+                </tr>
+                <tr><td class="txt-small"> Naslov </td> <td class="txt-small"> {!!$address or ''!!} </td>
+                    <td class="txt-small" colspan="2"><p class="txt-right"> Kraj : Ljubljana </p> </td> 
+                </tr>
+                <tr><td class="txt-small"> Sedež </td> <td class="txt-small"> {!!$zipCode or ''!!} &nbsp; {!!$city or ''!!} </td>
+                    <td class="txt-small" colspan="2"> <p class="txt-right"> Rok plačila : {!!$dateDue or ''!!} </p> </td> 
+                </tr>
+                <tr><td class="txt-small"> DDV št </td> <td class="txt-small"> {!!$ddvCode or ''!!} </td> 
+                    <td class="txt-small" colspan="2">  </td> 
+                </tr>
             </table>
             
-            <p class="mar20"></p>
+            <p class="h60"></p>
             
-            <table class="front">
-
-                <tr class="txt-center">
-                    <td><strong>št</strong></td>
-                    <td><strong>storitev</strong></td>
-                    <td><strong>kol</strong></td>
-                    <td><strong>cena enote</strong></td>
-                    <td><strong>rabat</strong></td>
-                    <td><strong>vrednost</strong></td>
+            <table class="article0">
+                <tr>
+                    <th><strong>št</strong></th>
+                    <th><strong>artikel</strong></th>
+                    <th><strong>kol</strong></th>
+                    <th><strong>cena enote</strong></th>
+                    <th><strong>vrednost</strong></th>
                 </tr>
                 <?php
                 $totPriceQty = 0;
                 $totPriceQtyDis = 0;
-                $totPriceQtyDisTax = 0;
-                $totTax = 0;
                 ?>
                 @foreach($items as $key => $value)
                 <tr>
-                    <td class="txt-center">{!!$key +1!!}</td>
-                    <td class="txt-left">{!!$value->name!!}</td>
+                    <td>{!!$key +1!!}</td>
+                    @if($value->idProduct > 0)
+                    <?php $nameArt = DB::table('product')->where('id',$value->idProduct)->value('name'); ?>
+                    <td>{!!$nameArt!!}</td>
+                    @elseif($value->idService > 0)
+                    <?php $nameArt = DB::table('service')->where('id',$value->idService)->value('name'); ?>
+                    <td>{!!$nameArt!!}</td>
+                    @endif
                     <?php
-                    $priceQty = $value->price * $value->qty * (1 - $value->rDiscount / 100);
-                    $totPriceQty += $priceQty;
-                    $totPriceQtyDis += $priceQty * (1 - $rDiscount / 100);
-                    $totTax += ($priceQty * (1 - $rDiscount / 100)) * ($value->rTax / 100);
-                    $totPriceQtyDisTax += ($priceQty * (1 - $rDiscount / 100)) * (1 + $value->rTax / 100);
+                    $totPriceQty += $value->priceUnit * $value->qty;
                     ?>
                     <td class="txt-center">{!!$value->qty!!}</td>
-                    <td class="txt-right">{!!number_format($value->price, 2,',','')!!}</td>
-                    <td class="txt-right">{!!number_format($value->rDiscount, 2,',','')!!}</td>
-                    <td class="txt-right">{!!number_format($priceQty, 2,',','')!!}</td>
+                    <td class="txt-right">{!!number_format($value->priceUnit, 2,',','')!!}</td>
+                    <td class="txt-right">{!!number_format($value->priceUnit * $value->qty, 2,',','')!!}</td>
                 </tr>
                 @endforeach
 
                 <tr>
-                    <td colspan='5'  style="text-align: right;">Skupaj</td>
-                    <td colspan='1'   style="text-align: right;"> {!! number_format($totPriceQty,2,',','')!!} </td>
-                </tr>
-                <tr>
-                    <td colspan='5' style="text-align: right;">Rabat {!!$rDiscount . '%'!!}</td>
-                    <td colspan='1' style="text-align: right;"> {!! number_format($totPriceQtyDis,2,',','') !!} </td>
-                </tr>
-                <tr>
-                    <td colspan='5'  style="text-align: right;">Osnova za DDV(22%)</td>
-                    <td colspan='1'  style="text-align: right;">{!!number_format($totPriceQtyDis,2,',','')!!}</td>
-                </tr>
-                <tr class="txt-right">
-                    <td colspan='5'  style="text-align: right;">Znesek DDV</td>
-                    <td colspan='1'  style="text-align: right;">{!!number_format($totTax,2,',','')!!}</td>
-                </tr>
-                <tr class="brd-right">
-                    <td colspan='5'  style="text-align: right;">Skupaj z DDV</td>
-                    <td colspan='1'  style="text-align: right;"> <strong> {!! number_format($totPriceQtyDisTax,2,',','') !!} </strong></td>
+                    <td class="txt-right" colspan="4"><b>Skupaj : (EUR)</b> </td>
+                    <td class="txt-right"><b>{!! number_format($totPriceQty,2,',','')!!}</b> </td>
                 </tr>
 
             </table>
-            <p class="txt-small">Prosimo, da zgornji znesek nakažete do datuma valute na naš poslovni račun št: 02045-0090050141 <br>
-                    identifikacijska št. za DDV: SI73707295 </p>
-
-            <div id="pbottom">
-                
-                <p class="right">
-                    ___________________________<br><br>
-                    Aleksander Remškar dipl. var. inž.
-                </p>
-            </div>
+            
+            <p class="txt-italic txt-xsmall txt-right">
+                * DDV ni obračunan na podlagi 1. odst. 94. člena ZDDV-1 (nismo DDV zavezanci)
+            </p>
+            <p class="h60"></p>
+            <p class="h60"></p>
+            <p>Ivan Primorac dipl. inž. ______________________</p>
 
         </div>
     </body>
