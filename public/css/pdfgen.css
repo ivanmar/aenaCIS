@@ -1,7 +1,7 @@
 * {margin: 0; padding: 0;}
-body { background-color: #fff; font-size: 12px; font-family: DejaVu Sans;}
+body { background-color: #fff; font-size: 12px; font-family: DejaVu Sans;color:#333}
 .clr{clear:both;}
-table {width:100%; vertical-align: top; border:solid 1px black;font-size: 12px;}
+table {width:100%; vertical-align: top; border:solid 1px black;}
 table,th,td { border-collapse:collapse;}
 td {padding:3px}
 ul {color: #333; list-style: element; padding: 10px;margin-left: 10px;}
@@ -59,9 +59,10 @@ div#pbottom {position: absolute;bottom: 0;width: 100%;}
 div#pbottom p.left {width: 40%; float: left}
 div#pbottom p.right {width: 40%; float: right}
 
-table.front {border: 0; color:#333; font-size: 11px; letter-spacing: 2px; line-height: 20px;}
+table.front {border: 0; font-size: 11px; letter-spacing: 2px; line-height: 20px;}
 table.front td{ text-align: left; border: solid 1px #888; padding: 10px;}
 table.front .desc {height: 150px;}
+table.front .descInvoice {height: 100px; vertical-align: top; font-size: 10px; letter-spacing: 1px; line-height: 16px;padding: 5px;}
 table.front td.top-date p {margin: 10px 0; display: block;}
 table.front td.top-date span.itxt {float:right; display: inline-block;}
 table .name-row {color: #003366; font-weight: 600;}
@@ -81,3 +82,5 @@ div.res-final {border:solid 1px navy; min-height: 80px; margin-bottom: 15px;padd
 div.res-obj {border:solid 1px navy; min-height: 40px; margin-bottom: 10px;padding: 10px; border-radius: 5px;}
 
 p.tbl-desc{padding:0;margin:0;text-align:right;color:#555;font-size:10px;font-style:italic;}
+
+div.inv-desc {border:solid 1px #777; min-height: 80px; margin: 20px 0 15px 0; padding: 5px; font-size:10px;line-height: 18px;}

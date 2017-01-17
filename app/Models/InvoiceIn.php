@@ -12,7 +12,4 @@ class InvoiceIn extends Eloquent
     public function company() {
         return $this->hasOne('App\Company', 'id', 'idCompany');
     }
-    public function contact() {
-        return $this->hasOne('App\Contact', 'id', 'idContact');
-    }
 }

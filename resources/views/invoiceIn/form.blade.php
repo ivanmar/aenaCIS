@@ -2,120 +2,188 @@
 
 @section('content')
 
-<!-- if there are creation errors, they will show here -->
 {!! HTML::ul($errors->all()) !!}
 
-{!! Form::open(array('route'=>array($formAction,$bill->id),'method'=>$formMethod,'id'=>'billForm', 'class'=>'form-horizontal')) !!}
+{!! Form::open(array('route'=>array($formAction,$obj->id),'files' => true,'method'=>$formMethod,'id'=>'invForm', 'class'=>'form-horizontal','autocomplete'=>'off')) !!}
+
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> RAČUN PREJEM</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <span class="cFieldName">Stranka</span>
+                        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <span class="cFieldName">Št. računa</span>
+                        {!! Form::text('nrInvoice', $obj->nrInvoice, array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <span class="cFieldName"> Datum računa</span>
+                        {!! Form::text('dateIssue', (isset($obj->dateIssue) ? $obj->dateIssue : date('Y-m-d')), array('class' => 'form-control input-sm dateSel','id'=>'dateIssue')) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1">
+                        <span class="cFieldName">Marketplace</span>
+                        {!! Form::select('marketplace', $marketplaces, $obj->marketplace, array('class' => 'form-control','id'=>'marketplace')) !!}
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <span class="cFieldName">MP User</span>
+                        {!! Form::text('marketplaceUser', $obj->marketplaceUser, array('class' => 'form-control','id'=>'marketplaceUser')) !!} <br>
+                        <span class="cFieldName">Web ref</span>
+                        {!! Form::text('webRef', $obj->webRef, array('class' => 'form-control','id'=>'webRef')) !!} 
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <span class="cFieldName">Opis</span>
+                        {!! Form::textarea('desc', $obj->desc, array('class' => 'form-control','rows'=>'5','id'=>'desc')) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <span class="cFieldName">Izdelek</span>
+                        {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                        <span class="cFieldName">kol</span>
+                        {!! Form::text('qtyProduct', 1, array('class' => 'form-control input-sm','id'=>'qtyProduct')) !!}
+                    </div>
+                    <div class="col-md-1">
+                        <br>
+                        <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <span class="btn btn-primary btn-file">
+                                Scan upload… <input name="scan0" type="file">
+                        </span>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <img src="{!!isset($obj->scan0)?'/public/upload/image/'.$obj->scan0:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'!!}" 
+                         width="80" height="80">
+                        
+                    </div>
+                </div>
+
+                
+                <hr>
+<?php $priceTot = 0; $index=1; ?>
+                
+@if (Session::has('sessDataProduct'))
+<?php $sessDataProduct = Session::get('sessDataProduct'); ?>
+@foreach( $sessDataProduct as $idProduct => $qty )
+            
+<?php $nameProduct = DB::table('product')->where('id',$idProduct)->value('name');
+      $priceSelf = DB::table('product')->where('id',$idProduct)->value('priceSelf');
+      $priceProdTot = $priceSelf * $qty;
+?>
+                <div class="form-group well">
+                    <div class="col-md-1">
+                        <b>{!! $index !!} </b>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <b>{!! $nameProduct !!} </b>
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                        <span class="cFieldName">kol : </span>
+                        {!! $qty !!}
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                        <span class="cFieldName">cena enote : </span>
+                        {!! $priceSelf !!}
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                        <span class="cFieldName">cena : </span>
+                        {!! $priceProdTot !!}
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $idProduct !!}'>D</a>
+                    </div>
+                </div>
+                <?php $priceTot += $priceProdTot; $index++; ?>
+@endforeach
+@endif
 
 
-<div class="form-group">
-    <label class="col-md-1"> Stranka</label>
-    <div class='col-md-4'>
-        {!! Form::select('idCustomer', $customer, $bill->idCustomer, array('class' => 'form-control')) !!}</div>
-    <label class="col-md-1"> Opis </label>
-    <div class='col-md-6'>
-        {!! Form::text('desc', $bill->desc, array('class' => 'form-control')) !!}</div>
-</div>
-<div class="form-group">
-    <label class="col-md-7"> Storitev</label>
-    <label class="col-md-1"> Količina</label>
-    <label class="col-md-1"> Rabat(%) </label>
-    <label class="col-md-1"> DDV </label>
-    <label class="col-md-2"> Cena en </label>
-</div>
-@for($i=0; $i<5; $i++)
-<div class="form-group">
-    <div class='col-md-6 col-md-offset-1'>
-        {!! Form::select('idService[]', $service, $bill->idService, array('class' => 'form-control','id'=>'idSer'.$i)) !!}</div>
-    <div class='col-md-1'>
-        {!! Form::text('qty[]', isset($bill->qty) ? $bill->qty : '1', array('class' => 'form-control','id'=>'qty'.$i)) !!}</div>
-    <div class='col-md-1'>
-        {!! Form::text('rDisSingle[]', isset($bill->qty) ? $bill->rDiscount : '0', array('class' => 'form-control','id'=>'rDisSingle'.$i)) !!}</div>
-    <div class='col-md-1'> <span id="tax{!!$i!!}"></span> </div>
-    <div class='col-md-2 bg-info'> <span id="price{!!$i!!}" class="form-control"></span> </div>
-</div>
-@endfor
-<div class="form-group">
-    <label class="col-md-2 col-md-offset-2"> Rabat(%)</label>
-    <div class='col-md-3'>
-        {!! Form::text('rDiscount', null, array('class' => 'form-control','id'=>'rDiscount')) !!}</div>
-    <label class="col-md-2"> Cena tot</label>
-    <div class='col-md-3 bg-info'> <span class="form-control" id="priceTot"></span></div>
-</div>
-<div class="form-group">
-    <label class="col-md-2 col-md-offset-7"> Cena + rab</label>
-    <div class='col-md-3 bg-info'> <span id="priceTotDis" class="form-control" ></span>  </div>
-</div>
-<div class="form-group">
-    <div class='col-md-7'></div>
-    <label class="col-md-2"> Cena + rab + ddv</label>
-    <div class='col-md-3 bg-info'> <span id="priceTotDisTax" class="form-control" ></span>  </div>
-</div>
 
-<div class="row">
+<div class="form-group"> <div class="col-md-2 col-md-offset-10"> <b>TOTAL: {!! $priceTot or '0' !!} EUR </b> </div> </div>
 
-    <div class='col-md-2 col-md-offset-6'>{!! Form::submit('Submit', array('class' => 'btn btn-primary')) !!}</div>
-    <div class='col-md-2'>{!! Form::button('Calc', array('id' => 'calcBtn','class'=>'btn btn-default')) !!}</div>
-    <div class='col-md-2'>{!! Form::button('Reset', array('id' => 'resetBtn','class'=>'btn btn-default')) !!}</div>
-
+    <input class="btn btn-md btn-success pull-right" type="submit" value="Submit">
+    <a style="display: {!!$displayCancel or 'none'!!}" class="btn btn-sm btn-danger pull-left" href="{!!URL::to('invoicein')!!}">Cancel</a>
 </div>
-
+</div>
+</div>
 {!! Form::close() !!}
 
 <script>
-    
-
-    $("#resetBtn").click(function() {$('#billForm')[0].reset(); calcPrice();});
-    $("#calcBtn").click(function() {calcPrice();});
-
-    function isNumber(n) { return !isNaN(parseFloat(n)) && isFinite(n);}
-    function getPrice(cid, fldid) {
-        $.get('/js/getserprice/' + cid, function(dprice) {
-            $("#price"+fldid).text(dprice[0]);
-            $("#tax"+fldid).text(dprice[1]);
-            calcPrice();
-        });
+    window.onload = function() {
+        // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
+        if (sessionStorage.getItem('idCompany') === "idCompany") {
+            return;
+        }
+        // If values are not blank, restore them to the fields
+        var idCompany = sessionStorage.getItem('idCompany');
+        if (idCompany !== null) $('#idCompany').val(idCompany);
+        var nrInvoice = sessionStorage.getItem('nrInvoice');
+        if (nrInvoice !== null) $('#nrInvoice').val(nrInvoice);
+        var dateIssue= sessionStorage.getItem('dateIssue');
+        if (dateIssue !== null) $('#dateIssue').val(dateIssue);
+        var marketplace= sessionStorage.getItem('marketplace');
+        if (marketplace !== null) $('#marketplace').val(marketplace);
+        var marketplaceUser= sessionStorage.getItem('marketplaceUser');
+        if (marketplaceUser !== null) $('#marketplaceUser').val(marketplaceUser);
+        var webRef= sessionStorage.getItem('webRef');
+        if (webRef !== null) $('#webRef').val(webRef);
+        var desc= sessionStorage.getItem('desc');
+        if (desc !== null) $('#desc').val(desc);
     }
-    function calcPrice() {
-        var pricetot=0;
-        var pricetotdis=0;
-        var pricetotdistax=0;
-        var discount =1;
-        if(isNumber($('#rDiscount').val())) {
-            discount = 1 - ($('#rDiscount').val() / 100 );
-        }
-        for(var i=0; i<5; i++ ){
-            var price = $('#price'+i).text();
-            var sdis = $('#rDisSingle'+i).val();
-            if(isNumber(price)) {
-                var tmpprice = price * $('#qty'+i).val();
-                if(isNumber(sdis)) {
-                    var tmppricedis = tmpprice * (1 - sdis / 100);
-                } else {
-                    var tmppricedis = tmpprice;
-                }
-                pricetot += tmpprice;
-                pricetotdis += tmppricedis;
-                pricetotdistax += tmppricedis * (1 + ($('#tax'+i).text() / 100));
-            }
-        }
-        $("#priceTot").text((pricetot).toFixed(2));
-        $("#priceTotDis").text((pricetotdis).toFixed(2));
-        $("#priceTotDisTax").text((pricetotdistax * discount).toFixed(2));
 
+    // Before refreshing the page, save the form data to sessionStorage
+    window.onbeforeunload = function() {
+        sessionStorage.setItem("idCompany", $('#idCompany').val());
+        sessionStorage.setItem("nrInvoice", $('#nrInvoice').val());
+        sessionStorage.setItem("dateIssue", $('#dateIssue').val());
+        sessionStorage.setItem("marketplace", $('#marketplace').val());
+        sessionStorage.setItem("marketplaceUser", $('#marketplaceUser').val());
+        sessionStorage.setItem("webRef", $('#webRef').val());
+        sessionStorage.setItem("desc", $('#desc').val());
     }
     
-    $('#idSer0').change(function() { getPrice($(this).val(),'0'); });
-    $('#idSer1').change(function() { getPrice($(this).val(),'1'); });
-    $('#idSer2').change(function() { getPrice($(this).val(),'2'); });
-    $('#idSer3').change(function() { getPrice($(this).val(),'3'); });
-    $('#idSer4').change(function() { getPrice($(this).val(),'4'); });
-    
+$(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
+$('#addProduct').click(function (e) {
+    e.preventDefault();
+    var idProduct = $('#idProduct').val();
+    if(idProduct > 0) {
+    $.ajax({type: "POST",
+        url: "/js/addsessproduct",
+        data: {
+            idProduct: idProduct,
+            qty: $('#qtyProduct').val(),
+            _token: $('input[name=_token]').val()
+        },
+        success: function (data)
+        {
+           window.location.reload();
+        }
+    });
+} else { alert('izberite iz seznama'); }
+});
 
-// $('#qty0').keyup(function() {if (isNumber($(this).val())) {calcPrice();} });
-// $('#qty0').focusout(function() {if (! isNumber($(this).val())) {alert('vnesi ševilko');setTimeout(function() {$('#qty0').focus();}, 1);} });
 
+
+$('.delProduct').click(function() {
+    $.ajax({type: "POST",
+        url: "/js/delsessproduct",
+        data: {
+            idProduct: this.id.substring(1),
+            _token: $('input[name=_token]').val()
+        },
+        success: function (data) { location.reload(); }
+    });
+});
+
+</script>
     
-</script> 
 @stop
-

@@ -3,18 +3,17 @@
 @section('content')
 
 
-<p><a class="btn btn-sm btn-primary" href="{!! URL::to('invoiceout/create') !!}">add new</a></p>
+<p><a class="btn btn-sm btn-primary" href="{!! URL::to('invoicein/create') !!}">add new</a></p>
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
             <td>ID</td>
             <td>Račun</td>
-            <td>Datum oddaje</td>
-            <td>Rok plačila</td>
-            <td>Stranka</td>
-            <td>Podjetje</td>
-            <td>Sklic</td>
+            <td>Datum računa</td>
+            <td>Dobavitelj</td>
+            <td>Marketplace</td>
+            <td>MP User</td>
             <td>Iznos NET</td>
             <td width="90">akcije</td>
         </tr>
@@ -25,16 +24,15 @@
             <td>{!! $value->id !!}</td>
             <td>{!! $value->nrInvoice !!}</td>
             <td>{!! $value->dateIssue !!}</td>
-            <td>{!! $value->dateDue !!}</td>
-            <td>{!! $value->contact->name !!}</td>
-            <td>{!! $value->company->name !!}</td>
-            <td>{!! $value->nrRef !!}</td>
+            <td>{!! $value->company->name  !!}</td>
+            <td>{!! $value->marketplace !!}</td>
+            <td>{!! $value->marketplaceUser !!}</td>
             <td>{!! $value->priceNet !!}</td>
 
             <td class="text-right">
-                <a class="btn btn-xs btn-success" href="{!! URL::to('invoiceout/' . $value->id) !!}" target="_blank">S</a>
-                <a class="btn btn-xs btn-info" href="{!! URL::to('invoiceout/' . $value->id . '/edit') !!}">E</a>
-                <a class="btn btn-xs btn-danger" href="{!! URL::to('invoiceout/' . $value->id . '/destroy') !!}"
+                <a class="btn btn-xs btn-success" href="{!! URL::to('invoicein/' . $value->id) !!}" target="_blank">S</a>
+                <a class="btn btn-xs btn-info" href="{!! URL::to('invoicein/' . $value->id . '/edit') !!}">E</a>
+                <a class="btn btn-xs btn-danger" href="{!! URL::to('invoicein/' . $value->id . '/destroy') !!}"
                    onclick="if(!confirm('Delete this item?')){return false;};">D</a>
 
             </td>
@@ -42,4 +40,10 @@
         @endforeach
     </tbody>
 </table>
+<script>
+    // CLEAR items from invoice page
+    window.onload = function() {
+        sessionStorage.clear();
+    }
+</script>
 @stop

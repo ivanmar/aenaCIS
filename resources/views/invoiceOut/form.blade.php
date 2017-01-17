@@ -27,9 +27,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-5 col-md-offset-7">
-                        <span class="cFieldName">Opis</span>
+                    <div class="col-md-5">
+                        <span class="cFieldName">Opis Računa</span>
                         {!! Form::textarea('desc', $obj->desc, array('class' => 'form-control','rows'=>'5','id'=>'desc')) !!}
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <span class="cFieldName">Opis Interno</span>
+                        {!! Form::textarea('descInternal', $obj->descInternal, array('class' => 'form-control','rows'=>'5','id'=>'descInternal')) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -161,6 +165,9 @@
         var dateIssue= sessionStorage.getItem('dateIssue');
         if (dateIssue !== null) $('#dateIssue').val(dateIssue);
 
+        var descInternal= sessionStorage.getItem('descInternal');
+        if (descInternal !== null) $('#descInternal').val(descInternal);
+        
         var desc= sessionStorage.getItem('desc');
         if (desc !== null) $('#desc').val(desc);
     }
@@ -170,6 +177,7 @@
         sessionStorage.setItem("idCompany", $('#idCompany').val());
         sessionStorage.setItem("nrInvoice", $('#nrInvoice').val());
         sessionStorage.setItem("dateIssue", $('#dateIssue').val());
+        sessionStorage.setItem("descInternal", $('#descInternal').val());
         sessionStorage.setItem("desc", $('#desc').val());
     }
     

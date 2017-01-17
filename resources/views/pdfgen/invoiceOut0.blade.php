@@ -65,10 +65,16 @@
                 </tr>
 
             </table>
-            
             <p class="txt-italic txt-xsmall txt-right">
                 * DDV ni obračunan na podlagi 1. odst. 94. člena ZDDV-1 (nismo DDV zavezanci)
             </p>
+            
+            <div class="inv-desc">
+                <b> OPIS RAČUNA :</b> <br>
+                        {!!$desc!!} 
+            </div>
+            
+            
             <p class="h60"></p>
             <p class="h60"></p>
             <p>Ivan Primorac dipl. inž. ______________________</p>

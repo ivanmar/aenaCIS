@@ -9,7 +9,7 @@ class InvoiceInArt extends Eloquent
     protected $table = 'invoiceInArt';
     public $timestamps = false;
     
-    public function invoiceOut() {
+    public function invoiceIn() {
         return $this->hasOne('App\invoiceIn', 'id', 'idInvoiceIn');
     }
 }

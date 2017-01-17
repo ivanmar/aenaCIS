@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class InvoiceOutController extends Controller {
 
-    var $input_rules = ['idCompany' => 'required'];
+    var $input_rules = ['idCompany' => 'required','nrInvoice' => 'required'];
 
     public function __construct(Request $request){
         $this->middleware('auth');
@@ -22,6 +22,7 @@ class InvoiceOutController extends Controller {
         $Invoiceout->idCompany = $this->request->input('idCompany');
         $Invoiceout->dateIssue = $this->request->input('dateIssue');
         $Invoiceout->desc = $this->request->input('desc');
+        $Invoiceout->descInternal = $this->request->input('descInternal');
         $Invoiceout->save();
         
         if (Session::has('sessDataProduct')) {
@@ -53,7 +54,9 @@ class InvoiceOutController extends Controller {
         return $Invoiceoutart->id;
     }
     public function index() {
-        $invoiceout = \App\InvoiceOut::with('contact','company')->get();
+        $invoiceout = \App\InvoiceOut::with('company')->get();
+        Session::forget('sessDataProduct');
+        Session::forget('sessDataService');
         return view('invoiceOut.index')
                         ->with('actInvo', 'active')
                         ->with('obj', $invoiceout);
@@ -117,13 +120,11 @@ class InvoiceOutController extends Controller {
         $invoiceout = \App\InvoiceOut::find($id);
         $company = \App\Company::find($invoiceout->idCompany);
 
-        $items = DB::table('invoiceOutArt')
-                ->select('invoiceOutArt.priceUnit','invoiceOutArt.qty','invoiceOutArt.idProduct','invoiceOutArt.idService')
-                ->where('idInvoiceOut', $id)->get();
+        $items = DB::table('invoiceOutArt')->where('idInvoiceOut', $id)->get();
 
         $data = array(
             'company' => $company->name, 'nrInvoice' => $invoiceout->nrInvoice,'dateIssue'=>$invoiceout->dateIssue,'dateDue'=>$invoiceout->dateDue,
-            'address' => $company->address, 'zipCode' => $company->zipCode, 'city' => $company->city,
+            'address' => $company->address, 'zipCode' => $company->zipCode, 'city' => $company->city,'desc'=>$invoiceout->desc,
             'items' => $items
         );
         $pdf = PDF::loadView('pdfgen.invoiceOut0', $data);
@@ -135,7 +136,7 @@ class InvoiceOutController extends Controller {
 
         \App\InvoiceOut::find($id)->delete();
         Session::flash('message', 'Successfully deleted');
-        return redirect('Invoiceout');
+        return redirect('invoiceout');
     }
 
 }
