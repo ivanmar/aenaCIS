@@ -48,6 +48,9 @@ Route::resource('product', 'ProductController');
 Route::get('/productgroup/{id}/destroy', 'ProductGroupController@destroy');
 Route::resource('productgroup', 'ProductGroupController');
 
+Route::get('/manufacturer/{id}/destroy', 'ManufacturerController@destroy');
+Route::resource('manufacturer', 'ManufacturerController');
+
 Route::get('/service/{id}/destroy', 'ServiceController@destroy');
 Route::resource('service', 'ServiceController');
 

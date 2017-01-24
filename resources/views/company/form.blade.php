@@ -34,9 +34,13 @@
                         <span class="cFieldName">zip</span>
                         {!! Form::text('zipCode', $company->zipCode, array('class' => 'form-control input-sm')) !!}
                     </div>
-                    <div class="col-md-5 col-md-offset-2">
+                    <div class="col-md-2 col-md-offset-2">
                         <span class="cFieldName">mesto</span>
                         {!! Form::text('city', $company->city, array('class' => 'form-control input-sm')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <span class="cFieldName">Država</span>
+                        {!! Form::text('country', $company->country, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>
                 <div class="form-group">

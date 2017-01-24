@@ -49,6 +49,13 @@ class InvoiceInController extends Controller {
                 $invoiceinart->qty = $qty;
                 $invoiceinart->priceUnit = $priceUnit;
                 $invoiceinart->save();
+                for($i=0; $i< $qty; $i++) {
+                    $productinout = new \App\ProductInOut;
+                    $productinout->idProduct = $idProduct;
+                    $productinout->idInvoiceInArt = $invoiceinart->id;
+                    $productinout->dateIn = $invoicein->dateIssue;
+                    $productinout->save();
+                }
             }
         }
         Session::forget('sessDataProduct');

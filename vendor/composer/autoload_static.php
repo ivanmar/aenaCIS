@@ -94,6 +94,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         ),
         'C' => 
         array (
+            'Cron\\' => 5,
             'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
@@ -251,6 +252,10 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
+        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -320,13 +325,6 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
-        'C' => 
-        array (
-            'Cron' => 
-            array (
-                0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src',
-            ),
-        ),
     );
 
     public static $classMap = array (
@@ -347,6 +345,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'App\\Http\\Controllers\\InvoiceOutController' => __DIR__ . '/../..' . '/app/Http/Controllers/InvoiceOutController.php',
         'App\\Http\\Controllers\\JsController' => __DIR__ . '/../..' . '/app/Http/Controllers/JsController.php',
         'App\\Http\\Controllers\\KbController' => __DIR__ . '/../..' . '/app/Http/Controllers/KbController.php',
+        'App\\Http\\Controllers\\ManufacturerController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManufacturerController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\ProductGroupController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductGroupController.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
@@ -361,8 +360,10 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'App\\InvoiceOut' => __DIR__ . '/../..' . '/app/Models/InvoiceOut.php',
         'App\\InvoiceOutArt' => __DIR__ . '/../..' . '/app/Models/InvoiceOutArt.php',
         'App\\Kb' => __DIR__ . '/../..' . '/app/Models/Kb.php',
+        'App\\Manufacturer' => __DIR__ . '/../..' . '/app/Models/Manufacturer.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\ProductGroup' => __DIR__ . '/../..' . '/app/Models/ProductGroup.php',
+        'App\\ProductInOut' => __DIR__ . '/../..' . '/app/Models/ProductInOut.php',
         'App\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1841,6 +1842,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'League\\Flysystem\\Plugin\\PluginNotFoundException' => __DIR__ . '/..' . '/league/flysystem/src/Plugin/PluginNotFoundException.php',
         'League\\Flysystem\\ReadInterface' => __DIR__ . '/..' . '/league/flysystem/src/ReadInterface.php',
         'League\\Flysystem\\RootViolationException' => __DIR__ . '/..' . '/league/flysystem/src/RootViolationException.php',
+        'League\\Flysystem\\SafeStorage' => __DIR__ . '/..' . '/league/flysystem/src/SafeStorage.php',
         'League\\Flysystem\\UnreadableFileException' => __DIR__ . '/..' . '/league/flysystem/src/UnreadableFileException.php',
         'League\\Flysystem\\Util' => __DIR__ . '/..' . '/league/flysystem/src/Util.php',
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
@@ -2062,7 +2064,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'PHPUnit_Framework_Constraint_TraversableContains' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContains.php',
         'PHPUnit_Framework_Constraint_TraversableContainsOnly' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContainsOnly.php',
         'PHPUnit_Framework_Constraint_Xor' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/Xor.php',
-        'PHPUnit_Framework_CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/PHPUnit_Framework_CoveredCodeNotExecutedException.php',
+        'PHPUnit_Framework_CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/CoveredCodeNotExecutedException.php',
         'PHPUnit_Framework_Error' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Error.php',
         'PHPUnit_Framework_Error_Deprecated' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Error/Deprecated.php',
         'PHPUnit_Framework_Error_Notice' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Error/Notice.php',
@@ -2074,7 +2076,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'PHPUnit_Framework_IncompleteTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/IncompleteTestCase.php',
         'PHPUnit_Framework_IncompleteTestError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/IncompleteTestError.php',
         'PHPUnit_Framework_InvalidCoversTargetException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/InvalidCoversTargetException.php',
-        'PHPUnit_Framework_MissingCoversAnnotationException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/PHPUnit_Framework_MissingCoversAnnotationException.php',
+        'PHPUnit_Framework_MissingCoversAnnotationException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MissingCoversAnnotationException.php',
         'PHPUnit_Framework_MockObject_BadMethodCallException' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Exception/BadMethodCallException.php',
         'PHPUnit_Framework_MockObject_Builder_Identity' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Builder/Identity.php',
         'PHPUnit_Framework_MockObject_Builder_InvocationMocker' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Builder/InvocationMocker.php',

@@ -43,18 +43,25 @@
                         {!! Form::text('priceSelf', $obj->priceSelf, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>
+                
                 <div class="form-group">
-                    <div class="col-md-5">
-                        <span class="cFieldName">opomba</span>
-                        {!! Form::textarea('note', $obj->note, array('class' => 'form-control')) !!}
-                    </div>
-                    <div class="col-md-2 col-md-offset-2">
-                        <span class="cFieldName">Aktivan</span>
-                        {!! Form::checkbox('indActive', 1, $obj->indActive) !!}
+                    <div class="col-md-2">
+
                     </div>
                     <div class="col-md-2 col-md-offset-1">
-                        <span class="cFieldName">zaloga</span>
-                        {!! Form::text('onStock', $obj->onStock, array('class' => 'form-control input-sm')) !!}
+                        <span class="cFieldName">proizvajalec</span>
+                        {!! Form::select('idManufacturer', $manuList, $obj->idManufacturer, array('class' => 'form-control input-sm')) !!}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <span class="cFieldName">OEM Kode (,)</span>
+                        {!! Form::textarea('oemCodes', $obj->oemCodes, array('class' => 'form-control')) !!}
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <span class="cFieldName">opomba</span>
+                        {!! Form::textarea('note', $obj->note, array('class' => 'form-control')) !!}
                     </div>
                 </div>
 

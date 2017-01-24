@@ -83,7 +83,7 @@
                     <div class="col-md-1">
                         <b>{!! $index !!} </b>
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-md-3 col-md-offset-1">
                         <b>{!! $nameProduct !!} </b>
                     </div>
                     <div class="col-md-1 col-md-offset-1">

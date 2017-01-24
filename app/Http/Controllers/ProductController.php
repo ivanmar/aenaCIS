@@ -19,11 +19,13 @@ class ProductController extends Controller {
         }
         $product->name = $this->request->input('name');
         $product->idCompany = $this->request->input('idCompany');
+        $product->idManufacturer = $this->request->input('idManufacturer');
         $product->idProductGroup = $this->request->input('idProductGroup');
         $product->codeVendor = $this->request->input('codeVendor');
         $product->priceVendor = $this->request->input('priceVendor');
         $product->codeSelf = $this->request->input('codeSelf');
         $product->priceSelf = $this->request->input('priceSelf');
+        $product->oemCodes = $this->request->input('oemCodes');
         $product->note = $this->request->input('note');
         $product->save();
         return $product->id;
@@ -55,12 +57,14 @@ class ProductController extends Controller {
                         ->with('obj', $product);
     }
     public function create() {
-        $compList = array(''=>'podjetje') + DB::table('company')->where('indVendor',1)->pluck('name','id')->toArray();
+        $compList = array(''=>'izberi') + DB::table('company')->where('indVendor',1)->pluck('name','id')->toArray();
+        $manuList = array(''=>'izberi') + DB::table('manufacturer')->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
         return view('product.form')
                         ->with('formAction', 'product.store')
                         ->with('formMethod', 'POST')
                         ->with('compList',$compList)
+                        ->with('manuList',$manuList)
                         ->with('grList',$grList)
                         ->with('actProd', 'active')
                         ->with('obj', new \App\Product);
@@ -74,13 +78,15 @@ class ProductController extends Controller {
     }
 
     public function edit($id) {
-        $compList = array(''=>'podjetje') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array(''=>'izberi') + DB::table('company')->pluck('name','id')->toArray();
+        $manuList = array(''=>'izberi') + DB::table('manufacturer')->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
         return view('product.form')
                         ->with('formAction', 'product.update')
                         ->with('formMethod', 'PUT')
                         ->with('displayCancel','inline')
                         ->with('compList',$compList)
+                        ->with('manuList',$manuList)
                         ->with('grList',$grList)
                         ->with('actProduct', 'active')
                         ->with('obj', \App\Product::find($id));
