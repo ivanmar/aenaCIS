@@ -52,9 +52,13 @@
                         <span class="cFieldName">DDV zavezanec</span> {!! Form::checkbox('indTax', 1, $company->indTax) !!} <br>
                         <span class="cFieldName">Ind Vendor</span> {!! Form::checkbox('indVendor', 1, $company->indVendor) !!}
                     </div>
-                    <div class="col-md-5 col-md-offset-2">
+                    <div class="col-md-2 col-md-offset-2">
                         <span class="cFieldName">bančni rač.</span>
                         {!! Form::text('bankAccount', $company->bankAccount, array('class' => 'form-control input-sm')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <span class="cFieldName">kontakt oseba</span>
+                        {!! Form::text('contactName', $company->contactName, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>
 

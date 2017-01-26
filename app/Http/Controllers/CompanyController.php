@@ -29,6 +29,7 @@ class CompanyController extends Controller {
         $company->regCode = $this->request->input('regCode');
         $company->bankAccount = $this->request->input('bankAccount');
         $company->b2bAccess = $this->request->input('b2bAccess');
+        $company->contactName = $this->request->input('contactName');
         $company->note = $this->request->input('note');
         
         $company->indTax = ($this->request->input('indTax')) ? 1 : 0;

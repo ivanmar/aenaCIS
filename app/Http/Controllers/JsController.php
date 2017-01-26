@@ -58,6 +58,13 @@ class JsController extends Controller {
         $qty = $this->request->input('qty');
         Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $idProduct, $qty));
     }
+    public function addSessProductIn () {
+        $idProduct = $this->request->input('idProduct');
+        $qty = $this->request->input('qty');
+        $priceUnit = $this->request->input('priceUnit');
+        $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit);
+        Session::put('sessProductIn', array_add($sessProductIn = Session::get('sessProductIn'), $idProduct, $tmparr));
+    }
     public function addSessService () {
         $idService = $this->request->input('idService');
         $qty = $this->request->input('qty');
@@ -67,6 +74,11 @@ class JsController extends Controller {
         $idProduct = $this->request->input('idProduct');
         DB::table('invoiceOutArt')->where('idProduct',$idProduct)->delete();
         Session::forget('sessDataProduct.' . $idProduct );
+    }
+    public function delSessProductIn () {
+        $idProduct = $this->request->input('idProduct');
+        DB::table('invoiceInArt')->where('idProduct',$idProduct)->delete();
+        Session::forget('sessProductIn.' . $idProduct );
     }
     public function delSessService() {
         $idService= $this->request->input('idService');

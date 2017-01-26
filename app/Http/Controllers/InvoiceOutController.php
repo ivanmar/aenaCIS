@@ -35,6 +35,13 @@ class InvoiceOutController extends Controller {
                 $Invoiceoutart->qty = $qty;
                 $Invoiceoutart->priceUnit = $priceUnit;
                 $Invoiceoutart->save();
+                for($i=0; $i< $qty; $i++) {
+                    $row0 = DB::table('productInOut')->where('idProduct',$idProduct)->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
+                    
+                    if($row0) {
+                        DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $Invoiceoutart->id, 'dateOut'=>$Invoiceout->dateIssue]);
+                    }
+                }
             }
         }
         if (Session::has('sessDataService')) {
@@ -56,6 +63,7 @@ class InvoiceOutController extends Controller {
     public function index() {
         $invoiceout = \App\InvoiceOut::with('company')->get();
         Session::forget('sessDataProduct');
+        Session::forget('sessProductIn');
         Session::forget('sessDataService');
         return view('invoiceOut.index')
                         ->with('actInvo', 'active')
@@ -132,9 +140,13 @@ class InvoiceOutController extends Controller {
     }
     
     public function destroy($id) {
-        \App\InvoiceOutArt::where('idInvoiceOut', '=', $id)->delete();
-
-        \App\InvoiceOut::find($id)->delete();
+        $getValArt=DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
+        foreach($getValArt as $valart){
+            DB::table('productInOut')->where('idInvoiceOutArt',$valart->id)->update(['idInvoiceOutArt' => null, 'dateOut'=>null ]);
+        }
+        DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->delete();
+        DB::table('invoiceOut')->where('id',$id)->delete();
+        
         Session::flash('message', 'Successfully deleted');
         return redirect('invoiceout');
     }

@@ -29,7 +29,9 @@
                 <div class="form-group">
                     <div class="col-md-1">
                         <span class="cFieldName">Marketplace</span>
-                        {!! Form::select('marketplace', $marketplaces, $obj->marketplace, array('class' => 'form-control','id'=>'marketplace')) !!}
+                        {!! Form::select('marketplace', $marketplaces, $obj->marketplace, array('class' => 'form-control','id'=>'marketplace')) !!} <br>
+                        <span class="cFieldName">Cena dostave</span>
+                        {!! Form::text('shipCost', $obj->shipCost, array('class' => 'form-control','id'=>'shipCost')) !!} 
                     </div>
                     <div class="col-md-3 col-md-offset-1">
                         <span class="cFieldName">MP User</span>
@@ -49,21 +51,33 @@
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol</span>
-                        {!! Form::text('qtyProduct', 1, array('class' => 'form-control input-sm','id'=>'qtyProduct')) !!}
+                        {!! Form::text('qty', 1, array('class' => 'form-control input-sm','id'=>'qty')) !!}
+                    </div>
+                    <div class="col-md-1">
+                        <span class="cFieldName">cena EN</span>
+                        {!! Form::text('priceUnit', 0, array('class' => 'form-control input-sm','id'=>'priceUnit')) !!}
                     </div>
                     <div class="col-md-1">
                         <br>
                         <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-md-1 col-md-offset-1">
                         <span class="btn btn-primary btn-file">
-                                Scan upload… <input name="scan0" type="file">
+                                Scan upload <input name="scan0" type="file">
                         </span>
                     </div>
-                    <div class="col-md-2 col-md-offset-1">
-                        <img src="{!!isset($obj->scan0)?'/public/upload/image/'.$obj->scan0:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'!!}" 
-                         width="80" height="80">
-                        
+                    <div class="col-md-1">
+                        <img src="{!!isset($obj->scan0)?'/public/upload/image/'.$obj->scan0:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'!!}" width="80" height="80">
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                        <span class="btn btn-warning btn-file">
+                                PDF upload <input name="pdf0" type="file">
+                        </span>
+                    </div>
+                    <div class="col-md-1">
+                        @if(isset($obj->pdf0))
+                        <a href="/public/upload/pdf/{!!$obj->pdf0 !!}" target="_blank"><img src="/public/img/icon-pdf.png" height="40"></a>
+                        @endif
                     </div>
                 </div>
 
@@ -71,13 +85,14 @@
                 <hr>
 <?php $priceTot = 0; $index=1; ?>
                 
-@if (Session::has('sessDataProduct'))
-<?php $sessDataProduct = Session::get('sessDataProduct'); ?>
-@foreach( $sessDataProduct as $idProduct => $qty )
+@if (Session::has('sessProductIn'))
+<?php $sessProductIn = Session::get('sessProductIn'); ?>
+@foreach( $sessProductIn as $idProduct => $key )
             
 <?php $nameProduct = DB::table('product')->where('id',$idProduct)->value('name');
-      $priceSelf = DB::table('product')->where('id',$idProduct)->value('priceSelf');
-      $priceProdTot = $priceSelf * $qty;
+      $qty = $key['qty'];
+      $priceUnit = $key['priceUnit'];
+      $priceProdTot = $priceUnit * $qty;
 ?>
                 <div class="form-group well">
                     <div class="col-md-1">
@@ -88,11 +103,11 @@
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol : </span>
-                        {!! $qty !!}
+                        {!! $qty!!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">cena enote : </span>
-                        {!! $priceSelf !!}
+                        {!! $priceUnit !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">cena : </span>
@@ -136,6 +151,8 @@
         if (marketplaceUser !== null) $('#marketplaceUser').val(marketplaceUser);
         var webRef= sessionStorage.getItem('webRef');
         if (webRef !== null) $('#webRef').val(webRef);
+        var shipCost= sessionStorage.getItem('shipCost');
+        if (shipCost !== null) $('#shipCost').val(shipCost);
         var desc= sessionStorage.getItem('desc');
         if (desc !== null) $('#desc').val(desc);
     }
@@ -148,6 +165,7 @@
         sessionStorage.setItem("marketplace", $('#marketplace').val());
         sessionStorage.setItem("marketplaceUser", $('#marketplaceUser').val());
         sessionStorage.setItem("webRef", $('#webRef').val());
+        sessionStorage.setItem("shipCost", $('#shipCost').val());
         sessionStorage.setItem("desc", $('#desc').val());
     }
     
@@ -157,10 +175,11 @@ $('#addProduct').click(function (e) {
     var idProduct = $('#idProduct').val();
     if(idProduct > 0) {
     $.ajax({type: "POST",
-        url: "/js/addsessproduct",
+        url: "/js/addsessproductin",
         data: {
             idProduct: idProduct,
-            qty: $('#qtyProduct').val(),
+            qty: $('#qty').val(),
+            priceUnit: $('#priceUnit').val(),
             _token: $('input[name=_token]').val()
         },
         success: function (data)
@@ -175,7 +194,7 @@ $('#addProduct').click(function (e) {
 
 $('.delProduct').click(function() {
     $.ajax({type: "POST",
-        url: "/js/delsessproduct",
+        url: "/js/delsessproductin",
         data: {
             idProduct: this.id.substring(1),
             _token: $('input[name=_token]').val()

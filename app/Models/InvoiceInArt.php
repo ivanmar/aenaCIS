@@ -10,6 +10,6 @@ class InvoiceInArt extends Eloquent
     public $timestamps = false;
     
     public function invoiceIn() {
-        return $this->hasOne('App\invoiceIn', 'id', 'idInvoiceIn');
+        return $this->hasOne('App\InvoiceIn', 'id', 'idInvoiceIn');
     }
 }

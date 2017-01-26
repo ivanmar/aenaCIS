@@ -27,11 +27,13 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="{!! $actTick or ''!!}"><a href="{!! URL::to('ticket') !!}">Naloge</a></li>
+                        <li class="{!! $actSale or ''!!}"><a href="{!! URL::to('saleorder') !!}">Naročila</a></li>
                         <li class="dropdown {!! $actInvo or ''!!}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Računi <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{!! URL::to('invoiceout') !!}">Računi oddaja</a></li>
                                 <li><a href="{!! URL::to('invoicein') !!}">Računi prejem</a></li>
+                                <li><a href="{!! URL::to('reclamation') !!}">Reklamacije</a></li>
                             </ul>
                         </li>
                         <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('project') !!}">Projekti</a></li>

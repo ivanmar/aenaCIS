@@ -23,8 +23,10 @@ Route::post('/js/addcomment', array('as'=>'js.addcomment','uses' => 'JsControlle
 Route::post('/js/addtask', array('as'=>'js.addtask','uses' => 'JsController@addTask'));
 
 Route::post('/js/addsessproduct', array('as'=>'js.addsessproduct','uses' => 'JsController@addSessProduct'));
+Route::post('/js/addsessproductin', array('as'=>'js.addsessproductin','uses' => 'JsController@addSessProductIn'));
 Route::post('/js/addsessservice', array('as'=>'js.addsessservice','uses' => 'JsController@addSessService'));
 Route::post('/js/delsessproduct', array('as'=>'js.delsessproduct','uses' => 'JsController@delSessProduct'));
+Route::post('/js/delsessproductin', array('as'=>'js.delsessproductin','uses' => 'JsController@delSessProductIn'));
 Route::post('/js/delsessservice', array('as'=>'js.delsessservice','uses' => 'JsController@delSessService'));
 
 Route::get('/company/{id}/destroy', 'CompanyController@destroy');
@@ -59,3 +61,9 @@ Route::resource('invoiceout', 'InvoiceOutController');
 
 Route::get('/invoicein/{id}/destroy', 'InvoiceInController@destroy');
 Route::resource('invoicein', 'InvoiceInController');
+
+Route::get('/saleorder/{id}/destroy', 'SaleOrderController@destroy');
+Route::resource('saleorder', 'SaleOrderController');
+
+Route::get('/reclamation/{id}/destroy', 'ReclamationController@destroy');
+Route::resource('reclamation', 'ReclamationController');

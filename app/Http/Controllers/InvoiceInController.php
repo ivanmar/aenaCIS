@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use \DB, \Session, PDF, Image;
+use \DB, \Session, Image;
 use Illuminate\Http\Request;
 
 class InvoiceInController extends Controller {
@@ -29,6 +29,14 @@ class InvoiceInController extends Controller {
             Image::make($destinationPath . $filename)->resize(2339, 1654)->save($destinationPath . $filename);
             $invoicein->scan0 = $filename;
         }
+        if ($this->request->hasFile('pdf0')) {
+            $file = $this->request->file('pdf0');
+            $destinationPath = 'public/upload/pdf/';
+            $extension = strtolower($file->getClientOriginalExtension());
+            $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+            $file->move($destinationPath, $filename);
+            $invoicein->pdf0 = $filename;
+        }
         
         $invoicein->nrInvoice = $this->request->input('nrInvoice');
         $invoicein->idCompany = $this->request->input('idCompany');
@@ -36,14 +44,16 @@ class InvoiceInController extends Controller {
         $invoicein->marketplaceUser = $this->request->input('marketplaceUser');
         $invoicein->webRef = $this->request->input('webRef');
         $invoicein->dateIssue = $this->request->input('dateIssue');
+        $invoicein->shipCost = $this->request->input('shipCost');
         $invoicein->desc = $this->request->input('desc');
         $invoicein->save();
         
-        if (Session::has('sessDataProduct')) {
-            $sessDataProduct = Session::get('sessDataProduct');
-            foreach( $sessDataProduct as $idProduct => $qty ) {
+        if (Session::has('sessProductIn')) {
+            $sessProductIn= Session::get('sessProductIn');
+            foreach( $sessProductIn as $idProduct => $key ) {
+                $qty = $key['qty'];
+                $priceUnit = $key['priceUnit'];
                 $invoiceinart = new \App\InvoiceInArt;
-                $priceUnit = DB::table('product')->where('id',$idProduct)->value('priceSelf');
                 $invoiceinart->idProduct = $idProduct;
                 $invoiceinart->idInvoiceIn = $invoicein->id;
                 $invoiceinart->qty = $qty;
@@ -58,13 +68,14 @@ class InvoiceInController extends Controller {
                 }
             }
         }
-        Session::forget('sessDataProduct');
+        Session::forget('sessProductIn');
         
         return $invoiceinart->id;
     }
     public function index() {
         $invoicein = \App\InvoiceIn::with('company')->get();
         Session::forget('sessDataProduct');
+        Session::forget('sessProductIn');
         return view('invoiceIn.index')
                         ->with('actInvo', 'active')
                         ->with('obj', $invoicein);
@@ -98,7 +109,8 @@ class InvoiceInController extends Controller {
         $invoiceinart = DB::table('invoiceInArt')->where('idInvoiceIn',$id)->get();
         foreach($invoiceinart as $val) {
             if($val->idProduct > 0){
-                Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $val->idProduct, $val->qty));
+                $tmparr=array('qty'=>$val->qty, 'priceUnit'=>$val->priceUnit);
+                Session::put('sessProductIn', array_add($sessProductIn = Session::get('sessProductIn'), $val->idProduct, $tmparr));
             }
         }
         return view('invoiceIn.form')
@@ -118,28 +130,15 @@ class InvoiceInController extends Controller {
         Session::flash('message', 'Successfully updated');
         return redirect('invoicein');
     }
-
-    public function show($id) {
-        $invoicein = \App\InvoiceOut::find($id);
-        $company = \App\Company::find($invoicein->idCompany);
-
-        $items = DB::table('invoiceInArt')
-                ->select('invoiceInArt.priceUnit','invoiceInArt.qty','invoiceInArt.idProduct')
-                ->where('idInvoiceIn', $id)->get();
-
-        $data = array(
-            'company' => $company->name, 'nrInvoice' => $invoicein->nrInvoice,'dateIssue'=>$invoicein->dateIssue,'dateDue'=>$invoicein->dateDue,
-            'address' => $company->address, 'zipCode' => $company->zipCode, 'city' => $company->city,
-            'items' => $items
-        );
-        $pdf = PDF::loadView('pdfgen.invoiceOut0', $data);
-        return $pdf->stream($invoicein->nrInvoice.'-racun.pdf');
-    }
     
     public function destroy($id) {
-        \App\InvoiceInArt::where('idInvoiceIn', '=', $id)->delete();
-
-        \App\InvoiceIn::find($id)->delete();
+        $getValArt=DB::table('invoiceInArt')->where('idInvoiceIn',$id)->get();
+        foreach($getValArt as $valart){
+            DB::table('productInOut')->where('idInvoiceInArt',$valart->id)->delete();
+        }
+        DB::table('invoiceInArt')->where('idInvoiceIn',$id)->delete();
+        DB::table('invoiceIn')->where('id',$id)->delete();
+        
         Session::flash('message', 'Successfully deleted');
         return redirect('invoicein');
     }
