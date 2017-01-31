@@ -49,76 +49,55 @@
                         <br>
                         <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
                     </div>
+                    <div class="col-md-1 col-md-offset-5">
+                        <span class="cFieldName">Cena dostave</span>
+                        {!! Form::text('shipCost', $obj->shipCost, array('class' => 'form-control input-sm','id'=>'shipCost')) !!}
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <span class="cFieldName">Storitev</span>
-                        {!! Form::select('idService', $services, null, array('class' => 'form-control input-sm','id'=>'idService')) !!}
+                        <span class="cFieldName">Stavek</span>
+                        {!! Form::text('nameItem', null, array('class' => 'form-control input-sm','id'=>'nameItem')) !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol</span>
-                        {!! Form::text('qtyService', 1, array('class' => 'form-control input-sm','id'=>'qtyService')) !!}
+                        {!! Form::text('qtyItem', 1, array('class' => 'form-control input-sm','id'=>'qtyItem')) !!}
                     </div>
-                    <div class="col-md-1 col-md-offset-1">
+                    <div class="col-md-1">
+                        <span class="cFieldName">cena</span>
+                        {!! Form::text('priceUnit', 0, array('class' => 'form-control input-sm','id'=>'priceUnit')) !!}
+                    </div>
+                    <div class="col-md-1">
                         <br>
-                        <button class="btn btn-sm btn-primary" id="addService"> Dodaj</button>
+                        <button class="btn btn-sm btn-primary" id="addItem"> Dodaj</button>
                     </div>
                 </div>
                 
                 <hr>
-<?php $priceTot = 0; $index=1; ?>
+<?php $priceTot = 0; ?>
                 
-@if (Session::has('sessDataProduct'))
-<?php $sessDataProduct = Session::get('sessDataProduct'); ?>
-@foreach( $sessDataProduct as $idProduct => $qty )
+@if (Session::has('sessInvoOut'))
+<?php $sessData = Session::get('sessInvoOut'); ?>
+@foreach( $sessData as $key => $val )
             
-<?php $nameProduct = DB::table('product')->where('id',$idProduct)->value('name');
-      $priceSelf = DB::table('product')->where('id',$idProduct)->value('priceSelf');
-      $priceProdTot = $priceSelf * $qty;
+<?php 
+        if($val['idProduct'] > 0) {
+            $priceUnit = DB::table('product')->where('id',$val['idProduct'])->value('priceSelf');
+            $nameItem = DB::table('product')->where('id',$val['idProduct'])->value('name');
+
+        } else {
+            $nameItem = $val['nameItem'];
+            $priceUnit = $val['priceUnit'];
+        }
+        $qty = $val['qty'];
+        $priceProdTot = $priceUnit * $qty;
 ?>
                 <div class="form-group well">
                     <div class="col-md-1">
-                        <b>{!! $index !!} </b>
+                        <b>{!! $key + 1 !!} </b>
                     </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <b>{!! $nameProduct !!} </b>
-                    </div>
-                    <div class="col-md-1 col-md-offset-1">
-                        <span class="cFieldName">kol : </span>
-                        {!! $qty !!}
-                    </div>
-                    <div class="col-md-1 col-md-offset-1">
-                        <span class="cFieldName">cena enote : </span>
-                        {!! $priceSelf !!}
-                    </div>
-                    <div class="col-md-1 col-md-offset-1">
-                        <span class="cFieldName">cena : </span>
-                        {!! $priceProdTot !!}
-                    </div>
-                    <div class="col-md-1">
-                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $idProduct !!}'>D</a>
-                    </div>
-                </div>
-                <?php $priceTot += $priceProdTot; $index++; ?>
-@endforeach
-@endif
-
-
-
-@if (Session::has('sessDataService'))
-<?php $sessDataService = Session::get('sessDataService'); ?>
-@foreach($sessDataService as $idService => $qty)
-            
-<?php $nameService = DB::table('service')->where('id',$idService)->value('name');
-      $priceUnit = DB::table('service')->where('id',$idService)->value('priceUnit');
-      $priceServTot = $priceUnit * $qty;
-?>
-                <div class="form-group well">
-                    <div class="col-md-1">
-                        <b>{!! $index !!} </b>
-                    </div>
-                    <div class="col-md-2 col-md-offset-2">
-                        <b>{!! $nameService !!} </b>
+                    <div class="col-md-4">
+                        <b>{!! $nameItem !!} </b>
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol : </span>
@@ -130,15 +109,16 @@
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">cena : </span>
-                        {!! $priceServTot !!}
+                        {!! $priceProdTot !!}
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-xs btn-danger delService" id='s{!! $idService !!}'>D</a>
+                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $key !!}'>D</a>
                     </div>
                 </div>
-                <?php $priceTot += $priceServTot; $index++; ?>
+                <?php $priceTot += $priceProdTot; ?>
 @endforeach
 @endif
+
 
 <div class="form-group"> <div class="col-md-2 col-md-offset-10"> <b>TOTAL: {!! $priceTot or '0' !!} EUR </b> </div> </div>
 
@@ -170,6 +150,9 @@
         
         var desc= sessionStorage.getItem('desc');
         if (desc !== null) $('#desc').val(desc);
+        
+        var shipCost= sessionStorage.getItem('shipCost');
+        if (shipCost !== null) $('#shipCost').val(shipCost);
     }
 
     // Before refreshing the page, save the form data to sessionStorage
@@ -178,16 +161,18 @@
         sessionStorage.setItem("nrInvoice", $('#nrInvoice').val());
         sessionStorage.setItem("dateIssue", $('#dateIssue').val());
         sessionStorage.setItem("descInternal", $('#descInternal').val());
+        sessionStorage.setItem("shipCost", $('#shipCost').val());
         sessionStorage.setItem("desc", $('#desc').val());
     }
     
 $(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
+
 $('#addProduct').click(function (e) {
     e.preventDefault();
     var idProduct = $('#idProduct').val();
     if(idProduct > 0) {
     $.ajax({type: "POST",
-        url: "/js/addsessproduct",
+        url: "/js/addsessinvoout",
         data: {
             idProduct: idProduct,
             qty: $('#qtyProduct').val(),
@@ -200,16 +185,16 @@ $('#addProduct').click(function (e) {
     });
 } else { alert('izberite iz seznama'); }
 });
-
-$('#addService').click(function (e) {
+$('#addItem').click(function (e) {
     e.preventDefault();
-    var idService = $('#idService').val();
-    if(idService > 0) {
+    var nameItem = $('#nameItem').val();
+    if(nameItem) {
     $.ajax({type: "POST",
-        url: "/js/addsessservice",
+        url: "/js/addsessinvoout",
         data: {
-            idService: idService,
-            qty: $('#qtyService').val(),
+            nameItem: nameItem,
+            qty: $('#qtyItem').val(),
+            priceUnit: $('#priceUnit').val(),
             _token: $('input[name=_token]').val()
         },
         success: function (data)
@@ -220,26 +205,18 @@ $('#addService').click(function (e) {
 } else { alert('izberite iz seznama'); }
 });
 
+
 $('.delProduct').click(function() {
     $.ajax({type: "POST",
-        url: "/js/delsessproduct",
+        url: "/js/delsessinvoout",
         data: {
-            idProduct: this.id.substring(1),
+            index: this.id.substring(1),
             _token: $('input[name=_token]').val()
         },
         success: function (data) { location.reload(); }
     });
 });
-$('.delService').click(function() {
-    $.ajax({type: "POST",
-        url: "/js/delsessservice",
-        data: {
-            idService: this.id.substring(1),
-            _token: $('input[name=_token]').val()
-        },
-        success: function (data) { location.reload(); }
-    });
-});
+
 </script>
     
 @stop

@@ -90,7 +90,7 @@
             <div class="row">
                 <div class='col-md-5'>
                     <span class="btn btn-sm btn-default" id="popAddComm"> Dodaj komentar</span>
-                    <span class="btn btn-sm btn-default" id="popAddTask"> Dodaj nalogo</span>
+                    <span class="btn btn-sm btn-default" id="popAddTask"> Dodaj dogodek</span>
                 </div>
                 <div class='col-md-2 col-md-offset-2'>
                     <a class="btn btn-sm btn-danger" href="{!!URL::to('ticket')!!}">Cancel</a> 

@@ -2,14 +2,14 @@
     <head>
         <title>DELOVNI NALOG</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        {!! HTML::style('public/css/pdfgen.css') !!}
+        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen.css">
     </head>
     <body>
         <div class="page last"> 
             <table class="front">
                 <tr><td colspan="2" id="brd-no0"> <img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"> </td>
                     <td colspan="6" id="brd-no1"> 
-                            A1 INFORMATIKA D.O.O. <br>
+                        <b>A1 INFORMATIKA D.O.O. </b><br>
                             <span class="txt-xsmall">Dolenjska cesta 242, 1000 Ljubljana<br>
                                   064 170003 / www.aena.si </span>
                     </td>

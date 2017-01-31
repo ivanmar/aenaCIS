@@ -14,14 +14,20 @@
             <div class="panel-body">
                 <div class="form-group">
                     <div class="col-md-2">
-                        <span class="cFieldName">Stranka</span>
-                        {!! Form::select('idContact', $contact, $obj->idContact, array('class' => 'form-control','id'=>'idContact')) !!}
+                        <span class="cFieldName">Podjetje</span>
+                        {!! Form::select('idCompany', $compList, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-1">
-                        <span class="cFieldName">Podjetje</span>
-                        {!! Form::select('idCompany', $company, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
+                        <span class="cFieldName">Stranka</span>
+                        @include('selcontact')
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
+                    <div class="col-md-1">
+                        <br>
+                        <span class="btn btn-sm btn-primary" id="popAddCont"> dodaj stranko >> </span>
+    @include('popcontact')              
+                    </div>
+                    
+                    <div class="col-md-2 col-md-offset-1">
                         <span class="cFieldName">Datum nar.</span>
                          {!! Form::text('dateOrder', (isset($obj->dateOrder) ? $obj->dateOrder : date('Y-m-d')), array('class' => 'form-control input-sm dateSel','id'=>'dateOrder')) !!}
                     </div>
@@ -120,6 +126,7 @@
         // If values are not blank, restore them to the fields
         var idCompany = sessionStorage.getItem('idCompany'); if (idCompany !== null) $('#idCompany').val(idCompany);
         var idContact = sessionStorage.getItem('idContact'); if (idContact !== null) $('#idContact').val(idContact);
+        var selCont = sessionStorage.getItem('selCont'); if (selCont !== null) $('#selCont').val(selCont);
         var dateOrder= sessionStorage.getItem('dateOrder'); if (dateOrder !== null) $('#dateOrder').val(dateOrder);
         var dateFor= sessionStorage.getItem('dateFor'); if (dateFor !== null) $('#dateFor').val(dateFor);
         var status= sessionStorage.getItem('status');if (status !== null) $('#status').val(status);
@@ -132,6 +139,7 @@
     window.onbeforeunload = function() {
         sessionStorage.setItem("idCompany", $('#idCompany').val());
         sessionStorage.setItem("idContact", $('#idContact').val());
+        sessionStorage.setItem("selCont", $('#selCont').val());
         sessionStorage.setItem("dateOrder", $('#dateOrder').val());
         sessionStorage.setItem("dateFor", $('#dateFor').val());
         sessionStorage.setItem("status", $('#status').val());
@@ -171,6 +179,11 @@ $('.delProduct').click(function() {
     });
 });
 
+$("#popAddCont").popover({
+    html: true,
+    content: function () {
+        return $("#popAddCustCont").html();
+    }});
 </script>
     
 @stop

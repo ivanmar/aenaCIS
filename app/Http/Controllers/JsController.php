@@ -53,10 +53,15 @@ class JsController extends Controller {
         $task->save();
         return response()->json($task->id);
     }
-    public function addSessProduct () {
+    public function addSessInvoOut () {
+        $sessData=Session::get('sessInvoOut');
+        $index=count($sessData);
         $idProduct = $this->request->input('idProduct');
+        $nameItem = $this->request->input('nameItem');
+        $priceUnit = $this->request->input('priceUnit');
         $qty = $this->request->input('qty');
-        Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $idProduct, $qty));
+        $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit, 'nameItem'=>$nameItem, 'idProduct'=>$idProduct);
+        Session::put('sessInvoOut', array_add($sessInvoOut = Session::get('sessInvoOut'),$index, $tmparr));
     }
     public function addSessProductIn () {
         $idProduct = $this->request->input('idProduct');
@@ -65,25 +70,14 @@ class JsController extends Controller {
         $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit);
         Session::put('sessProductIn', array_add($sessProductIn = Session::get('sessProductIn'), $idProduct, $tmparr));
     }
-    public function addSessService () {
-        $idService = $this->request->input('idService');
-        $qty = $this->request->input('qty');
-        Session::put('sessDataService', array_add($sessDataService = Session::get('sessDataService'), $idService, $qty));
-    }
-    public function delSessProduct () {
-        $idProduct = $this->request->input('idProduct');
-        DB::table('invoiceOutArt')->where('idProduct',$idProduct)->delete();
-        Session::forget('sessDataProduct.' . $idProduct );
+    public function delSessInvoOut () {
+        $index = $this->request->input('index');
+        Session::forget('sessInvoOut.' . $index );
     }
     public function delSessProductIn () {
         $idProduct = $this->request->input('idProduct');
         DB::table('invoiceInArt')->where('idProduct',$idProduct)->delete();
         Session::forget('sessProductIn.' . $idProduct );
-    }
-    public function delSessService() {
-        $idService= $this->request->input('idService');
-        DB::table('invoiceOutArt')->where('idService',$idService)->delete();
-        Session::forget('sessDataService.' . $idService );
     }
 
 }

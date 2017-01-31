@@ -52,7 +52,7 @@
                     </ul>
                     <ul class="navbar-right navbar-nav nav">
                         <li><a href="#"> </a></li>
-                        <li><a href="#"> <i class="fa fa-power-off" style="color:orange"></i></a></li>
+                        <li><a href="{!! URL::to('logout') !!}"> <i class="fa fa-power-off" style="color:orange"></i></a></li>
                     </ul>
 
 

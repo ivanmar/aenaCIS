@@ -13,65 +13,61 @@ class InvoiceOutController extends Controller {
     }
     private function insertMainSql($id = 0) {
         if ($id > 0) {
-            $Invoiceout = \App\InvoiceOut::find($id);
+            $invoiceout = \App\InvoiceOut::find($id);
         } else {
-            $Invoiceout = new \App\InvoiceOut;
+            $invoiceout = new \App\InvoiceOut;
         }
         
-        $Invoiceout->nrInvoice = $this->request->input('nrInvoice');
-        $Invoiceout->idCompany = $this->request->input('idCompany');
-        $Invoiceout->dateIssue = $this->request->input('dateIssue');
-        $Invoiceout->desc = $this->request->input('desc');
-        $Invoiceout->descInternal = $this->request->input('descInternal');
-        $Invoiceout->save();
+        $invoiceout->nrInvoice = $this->request->input('nrInvoice');
+        $invoiceout->idCompany = $this->request->input('idCompany');
+        $invoiceout->dateIssue = $this->request->input('dateIssue');
+        $invoiceout->shipCost = cisNumFix( $this->request->input('shipCost') );
+        $invoiceout->desc = $this->request->input('desc');
+        $invoiceout->descInternal = $this->request->input('descInternal');
+        $invoiceout->save();
         
-        if (Session::has('sessDataProduct')) {
-            $sessDataProduct = Session::get('sessDataProduct');
-            foreach( $sessDataProduct as $idProduct => $qty ) {
-                $Invoiceoutart = new \App\InvoiceOutArt;
-                $priceUnit = DB::table('product')->where('id',$idProduct)->value('priceSelf');
-                $Invoiceoutart->idProduct = $idProduct;
-                $Invoiceoutart->idInvoiceOut = $Invoiceout->id;
-                $Invoiceoutart->qty = $qty;
-                $Invoiceoutart->priceUnit = $priceUnit;
-                $Invoiceoutart->save();
-                for($i=0; $i< $qty; $i++) {
-                    $row0 = DB::table('productInOut')->where('idProduct',$idProduct)->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
+        if (Session::has('sessInvoOut')) {
+            $sessInvoOut = Session::get('sessInvoOut');
+            foreach( $sessInvoOut as $key => $val ) {
+                $invoiceoutart = new \App\InvoiceOutArt;
+                if($val['idProduct'] > 0) {
+                    $invoiceoutart->idProduct = $val['idProduct'];
+                    $priceUnit = DB::table('product')->where('id',$val['idProduct'])->value('priceSelf');
+                    
+                } else {
+                    $invoiceoutart->nameItem= $val['nameItem'];
+                    $priceUnit = cisNumFix( $val['priceUnit'] );
+                }
+                $invoiceoutart->qty = $val['qty'];
+                $invoiceoutart->priceUnit = $priceUnit;
+                $invoiceoutart->idInvoiceOut = $invoiceout->id;
+                $invoiceoutart->save();
+                
+                
+                for($i=0; $i< $val['qty']; $i++) {
+                    $row0 = DB::table('productInOut')->where('idProduct',$val['idProduct'])->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
                     
                     if($row0) {
-                        DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $Invoiceoutart->id, 'dateOut'=>$Invoiceout->dateIssue]);
+                        DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $invoiceoutart->id, 'dateOut'=>$invoiceout->dateIssue]);
                     }
                 }
             }
         }
-        if (Session::has('sessDataService')) {
-            $sessDataService = Session::get('sessDataService');
-            foreach( $sessDataService as $idService => $qty ) {
-                $Invoiceoutart = new \App\InvoiceOutArt;
-                $priceUnit = DB::table('service')->where('id',$idService)->value('priceUnit');
-                $Invoiceoutart->idService = $idService;
-                $Invoiceoutart->idInvoiceOut = $Invoiceout->id;
-                $Invoiceoutart->qty = $qty;
-                $Invoiceoutart->priceUnit = $priceUnit;
-                $Invoiceoutart->save();
-            }
-        }
-        Session::forget('sessDataProduct');
-        Session::forget('sessDataService');
-        return $Invoiceoutart->id;
+        Session::forget('sessInvoOut');
+
+        return $invoiceout->id;
     }
     public function index() {
         $invoiceout = \App\InvoiceOut::with('company')->get();
-        Session::forget('sessDataProduct');
+        Session::forget('sessInvoOut');
         Session::forget('sessProductIn');
-        Session::forget('sessDataService');
+
         return view('invoiceOut.index')
                         ->with('actInvo', 'active')
                         ->with('obj', $invoiceout);
     }
 
     public function create() {
-        $services = array('0' => 'izberi storitev') + DB::table('service')->pluck('name','id')->toArray();
         $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
         $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         $lastNrInvoice = DB::table('invoiceOut')->max('nrInvoice');
@@ -79,7 +75,6 @@ class InvoiceOutController extends Controller {
                         ->with('formAction', 'invoiceout.store')
                         ->with('formMethod', 'POST')
                         ->with('customer', $customer)
-                        ->with('services', $services)
                         ->with('products', $products)
                         ->with('lastNrInvoice', $lastNrInvoice + 1)
                         ->with('actInvo', 'active')
@@ -94,23 +89,19 @@ class InvoiceOutController extends Controller {
     }
     
     public function edit($id) {
-        $services = DB::table('service')->pluck('name','id')->toArray();
         $products = DB::table('product')->pluck('name','id')->toArray();
         $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         $invoiceoutart = DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
+        $j=0;
         foreach($invoiceoutart as $key => $val) {
-            if($val->idProduct > 0){
-                Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $val->idProduct, $val->qty));
-            }
-            elseif($val->idService > 0) {
-                Session::put('sessDataService', array_add($sessDataService = Session::get('sessDataService'), $val->idService, $val->qty));
-            }
+            $tmparr=array('qty'=>$val->qty, 'priceUnit'=>$val->priceUnit, 'nameItem'=>$val->nameItem, 'idProduct'=>$val->idProduct);
+            Session::put('sessInvoOut', array_add($sessInvoOut = Session::get('sessInvoOut'),$j, $tmparr));
+            $j++;
         }
         return view('invoiceOut.form')
                         ->with('formAction', 'invoiceout.update')
                         ->with('formMethod', 'PUT')
                         ->with('customer', $customer)
-                        ->with('services', $services)
                         ->with('products', $products)
                         ->with('displayCancel', 'true')
                         ->with('actInvo', 'active')
@@ -127,13 +118,18 @@ class InvoiceOutController extends Controller {
     public function show($id) {
         $invoiceout = \App\InvoiceOut::find($id);
         $company = \App\Company::find($invoiceout->idCompany);
+        if($company){
+            $cName=$company->name; $cAddress=$company->address; $cDdv = $company->ddvCode; $cZip=$company->zipCode; $cCity=$company->city;
+        } else {
+            $cName='končni kupec'; $cAddress=''; $cDdv = ''; $cZip=''; $cCity='';
+        }
 
         $items = DB::table('invoiceOutArt')->where('idInvoiceOut', $id)->get();
 
         $data = array(
-            'company' => $company->name, 'nrInvoice' => $invoiceout->nrInvoice,'dateIssue'=>$invoiceout->dateIssue,'dateDue'=>$invoiceout->dateDue,
-            'address' => $company->address, 'zipCode' => $company->zipCode, 'city' => $company->city,'desc'=>$invoiceout->desc,
-            'items' => $items
+            'company' => $cName, 'nrInvoice' => $invoiceout->nrInvoice,'dateIssue'=>$invoiceout->dateIssue,'dateDue'=>$invoiceout->dateDue,
+            'address' => $cAddress,'ddvCode' => $cDdv, 'zipCode' => $cZip, 'city' => $cCity,'shipCost'=>$invoiceout->shipCost,
+            'desc'=>$invoiceout->desc,'items' => $items
         );
         $pdf = PDF::loadView('pdfgen.invoiceOut0', $data);
         return $pdf->stream($invoiceout->nrInvoice.'-racun.pdf');

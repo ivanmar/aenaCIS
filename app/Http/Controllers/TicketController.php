@@ -85,7 +85,7 @@ class TicketController extends Controller {
                         ->with('obj', $ticket);
     }
     public function create() {
-        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $compList= array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
         return view('ticket.form')
                         ->with('formAction', 'ticket.store')
                         ->with('formMethod', 'POST')

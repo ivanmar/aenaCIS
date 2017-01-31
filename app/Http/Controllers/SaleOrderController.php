@@ -59,14 +59,12 @@ class SaleOrderController extends Controller {
 
     public function create() {
         $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
-        $contact = array('0' => 'izberi') + DB::table('contact')->pluck('name','id')->toArray();
-        $company = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
 
         return view('saleOrder.form')
                         ->with('formAction', 'saleorder.store')
                         ->with('formMethod', 'POST')
-                        ->with('contact', $contact)
-                        ->with('company', $company)
+                        ->with('compList', $compList)
                         ->with('products', $products)
                         ->with('status', $this->statusOrder)
                         ->with('orderOrigin', $this->orderOrigin)
@@ -83,8 +81,7 @@ class SaleOrderController extends Controller {
     
     public function edit($id) {
         $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
-        $contact = array('0' => 'izberi') + DB::table('contact')->pluck('name','id')->toArray();
-        $company = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
         $saleorderart = DB::table('saleOrderArt')->where('idSaleOrder',$id)->get();
         foreach($saleorderart as $key => $val) {
             if($val->idProduct > 0){
@@ -94,8 +91,7 @@ class SaleOrderController extends Controller {
         return view('saleOrder.form')
                         ->with('formAction', 'saleorder.update')
                         ->with('formMethod', 'PUT')
-                        ->with('contact', $contact)
-                        ->with('company', $company)
+                        ->with('compList', $compList)
                         ->with('products', $products)
                         ->with('status', $this->statusOrder)
                         ->with('orderOrigin', $this->orderOrigin)
