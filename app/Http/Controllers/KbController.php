@@ -21,6 +21,22 @@ class KbController extends Controller {
         } else {
             $kb = new \App\Kb;
         }
+        if ($this->request->hasFile('file0')) {
+            $file = $this->request->file('file0');
+            $destinationPath = 'public/upload/kb/';
+            $extension = strtolower($file->getClientOriginalExtension());
+            $filename0 = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+            $file->move($destinationPath, $filename0);
+            $kb->file0 = $filename0;
+        }
+        if ($this->request->hasFile('file1')) {
+            $file = $this->request->file('file1');
+            $destinationPath = 'public/upload/kb/';
+            $extension = strtolower($file->getClientOriginalExtension());
+            $filename1 = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+            $file->move($destinationPath, $filename1);
+            $kb->file1 = $filename1;
+        }
         $kb->name = $this->request->input('name');
         $kb->idCompany = $this->request->input('idCompany');
         $kb->idProject = $this->request->input('idProject');

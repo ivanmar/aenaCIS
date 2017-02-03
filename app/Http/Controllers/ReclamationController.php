@@ -37,9 +37,9 @@ class ReclamationController extends Controller {
     }
 
     public function create() {
-        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
-        $contact = array('0' => 'izberi') + DB::table('contact')->pluck('name','id')->toArray();
-        $company = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
+        $products = array('0' => 'izberi produkt') + DB::table('product')->orderBy('name')->pluck('name','id')->toArray();
+        $contact = array('0' => 'izberi') + DB::table('contact')->orderBy('name')->pluck('name','id')->toArray();
+        $company = array('0' => 'izberi') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
 
         return view('reclamation.form')
                         ->with('formAction', 'reclamation.store')
@@ -60,9 +60,9 @@ class ReclamationController extends Controller {
     }
     
     public function edit($id) {
-        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
-        $contact = array('0' => 'izberi') + DB::table('contact')->pluck('name','id')->toArray();
-        $company = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
+        $products = array('0' => 'izberi produkt') + DB::table('product')->orderBy('name')->pluck('name','id')->toArray();
+        $contact = array('0' => 'izberi') + DB::table('contact')->orderBy('name')->pluck('name','id')->toArray();
+        $company = array('0' => 'izberi') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
 
         return view('reclamation.form')
                         ->with('formAction', 'reclamation.update')
