@@ -74,7 +74,7 @@
                 </tr>
 
             </table>
-            <p class="txt-italic txt-xsmall txt-right">
+            <p class="txt-italic txt-xsmall">
                 * DDV ni obračunan na podlagi 1. odst. 94. člena ZDDV-1 (nismo DDV zavezanci)
             </p>
             

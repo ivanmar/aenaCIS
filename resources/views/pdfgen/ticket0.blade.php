@@ -49,7 +49,7 @@
                         {!!$note!!} </td> 
                 </tr>
                 <tr><td colspan="5" class="name-row"> Opravil / Datum</td> 
-                    <td colspan="5"> {!! $uname !!} / {!! date('d-m-Y') !!} </td> 
+                    <td colspan="5"> {!! ucwords($uname) !!} / {!! date('d-m-Y') !!} </td> 
                 </tr>
             </table>
             <p class="txt-italic txt-xsmall txt-right">

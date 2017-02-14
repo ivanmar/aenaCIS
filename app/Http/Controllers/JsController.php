@@ -72,7 +72,13 @@ class JsController extends Controller {
     }
     public function delSessInvoOut () {
         $index = $this->request->input('index');
-        Session::forget('sessInvoOut.' . $index );
+        $sessData=Session::get('sessInvoOut');
+        if(isset($sessData[$index]['idArt'])) {
+            DB::table('invoiceOutArt')->where('id',$sessData[$index]['idArt'])->delete();
+        }
+        unset($sessData[$index]);
+        $newSessData = array_values($sessData);
+        Session::put('sessInvoOut', $newSessData);
     }
     public function delSessProductIn () {
         $idProduct = $this->request->input('idProduct');

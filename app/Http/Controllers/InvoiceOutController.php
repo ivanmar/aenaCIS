@@ -27,6 +27,7 @@ class InvoiceOutController extends Controller {
         $invoiceout->save();
         
         if (Session::has('sessInvoOut')) {
+            DB::table('invoiceOutArt')->where('idInvoiceOut',$invoiceout->id)->delete();
             $sessInvoOut = Session::get('sessInvoOut');
             foreach( $sessInvoOut as $key => $val ) {
                 $invoiceoutart = new \App\InvoiceOutArt;
@@ -94,7 +95,7 @@ class InvoiceOutController extends Controller {
         $invoiceoutart = DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
         $j=0;
         foreach($invoiceoutart as $key => $val) {
-            $tmparr=array('qty'=>$val->qty, 'priceUnit'=>$val->priceUnit, 'nameItem'=>$val->nameItem, 'idProduct'=>$val->idProduct);
+            $tmparr=array('qty'=>$val->qty, 'priceUnit'=>$val->priceUnit, 'nameItem'=>$val->nameItem, 'idProduct'=>$val->idProduct,'idArt'=>$val->id);
             Session::put('sessInvoOut', array_add($sessInvoOut = Session::get('sessInvoOut'),$j, $tmparr));
             $j++;
         }

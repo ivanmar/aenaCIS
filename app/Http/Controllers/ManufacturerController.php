@@ -45,32 +45,32 @@ class ManufacturerController extends Controller {
     }
 
     public function edit($id) {
-        $manufact = \App\Maufacturer::all();
+        $manufact = \App\Manufacturer::all();
         return view('commcrud')
                         ->with('formTitle', 'Spremeni vnos')
                         ->with('objectTitle', 'manufacturer')
                         ->with('fields',$this->input_fields)
                         ->with('objectlist', $manufact)
                         ->with('displayCancel', 'inline')
-                        ->with('formAction', 'maufacturer.update')
+                        ->with('formAction', 'manufacturer.update')
                         ->with('formMethod', 'PUT')
                         ->with('actSet', 'active')
-                        ->with('object', \App\Maufacturer::find($id));
+                        ->with('object', \App\Manufacturer::find($id));
     }
 
     public function update($id) {
         $this->validate($this->request, $this->input_rules);
         $this->insertMainSql($id);
         Session::flash('message', 'Narejeno');
-        return redirect('maufacturer');
+        return redirect('manufacturer');
     }
     public function destroy($id) {
         $cnt=DB::table('product')->where('idManufacturer',$id)->count();
         if($cnt > 0) {
             Session::flash('message-err', 'ERR: objekt uporabljen v sistemu');
-            return redirect('maufacturer');
+            return redirect('manufacturer');
         }
-        DB::table('maufacturer')->where('id',$id)->delete();
+        DB::table('manufacturer')->where('id',$id)->delete();
         Session::flash('message', 'Narejeno');
         return redirect('maufacturer');
     }
