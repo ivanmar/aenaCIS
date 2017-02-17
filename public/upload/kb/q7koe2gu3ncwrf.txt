@@ -1,0 +1,18 @@
+
+93.103.20.124
+
+ssh 3322
+
+usrv 192.168.1.10 root 11h
+
+pass aleksrem i sa 2000
+
+
+HOSTING:
+Host: ftp2.s5.net
+
+User: internet\realweb
+
+Pass: kd84re
+
+GOOGLE KOLEDAR: real1.vzd / aleksrem2000

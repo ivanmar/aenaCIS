@@ -28,6 +28,20 @@ class ProductController extends Controller {
         $product->oemCodes = $this->request->input('oemCodes');
         $product->note = $this->request->input('note');
         $product->save();
+        
+        if($this->request->hasFile('image')) {
+            $image=$this->request->file('image');
+            $extension = strtolower($image->getClientOriginalExtension());
+            $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+            $image->move('public/upload/product/', $filename);
+            $f = new \App\FileUpload;
+            $f->nameEnc = $filename;
+            $f->nameOrig = basename($image->getClientOriginalName(), '.'.$image->getClientOriginalExtension());
+            $f->fileExt = $extension;
+            $f->idProduct = $product->id;
+            $f->save();
+        }
+        
         return $product->id;
     }
 
@@ -81,12 +95,14 @@ class ProductController extends Controller {
         $compList = array(''=>'izberi') + DB::table('company')->pluck('name','id')->toArray();
         $manuList = array(''=>'izberi') + DB::table('manufacturer')->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
+        $image = DB::table('fileUpload')->where('idProduct', $id)->first();
         return view('product.form')
                         ->with('formAction', 'product.update')
                         ->with('formMethod', 'PUT')
                         ->with('displayCancel','inline')
                         ->with('compList',$compList)
                         ->with('manuList',$manuList)
+                        ->with('image',$image)
                         ->with('grList',$grList)
                         ->with('actProduct', 'active')
                         ->with('obj', \App\Product::find($id));
@@ -98,6 +114,7 @@ class ProductController extends Controller {
         return redirect('product');
     }
     public function destroy($id) {
+        DB::table('fileUpload')->where('idProduct',$id)->delete();
         DB::table('product')->where('id',$id)->delete();
         Session::flash('message', 'Successfully deleted');
         return redirect('product');

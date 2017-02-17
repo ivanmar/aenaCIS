@@ -3,7 +3,7 @@
 @section('content')
 {!! HTML::ul($errors->all()) !!}
 
-{!! Form::open(array('route'=>array($formAction,$obj->id),'method'=>$formMethod, 'class'=>'form-horizontal','autocomplete'=>'off')) !!}
+{!! Form::open(array('route'=>array($formAction,$obj->id),'files' => true,'method'=>$formMethod, 'class'=>'form-horizontal','autocomplete'=>'off')) !!}
 
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
@@ -52,6 +52,12 @@
                         <span class="cFieldName">proizvajalec</span>
                         {!! Form::select('idManufacturer', $manuList, $obj->idManufacturer, array('class' => 'form-control input-sm')) !!}
                     </div>
+                    <div class="col-md-5  col-md-offset-2">
+                  <span class="btn btn-warning btn-file"> IMAGE upload <input name="image" type="file"> </span>
+                    @if(isset($image))
+                    <a href="/public/upload/product/{!!$image->nameEnc !!}" target="_blank"> {!! $image->nameOrig !!} </a>  {!! $image->fileExt !!}
+                    @endif
+                </div>
                 </div>
                 
                 <div class="form-group">

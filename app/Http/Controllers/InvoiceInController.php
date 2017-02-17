@@ -20,24 +20,6 @@ class InvoiceInController extends Controller {
             $invoicein = new \App\InvoiceIn;
         }
         
-        if ($this->request->hasFile('scan0')) {
-            $file = $this->request->file('scan0');
-            $destinationPath = 'public/upload/image/';
-            $extension = strtolower($file->getClientOriginalExtension());
-            $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
-            $file->move($destinationPath, $filename);
-            Image::make($destinationPath . $filename)->resize(2339, 1654)->save($destinationPath . $filename);
-            $invoicein->scan0 = $filename;
-        }
-        if ($this->request->hasFile('pdf0')) {
-            $file = $this->request->file('pdf0');
-            $destinationPath = 'public/upload/pdf/';
-            $extension = strtolower($file->getClientOriginalExtension());
-            $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
-            $file->move($destinationPath, $filename);
-            $invoicein->pdf0 = $filename;
-        }
-        
         $invoicein->nrInvoice = $this->request->input('nrInvoice');
         $invoicein->idCompany = $this->request->input('idCompany');
         $invoicein->marketplace = $this->request->input('marketplace');
@@ -48,6 +30,18 @@ class InvoiceInController extends Controller {
         $invoicein->desc = $this->request->input('desc');
         $invoicein->save();
         
+        $files=$this->request->file('file');
+        foreach ($files as $file) {
+                $extension = strtolower($file->getClientOriginalExtension());
+                $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+                $file->move('public/upload/invoice/', $filename);
+                $f = new \App\FileUpload;
+                $f->nameEnc = $filename;
+                $f->nameOrig = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension());
+                $f->fileExt = $extension;
+                $f->idInvoiceIn = $invoicein->id;
+                $f->save();
+        }
         if (Session::has('sessProductIn')) {
             $sessProductIn= Session::get('sessProductIn');
             foreach( $sessProductIn as $idProduct => $key ) {
@@ -105,6 +99,7 @@ class InvoiceInController extends Controller {
     public function edit($id) {
         $products = DB::table('product')->pluck('name','id')->toArray();
         $customer = DB::table('company')->where('indVendor',1)->pluck('name','id')->toArray();
+        $files = DB::table('fileUpload')->where('idInvoiceIn',$id)->get();
         
         $invoiceinart = DB::table('invoiceInArt')->where('idInvoiceIn',$id)->get();
         foreach($invoiceinart as $val) {
@@ -118,6 +113,7 @@ class InvoiceInController extends Controller {
                         ->with('formMethod', 'PUT')
                         ->with('customer', $customer)
                         ->with('products', $products)
+                        ->with('files',$files)
                         ->with('marketplaces', $this->marketplaces)
                         ->with('displayCancel', 'true')
                         ->with('actInvo', 'active')
@@ -137,6 +133,7 @@ class InvoiceInController extends Controller {
             DB::table('productInOut')->where('idInvoiceInArt',$valart->id)->delete();
         }
         DB::table('invoiceInArt')->where('idInvoiceIn',$id)->delete();
+        DB::table('fileUpload')->where('idInvoiceIn',$id)->delete();
         DB::table('invoiceIn')->where('id',$id)->delete();
         
         Session::flash('message', 'Successfully deleted');

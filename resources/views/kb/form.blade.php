@@ -28,21 +28,16 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-1">
-                        <span class="btn btn-warning btn-file"> FILE 1 upload <input name="file0" type="file"> </span>
-                </div>
-                <div class="col-md-1">
-                    @if(isset($obj->file0))
-                    <a href="/public/upload/kb/{!!$obj->file0 !!}" target="_blank"><img src="/public/img/icon-file.png" height="40"></a>
-                    @endif
-                </div>
-                <div class="col-md-1 col-md-offset-1">
-                        <span class="btn btn-warning btn-file"> FILE 2 upload <input name="file1" type="file"> </span>
-                </div>
-                <div class="col-md-1">
-                    @if(isset($obj->file1))
-                    <a href="/public/upload/kb/{!!$obj->file1 !!}" target="_blank"><img src="/public/img/icon-file.png" height="40"></a>
-                    @endif
+                <div class="col-md-5">
+                  <span class="btn btn-warning btn-file"> FILE 1 upload <input name="file[]" type="file"> </span>
+                  <span class="btn btn-warning btn-file"> FILE 2 upload <input name="file[]" type="file"> </span> 
+                  <span class="btn btn-warning btn-file"> FILE 3 upload <input name="file[]" type="file"> </span><br>
+                  
+@if(isset($files))
+  @foreach($files as $file)
+  <p> <a href="/public/upload/kb/{!!$file->nameEnc !!}" target="_blank"> {!! $file->nameOrig !!} </a>  {!! $file->fileExt !!}</p>      
+  @endforeach
+@endif
                 </div>
                 <div class='col-md-7'>
                     <span class="cFieldName"> Tekst</span>

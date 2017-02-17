@@ -21,27 +21,25 @@ class KbController extends Controller {
         } else {
             $kb = new \App\Kb;
         }
-        if ($this->request->hasFile('file0')) {
-            $file = $this->request->file('file0');
-            $destinationPath = 'public/upload/kb/';
-            $extension = strtolower($file->getClientOriginalExtension());
-            $filename0 = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
-            $file->move($destinationPath, $filename0);
-            $kb->file0 = $filename0;
-        }
-        if ($this->request->hasFile('file1')) {
-            $file = $this->request->file('file1');
-            $destinationPath = 'public/upload/kb/';
-            $extension = strtolower($file->getClientOriginalExtension());
-            $filename1 = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
-            $file->move($destinationPath, $filename1);
-            $kb->file1 = $filename1;
-        }
+        
         $kb->name = $this->request->input('name');
         $kb->idCompany = $this->request->input('idCompany');
         $kb->idProject = $this->request->input('idProject');
         $kb->text = $this->request->input('text');
         $kb->save();
+        
+        $files=$this->request->file('file');
+        foreach ($files as $file) {
+                $extension = strtolower($file->getClientOriginalExtension());
+                $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+                $file->move('public/upload/kb/', $filename);
+                $f = new \App\FileUpload;
+                $f->nameEnc = $filename;
+                $f->nameOrig = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension());
+                $f->fileExt = $extension;
+                $f->idKb = $kb->id;
+                $f->save();
+        }
         return $kb->id;
     }
 
@@ -91,12 +89,14 @@ class KbController extends Controller {
     public function edit($id) {
         $compList = array(''=>'podjetje') + DB::table('company')->pluck('name','id')->toArray();
         $projList = array(''=>'projekt') + DB::table('project')->pluck('name','id')->toArray();
+        $files = DB::table('fileUpload')->where('idKb',$id)->get();
         return view('kb.form')
                         ->with('formAction', 'kb.update')
                         ->with('formMethod', 'PUT')
                         ->with('displayCancel','inline')
                         ->with('compList',$compList)
                         ->with('projList',$projList)
+                        ->with('files',$files)
                         ->with('actKb', 'active')
                         ->with('obj', \App\Kb::find($id));
     }
@@ -109,6 +109,7 @@ class KbController extends Controller {
     }
 
     public function destroy($id) {
+        DB::table('fileUpload')->where('idKb',$id)->delete();
         DB::table('kb')->where('id',$id)->delete();
         Session::flash('message', 'Successfully deleted');
         return redirect('kb');

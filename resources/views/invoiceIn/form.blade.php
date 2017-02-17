@@ -61,23 +61,14 @@
                         <br>
                         <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
                     </div>
-                    <div class="col-md-1 col-md-offset-1">
-                        <span class="btn btn-primary btn-file">
-                                Scan upload <input name="scan0" type="file">
-                        </span>
-                    </div>
-                    <div class="col-md-1">
-                        <img src="{!!isset($obj->scan0)?'/public/upload/image/'.$obj->scan0:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'!!}" width="80" height="80">
-                    </div>
-                    <div class="col-md-1 col-md-offset-1">
-                        <span class="btn btn-warning btn-file">
-                                PDF upload <input name="pdf0" type="file">
-                        </span>
-                    </div>
-                    <div class="col-md-1">
-                        @if(isset($obj->pdf0))
-                        <a href="/public/upload/pdf/{!!$obj->pdf0 !!}" target="_blank"><img src="/public/img/icon-pdf.png" height="40"></a>
-                        @endif
+                    <div class="col-md-5 col-md-offset-1">
+                        <span class="btn btn-warning btn-file"> FILE 1 upload <input name="file[]" type="file"> </span>
+                        <span class="btn btn-warning btn-file"> FILE 2 upload <input name="file[]" type="file"> </span> <br>
+@if(isset($files))
+  @foreach($files as $file)
+  <p> <a href="/public/upload/invoice/{!!$file->nameEnc !!}" target="_blank"> {!! $file->nameOrig !!} </a>  {!! $file->fileExt !!}</p>      
+  @endforeach
+@endif
                     </div>
                 </div>
 
