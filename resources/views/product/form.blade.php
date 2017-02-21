@@ -34,8 +34,12 @@
                         <span class="cFieldName">proizvajalec</span>
                         {!! Form::select('idManufacturer', $manuList, $obj->idManufacturer, array('class' => 'form-control input-sm')) !!}
                     </div>
-                    <div class="col-md-2 col-md-offset-5">
-                        <span class="cFieldName">cena naša</span>
+                    <div class="col-md-2 col-md-offset-2">
+                        <span class="cFieldName">stanje zaloge</span>
+                        {!! Form::text('stockQty', $obj->stockQty, array('class' => 'form-control input-sm')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <span class="cFieldName">cena prodaje</span>
                         {!! Form::text('priceSelf', $obj->priceSelf, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>

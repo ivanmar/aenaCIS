@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 class InvoiceOutController extends Controller {
 
     var $input_rules = ['idCompany' => 'required','nrInvoice' => 'required'];
+    var $paymentType = array( 'none'=>'Izberi' ,'trr'=>'TRR','paypal'=>'paypal','cash'=>'Gotovina');
 
     public function __construct(Request $request){
         $this->middleware('auth');
@@ -14,11 +15,18 @@ class InvoiceOutController extends Controller {
     private function insertMainSql($id = 0) {
         if ($id > 0) {
             $invoiceout = \App\InvoiceOut::find($id);
+            $indEdit=true;
         } else {
             $invoiceout = new \App\InvoiceOut;
+            $indEdit=false;
         }
-        
-        $invoiceout->nrInvoice = $this->request->input('nrInvoice');
+        $paymentType = $this->request->input('paymentType');
+        $invoiceout->paymentType = $paymentType;
+        if($paymentType == 'cash') {
+            $invoiceout->nrInvoice = 0;
+        } else {
+            $invoiceout->nrInvoice = $this->request->input('nrInvoice');
+        }
         $invoiceout->idCompany = $this->request->input('idCompany');
         $invoiceout->dateIssue = $this->request->input('dateIssue');
         $invoiceout->shipCost = cisNumFix( $this->request->input('shipCost') );
@@ -43,13 +51,9 @@ class InvoiceOutController extends Controller {
                 $invoiceoutart->priceUnit = $priceUnit;
                 $invoiceoutart->idInvoiceOut = $invoiceout->id;
                 $invoiceoutart->save();
-                
- //               for($i=0; $i< $val['qty']; $i++) {
- //                   $row0 = DB::table('productInOut')->where('idProduct',$val['idProduct'])->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
-//                    if($row0) {
- //                       DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $invoiceoutart->id, 'dateOut'=>$invoiceout->dateIssue]);
-  //                  }
-   //             }
+                if(! $indEdit) {
+                  DB::table('product')->where('id', $val['idProduct'])->decrement('stockQty', $val['qty']);
+                }
            }
         }
         Session::forget('sessInvoOut');
@@ -75,6 +79,7 @@ class InvoiceOutController extends Controller {
                         ->with('formMethod', 'POST')
                         ->with('customer', $customer)
                         ->with('products', $products)
+                        ->with('paymentType', $this->paymentType)
                         ->with('lastNrInvoice', $lastNrInvoice + 1)
                         ->with('actInvo', 'active')
                         ->with('obj', new \App\InvoiceOut);
@@ -102,6 +107,7 @@ class InvoiceOutController extends Controller {
                         ->with('formMethod', 'PUT')
                         ->with('customer', $customer)
                         ->with('products', $products)
+                        ->with('paymentType', $this->paymentType)
                         ->with('displayCancel', 'true')
                         ->with('actInvo', 'active')
                         ->with('obj', \App\InvoiceOut::find($id));

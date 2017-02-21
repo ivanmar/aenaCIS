@@ -17,8 +17,10 @@ class InvoiceInController extends Controller {
     private function insertMainSql($id = 0) {
         if ($id > 0) {
             $invoicein = \App\InvoiceIn::find($id);
+            $indEdit=true;
         } else {
             $invoicein = new \App\InvoiceIn;
+            $indEdit=false;
         }
         
         $invoicein->nrInvoice = $this->request->input('nrInvoice');
@@ -55,6 +57,9 @@ class InvoiceInController extends Controller {
                     $invoiceinart->priceUnit = cisNumFix( $val['priceUnit'] );
                     $invoiceinart->idInvoiceIn = $invoicein->id;
                     $invoiceinart->save();
+                    if(! $indEdit) {
+                      DB::table('product')->where('id', $val['idProduct'])->increment('stockQty', $val['qty']);
+                    }
                 }
            }
         }

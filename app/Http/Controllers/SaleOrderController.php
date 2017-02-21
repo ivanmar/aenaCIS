@@ -28,7 +28,6 @@ class SaleOrderController extends Controller {
         $saleorder->shipCost = $this->request->input('shipCost');
         $saleorder->status = $this->request->input('status');
         $saleorder->orderOrigin = $this->request->input('orderOrigin');
-        $saleorder->orderPlaced = $this->request->input('orderPlaced');
         $saleorder->desc = $this->request->input('desc');
         $saleorder->save();
         
@@ -44,21 +43,33 @@ class SaleOrderController extends Controller {
                 $saleorderart->save();
             }
         }
-        Session::forget('sessDataProduct');
+        if (Session::has('sessInvoOut')) {
+            DB::table('saleOrderArt')->where('idSaleOrder',$saleorder->id)->delete();
+            $sessInvoOut = Session::get('sessInvoOut');
+            foreach( $sessInvoOut as $key => $val ) {
+                $saleorderart = new \App\SaleOrderArt;
+                $saleorderart->idProduct = $val['idProduct'];
+                $priceUnit = DB::table('product')->where('id',$val['idProduct'])->value('priceSelf');
+                $saleorderart->qty = $val['qty'];
+                $saleorderart->priceUnit = $priceUnit;
+                $saleorderart->idSaleOrder = $saleorder->id;
+                $saleorderart->save();
+           }
+        }
+        Session::forget('sessInvoOut');
         return $saleorder->id;
     }
     public function index() {
         $saleorder = \App\SaleOrder::with('company')->get();
-        Session::forget('sessDataProduct');
-        Session::forget('sessProductIn');
-        Session::forget('sessDataService');
+        Session::forget('sessInvoIn');
+        Session::forget('sessInvoOut');
         return view('saleOrder.index')
                         ->with('actSale', 'active')
                         ->with('obj', $saleorder);
     }
 
     public function create() {
-        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
+        $products = array('0' => 'izberi') + DB::table('product')->pluck('name','id')->toArray();
         $compList = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
 
         return view('saleOrder.form')
@@ -80,13 +91,14 @@ class SaleOrderController extends Controller {
     }
     
     public function edit($id) {
-        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
+        $products = DB::table('product')->pluck('name','id')->toArray();
         $compList = array('0' => 'izberi') + DB::table('company')->pluck('name','id')->toArray();
         $saleorderart = DB::table('saleOrderArt')->where('idSaleOrder',$id)->get();
+        $j=0;
         foreach($saleorderart as $key => $val) {
-            if($val->idProduct > 0){
-                Session::put('sessDataProduct', array_add($sessDataProduct = Session::get('sessDataProduct'), $val->idProduct, $val->qty));
-            }
+            $tmparr=array('qty'=>$val->qty, 'priceUnit'=>$val->priceUnit, 'idProduct'=>$val->idProduct,'idArt'=>$val->id);
+            Session::put('sessInvoOut', array_add($sessInvoOut = Session::get('sessInvoOut'),$j, $tmparr));
+            $j++;
         }
         return view('saleOrder.form')
                         ->with('formAction', 'saleorder.update')

@@ -46,18 +46,18 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-5 col-md-offset-7">
-                        <span class="btn btn-warning btn-file"> FILE upload <input name="file" type="file"> </span><br>
+                        <span class="btn btn-warning btn-file"> IMAGE <input name="file" type="file"> </span><br>
 @if(isset($file))
   <p> <a href="/public/upload/invoice/{!!$file->nameEnc !!}" target="_blank"> {!! $file->nameOrig !!} </a>  {!! $file->fileExt !!}</p>      
 @endif
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <span class="cFieldName">Izdelek</span>
                         {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
                     </div>
-                    <div class="col-md-2  col-md-offset-1">
+                    <div class="col-md-3  col-md-offset-1">
                         <span class="cFieldName">Konto</span>
                         {!! Form::select('sKonto', $konto, null, array('class' => 'form-control input-sm','id'=>'sKonto')) !!}
                     </div>
@@ -93,15 +93,18 @@
                     <div class="col-md-1">
                         <b>{!! $key + 1 !!} </b>
                     </div>
-                    <div class="col-md-3 col-md-offset-1">
+                    <div class="col-md-3">
                         <b>{!! $nameItem !!} </b>
+                    </div>
+                    <div class="col-md-1">
+                        {!! $sKonto !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol : </span>
                         {!! $qty!!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
-                        <span class="cFieldName">cena enote : </span>
+                        <span class="cFieldName">cena EN : </span>
                         {!! $priceUnit !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">

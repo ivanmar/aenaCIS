@@ -32,12 +32,22 @@
                         {!! Form::textarea('desc', $obj->desc, array('class' => 'form-control','rows'=>'5','id'=>'desc')) !!}
                     </div>
                     <div class="col-md-5 col-md-offset-2">
-                        <span class="cFieldName">Opis Interno</span>
+                        <span class="cFieldName">Opis Interno / št. MiniBlagajna</span>
                         {!! Form::textarea('descInternal', $obj->descInternal, array('class' => 'form-control','rows'=>'5','id'=>'descInternal')) !!}
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <div class="col-md-2  col-md-offset-7">
+                        <span class="cFieldName">Način plačanja</span>
+                        {!! Form::select('paymentType', $paymentType, $obj->paymentType, array('class' => 'form-control','id'=>'paymentType')) !!}
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <span class="cFieldName">Cena dostave</span>
+                        {!! Form::text('shipCost', $obj->shipCost, array('class' => 'form-control input-sm','id'=>'shipCost')) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
                         <span class="cFieldName">Izdelek</span>
                         {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
                     </div>
@@ -49,13 +59,9 @@
                         <br>
                         <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
                     </div>
-                    <div class="col-md-1 col-md-offset-5">
-                        <span class="cFieldName">Cena dostave</span>
-                        {!! Form::text('shipCost', $obj->shipCost, array('class' => 'form-control input-sm','id'=>'shipCost')) !!}
-                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <span class="cFieldName">Stavek</span>
                         {!! Form::text('nameItem', null, array('class' => 'form-control input-sm','id'=>'nameItem')) !!}
                     </div>
@@ -153,6 +159,9 @@
         
         var shipCost= sessionStorage.getItem('shipCost');
         if (shipCost !== null) $('#shipCost').val(shipCost);
+        
+        var paymentType= sessionStorage.getItem('paymentType');
+        if (paymentType !== null) $('#paymentType').val(paymentType);
     }
 
     // Before refreshing the page, save the form data to sessionStorage
@@ -162,6 +171,7 @@
         sessionStorage.setItem("dateIssue", $('#dateIssue').val());
         sessionStorage.setItem("descInternal", $('#descInternal').val());
         sessionStorage.setItem("shipCost", $('#shipCost').val());
+        sessionStorage.setItem("paymentType", $('#paymentType').val());
         sessionStorage.setItem("desc", $('#desc').val());
     }
     

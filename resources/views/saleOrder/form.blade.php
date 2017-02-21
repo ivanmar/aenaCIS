@@ -9,7 +9,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"> NAROČILO</h3>
+                <h3 class="panel-title"> NAROČILO </h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -44,8 +44,6 @@
                     <div class="col-md-2 col-md-offset-1">
                         <span class="cFieldName">Nar. prek</span>
                         {!! Form::select('orderOrigin', $orderOrigin, $obj->orderOrigin, array('class' => 'form-control input-sm','id'=>'orderOrigin')) !!} <br>
-                        <span class="cFieldName">Nar. z</span>
-                        {!! Form::text('orderPlaced', $obj->orderPlaced, array('class' => 'form-control input-sm','id'=>'orderPlaced')) !!}
                     </div>
                     <div class="col-md-5 col-md-offset-2">
                         <span class="cFieldName">Opis Naročila</span>
@@ -53,7 +51,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <span class="cFieldName">Izdelek</span>
                         {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
                     </div>
@@ -68,22 +66,27 @@
                 </div>
                 
                 <hr>
-<?php $priceTot = 0; $index=1; ?>
+<?php $priceTot = 0; ?>
                 
-@if (Session::has('sessDataProduct'))
-<?php $sessDataProduct = Session::get('sessDataProduct'); ?>
-@foreach( $sessDataProduct as $idProduct => $qty )
+@if (Session::has('sessInvoOut'))
+<?php $sessData = Session::get('sessInvoOut'); ?>
+@foreach( $sessData as $key => $val )
             
-<?php $nameProduct = DB::table('product')->where('id',$idProduct)->value('name');
-      $priceSelf = DB::table('product')->where('id',$idProduct)->value('priceSelf');
-      $priceProdTot = $priceSelf * $qty;
+<?php 
+
+        if($val['idProduct'] > 0) {
+            $priceUnit = DB::table('product')->where('id',$val['idProduct'])->value('priceSelf');
+            $nameItem = DB::table('product')->where('id',$val['idProduct'])->value('name');
+            $qty = $val['qty'];
+            $priceProdTot = $priceUnit * $qty;
+        }
 ?>
                 <div class="form-group well">
                     <div class="col-md-1">
-                        <b>{!! $index !!} </b>
+                        <b>{!! $key + 1 !!} </b>
                     </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <b>{!! $nameProduct !!} </b>
+                    <div class="col-md-4">
+                        <b>{!! $nameItem !!} </b>
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol : </span>
@@ -91,17 +94,17 @@
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">cena enote : </span>
-                        {!! $priceSelf !!}
+                        {!! $priceUnit !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">cena : </span>
                         {!! $priceProdTot !!}
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $idProduct !!}'>D</a>
+                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $key !!}'>D</a>
                     </div>
                 </div>
-                <?php $priceTot += $priceProdTot; $index++; ?>
+                <?php $priceTot += $priceProdTot; ?>
 @endforeach
 @endif
 
@@ -131,7 +134,6 @@
         var dateFor= sessionStorage.getItem('dateFor'); if (dateFor !== null) $('#dateFor').val(dateFor);
         var status= sessionStorage.getItem('status');if (status !== null) $('#status').val(status);
         var orderOrigin= sessionStorage.getItem('orderOrigin');if (orderOrigin !== null) $('#orderOrigin').val(orderOrigin);
-        var orderPlaced= sessionStorage.getItem('orderPlaced');if (orderPlaced !== null) $('#orderPlaced').val(orderPlaced);
         var desc= sessionStorage.getItem('desc');if (desc !== null) $('#desc').val(desc);
     }
 
@@ -144,7 +146,6 @@
         sessionStorage.setItem("dateFor", $('#dateFor').val());
         sessionStorage.setItem("status", $('#status').val());
         sessionStorage.setItem("orderOrigin", $('#orderOrigin').val());
-        sessionStorage.setItem("orderPlaced", $('#orderPlaced').val());
         sessionStorage.setItem("desc", $('#desc').val());
     }
     
@@ -154,7 +155,7 @@ $('#addProduct').click(function (e) {
     var idProduct = $('#idProduct').val();
     if(idProduct > 0) {
     $.ajax({type: "POST",
-        url: "/js/addsessproduct",
+        url: "/js/addsessinvoout",
         data: {
             idProduct: idProduct,
             qty: $('#qtyProduct').val(),
@@ -170,9 +171,9 @@ $('#addProduct').click(function (e) {
 
 $('.delProduct').click(function() {
     $.ajax({type: "POST",
-        url: "/js/delsessproduct",
+        url: "/js/delsessinvoout",
         data: {
-            idProduct: this.id.substring(1),
+            index: this.id.substring(1),
             _token: $('input[name=_token]').val()
         },
         success: function (data) { location.reload(); }

@@ -19,7 +19,8 @@
             <td>naziv</td>
             <td>koda naša</td>
             <td>koda proiz</td>
-            <td>cena naša</td>
+            <td>cena prod</td>
+            <td>zaloga</td>
             <td>grupa</td>
             <td>proizvajalec</td>
             <td width="70"></td>
@@ -33,6 +34,7 @@
             <td>{!! $value->codeSelf !!}</td>
             <td>{!! $value->codeManufact !!}</td>
             <td>{!! $value->priceSelf !!}</td>
+            <td>{!! $value->stockQty !!}</td>
             <td>{!! $value->gname !!} </td>
             <td>{!! $value->mname !!}</td>
             <td>

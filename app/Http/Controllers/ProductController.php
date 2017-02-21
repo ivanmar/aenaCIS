@@ -24,6 +24,7 @@ class ProductController extends Controller {
         $product->codeSelf = $this->request->input('codeSelf');
         $product->priceSelf = $this->request->input('priceSelf');
         $product->oemCodes = $this->request->input('oemCodes');
+        $product->stockQty = $this->request->input('stockQty');
         $product->note = $this->request->input('note');
         $product->save();
         
@@ -48,7 +49,7 @@ class ProductController extends Controller {
         $idProG = $this->request->input('idProductGroup');
 
         $q = DB::table('product')
-                ->select('product.id', 'product.name', 'product.priceSelf', 'product.codeManufact','product.codeSelf','product.note',
+                ->select('product.id', 'product.name', 'product.priceSelf', 'product.codeManufact','product.codeSelf','product.stockQty','product.note',
                          'manufacturer.name as mname','productgroup.name as gname')
                 ->leftJoin('manufacturer', 'product.idManufacturer', '=', 'manufacturer.id')
                 ->leftJoin('productgroup', 'product.idProductGroup', '=', 'productgroup.id');
