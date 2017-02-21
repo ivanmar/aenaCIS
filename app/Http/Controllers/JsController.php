@@ -63,12 +63,15 @@ class JsController extends Controller {
         $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit, 'nameItem'=>$nameItem, 'idProduct'=>$idProduct);
         Session::put('sessInvoOut', array_add($sessInvoOut = Session::get('sessInvoOut'),$index, $tmparr));
     }
-    public function addSessProductIn () {
+    public function addSessInvoIn () {
+        $sessData=Session::get('sessInvoIn');
+        $index=count($sessData);
         $idProduct = $this->request->input('idProduct');
+        $sKonto = $this->request->input('sKonto');
         $qty = $this->request->input('qty');
         $priceUnit = $this->request->input('priceUnit');
-        $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit);
-        Session::put('sessProductIn', array_add($sessProductIn = Session::get('sessProductIn'), $idProduct, $tmparr));
+        $tmparr=array('qty'=>$qty, 'priceUnit'=>$priceUnit, 'sKonto'=>$sKonto, 'idProduct'=>$idProduct);
+        Session::put('sessInvoIn', array_add($sessInvoIn = Session::get('sessInvoIn'),$index, $tmparr));
     }
     public function delSessInvoOut () {
         $index = $this->request->input('index');
@@ -80,10 +83,15 @@ class JsController extends Controller {
         $newSessData = array_values($sessData);
         Session::put('sessInvoOut', $newSessData);
     }
-    public function delSessProductIn () {
-        $idProduct = $this->request->input('idProduct');
-        DB::table('invoiceInArt')->where('idProduct',$idProduct)->delete();
-        Session::forget('sessProductIn.' . $idProduct );
+    public function delSessInvoIn () {
+        $index = $this->request->input('index');
+        $sessData=Session::get('sessInvoIn');
+        if(isset($sessData[$index]['idArt'])) {
+            DB::table('invoiceInArt')->where('id',$sessData[$index]['idArt'])->delete();
+        }
+        unset($sessData[$index]);
+        $newSessData = array_values($sessData);
+        Session::put('sessInvoIn', $newSessData);
     }
 
 }

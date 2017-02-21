@@ -23,9 +23,9 @@ Route::post('/js/addcomment', array('as'=>'js.addcomment','uses' => 'JsControlle
 Route::post('/js/addtask', array('as'=>'js.addtask','uses' => 'JsController@addTask'));
 
 Route::post('/js/addsessinvoout', array('as'=>'js.addsessinvoout','uses' => 'JsController@addSessInvoOut'));
-Route::post('/js/addsessproductin', array('as'=>'js.addsessproductin','uses' => 'JsController@addSessProductIn'));
+Route::post('/js/addsessinvoin', array('as'=>'js.addsessinvoin','uses' => 'JsController@addSessInvoIn'));
 Route::post('/js/delsessinvoout', array('as'=>'js.delsessinvoout','uses' => 'JsController@delSessInvoOut'));
-Route::post('/js/delsessproductin', array('as'=>'js.delsessproductin','uses' => 'JsController@delSessProductIn'));
+Route::post('/js/delsessinvoin', array('as'=>'js.delsessinvoin','uses' => 'JsController@delSessInvoIn'));
 
 Route::get('/company/{id}/destroy', 'CompanyController@destroy');
 Route::resource('company', 'CompanyController');

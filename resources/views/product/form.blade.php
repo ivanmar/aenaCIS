@@ -21,8 +21,8 @@
                         {!! Form::text('codeSelf', $obj->codeSelf, array('class' => 'form-control input-sm')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-1">
-                        <span class="cFieldName"> koda dob</span>
-                        {!! Form::text('codeVendor', $obj->codeVendor, array('class' => 'form-control input-sm')) !!}
+                        <span class="cFieldName"> koda proiz</span>
+                        {!! Form::text('codeManufact', $obj->codeManufact, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -31,26 +31,18 @@
                         {!! Form::select('idProductGroup', $grList, $obj->idProductGroup, array('class' => 'form-control input-sm')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-1">
-                        <span class="cFieldName">dobavitelj</span>
-                        {!! Form::select('idCompany', $compList, $obj->idCompany, array('class' => 'form-control input-sm')) !!}
+                        <span class="cFieldName">proizvajalec</span>
+                        {!! Form::select('idManufacturer', $manuList, $obj->idManufacturer, array('class' => 'form-control input-sm')) !!}
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
-                        <span class="cFieldName">cena nabave</span>
-                        {!! Form::text('priceVendor', $obj->priceVendor, array('class' => 'form-control input-sm')) !!}
-                    </div>
-                    <div class="col-md-2 col-md-offset-1">
+                    <div class="col-md-2 col-md-offset-5">
                         <span class="cFieldName">cena naša</span>
                         {!! Form::text('priceSelf', $obj->priceSelf, array('class' => 'form-control input-sm')) !!}
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <div class="col-md-5">
 
-                    </div>
-                    <div class="col-md-2 col-md-offset-1">
-                        <span class="cFieldName">proizvajalec</span>
-                        {!! Form::select('idManufacturer', $manuList, $obj->idManufacturer, array('class' => 'form-control input-sm')) !!}
                     </div>
                     <div class="col-md-5  col-md-offset-2">
                   <span class="btn btn-warning btn-file"> IMAGE upload <input name="image" type="file"> </span>

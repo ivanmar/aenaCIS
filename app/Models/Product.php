@@ -9,8 +9,8 @@ class Product extends Eloquent
     protected $table = 'product';
     public $timestamps = false;
     
-    public function company() {
-        return $this->hasOne('App\Company', 'id', 'idCompany');
+    public function manufacturer() {
+        return $this->hasOne('App\Manufacturer', 'id', 'idManufacturer');
     }
     public function productgroup() {
         return $this->hasOne('App\ProductGroup', 'id', 'idProductGroup');

@@ -45,9 +45,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="col-md-5 col-md-offset-7">
+                        <span class="btn btn-warning btn-file"> FILE upload <input name="file" type="file"> </span><br>
+@if(isset($file))
+  <p> <a href="/public/upload/invoice/{!!$file->nameEnc !!}" target="_blank"> {!! $file->nameOrig !!} </a>  {!! $file->fileExt !!}</p>      
+@endif
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-md-2">
                         <span class="cFieldName">Izdelek</span>
                         {!! Form::select('idProduct', $products, null, array('class' => 'form-control input-sm','id'=>'idProduct')) !!}
+                    </div>
+                    <div class="col-md-2  col-md-offset-1">
+                        <span class="cFieldName">Konto</span>
+                        {!! Form::select('sKonto', $konto, null, array('class' => 'form-control input-sm','id'=>'sKonto')) !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol</span>
@@ -61,36 +73,28 @@
                         <br>
                         <button class="btn btn-sm btn-primary" id="addProduct"> Dodaj</button>
                     </div>
-                    <div class="col-md-5 col-md-offset-1">
-                        <span class="btn btn-warning btn-file"> FILE 1 upload <input name="file[]" type="file"> </span>
-                        <span class="btn btn-warning btn-file"> FILE 2 upload <input name="file[]" type="file"> </span> <br>
-@if(isset($files))
-  @foreach($files as $file)
-  <p> <a href="/public/upload/invoice/{!!$file->nameEnc !!}" target="_blank"> {!! $file->nameOrig !!} </a>  {!! $file->fileExt !!}</p>      
-  @endforeach
-@endif
-                    </div>
                 </div>
 
                 
                 <hr>
-<?php $priceTot = 0; $index=1; ?>
+<?php $priceTot = 0;?>
                 
-@if (Session::has('sessProductIn'))
-<?php $sessProductIn = Session::get('sessProductIn'); ?>
-@foreach( $sessProductIn as $idProduct => $key )
+@if (Session::has('sessInvoIn'))
+<?php $sessData = Session::get('sessInvoIn'); ?>
+@foreach( $sessData as $key => $val )
             
-<?php $nameProduct = DB::table('product')->where('id',$idProduct)->value('name');
-      $qty = $key['qty'];
-      $priceUnit = $key['priceUnit'];
+<?php $nameItem = DB::table('product')->where('id',$val['idProduct'])->value('name');
+      $qty = $val['qty'];
+      $priceUnit = $val['priceUnit'];
+      $sKonto = $val['sKonto'];
       $priceProdTot = $priceUnit * $qty;
 ?>
                 <div class="form-group well">
                     <div class="col-md-1">
-                        <b>{!! $index !!} </b>
+                        <b>{!! $key + 1 !!} </b>
                     </div>
                     <div class="col-md-3 col-md-offset-1">
-                        <b>{!! $nameProduct !!} </b>
+                        <b>{!! $nameItem !!} </b>
                     </div>
                     <div class="col-md-1 col-md-offset-1">
                         <span class="cFieldName">kol : </span>
@@ -105,10 +109,10 @@
                         {!! $priceProdTot !!}
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $idProduct !!}'>D</a>
+                        <a class="btn btn-xs btn-danger delProduct" id='p{!! $key !!}'>D</a>
                     </div>
                 </div>
-                <?php $priceTot += $priceProdTot; $index++; ?>
+                <?php $priceTot += $priceProdTot;?>
 @endforeach
 @endif
 
@@ -161,15 +165,17 @@
     }
     
 $(".dateSel").datepicker({dateFormat: 'yy-mm-dd'});
+
 $('#addProduct').click(function (e) {
     e.preventDefault();
     var idProduct = $('#idProduct').val();
     if(idProduct > 0) {
     $.ajax({type: "POST",
-        url: "/js/addsessproductin",
+        url: "/js/addsessinvoin",
         data: {
             idProduct: idProduct,
             qty: $('#qty').val(),
+            sKonto: $('#sKonto').val(),
             priceUnit: $('#priceUnit').val(),
             _token: $('input[name=_token]').val()
         },
@@ -185,9 +191,9 @@ $('#addProduct').click(function (e) {
 
 $('.delProduct').click(function() {
     $.ajax({type: "POST",
-        url: "/js/delsessproductin",
+        url: "/js/delsessinvoin",
         data: {
-            idProduct: this.id.substring(1),
+            index: this.id.substring(1),
             _token: $('input[name=_token]').val()
         },
         success: function (data) { location.reload(); }

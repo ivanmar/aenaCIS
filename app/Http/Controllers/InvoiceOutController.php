@@ -44,15 +44,13 @@ class InvoiceOutController extends Controller {
                 $invoiceoutart->idInvoiceOut = $invoiceout->id;
                 $invoiceoutart->save();
                 
-                
-                for($i=0; $i< $val['qty']; $i++) {
-                    $row0 = DB::table('productInOut')->where('idProduct',$val['idProduct'])->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
-                    
-                    if($row0) {
-                        DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $invoiceoutart->id, 'dateOut'=>$invoiceout->dateIssue]);
-                    }
-                }
-            }
+ //               for($i=0; $i< $val['qty']; $i++) {
+ //                   $row0 = DB::table('productInOut')->where('idProduct',$val['idProduct'])->whereNull('idInvoiceOutArt')->orderBy('dateIn')->first();
+//                    if($row0) {
+ //                       DB::table('productInOut')->where('id',$row0->id)->update(['idInvoiceOutArt' => $invoiceoutart->id, 'dateOut'=>$invoiceout->dateIssue]);
+  //                  }
+   //             }
+           }
         }
         Session::forget('sessInvoOut');
 
@@ -137,10 +135,10 @@ class InvoiceOutController extends Controller {
     }
     
     public function destroy($id) {
-        $getValArt=DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
-        foreach($getValArt as $valart){
-            DB::table('productInOut')->where('idInvoiceOutArt',$valart->id)->update(['idInvoiceOutArt' => null, 'dateOut'=>null ]);
-        }
+ //       $getValArt=DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
+ //       foreach($getValArt as $valart){
+ //           DB::table('productInOut')->where('idInvoiceOutArt',$valart->id)->update(['idInvoiceOutArt' => null, 'dateOut'=>null ]);
+ //       }
         DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->delete();
         DB::table('invoiceOut')->where('id',$id)->delete();
         

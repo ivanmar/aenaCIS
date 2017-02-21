@@ -1,0 +1,1068 @@
+0,DOLGOROčNA SREDSTVA
+00,NEOPREDMETENA SREDSTVA IN DOLGOROČNE AKTIVNE ČASOVNE RAZMEJITVE 
+000,DOBRO IME
+001,DOLGOROčNO ODLOŽENI STROŠKI POSLOVANJA
+001000,Dolgoročno vračunljivi stroški (dolg.najem)
+002,DOLGOROčNO ODLOŽENI STROŠKI RAZVIJANJA
+002000,Dolgoročno odloženi stroški razvijanja
+003,DOLGOROčNE PREMOŽENJSKE PRAVICE
+003000,Dolgoročne premoženjske pravice
+003100,Dolgoročne premož.pravice - materialne pravice
+003200,Dolgoročne premož.pravice - računalniški programi
+003300,"Dolgoročne premož.pravice - licence, koncesije"
+003400,Dolgoročne premož.pravice - vlaganje v tuja osn.sredstva
+005,DRUGA NEOPREDMETENA DOLGOROčNA SREDSTVA TUDI EMISIJSKI KUPONI
+005000,"Druga neopredmetena dolgoročna sredstva, tudi emisijski kuponi"
+007,NEOPREDMETENA DOLGOROčNA SREDSTVA V GRADNJI OZIROMA IZDELAVI
+007000,Neopredmetena dolgoročna sredstva v gradnji oziroma izdelavi
+008,POPRAVEK VREDNOSTI NEOPREDMETENIH SREDSTEV ZARADI AMORTIZI.
+008000,Popravek vredsnosti neopredmetenih sredstev zaradi amortiziranja
+009,OSLABITEV VREDNOSTI NEOPREDMETENIH SREDSTEV
+009000,Oslabitev vrednosti neopredmetenih osnovnih sredstev
+01,NALOŽBENE NEPREMIČNINE V GRADNJI OZIROMA IZDELAVI
+010,POPRAVEK VREDNOSTI DOBREGA IMENA
+010000,Popravek vrednosti dobrega imena
+011,POPRAVEK VREDNOSTI DOLGOROčNO ODLOŽENIH STROŠKOV POSLOVANJA
+011000,Popravek vrednosti dolgoročno odloženih stroškov poslovanja
+012,POPRAVEK VREDNOSTI DOLGOROčNO ODLOŽENIH STROŠKOV RAZVIJANJA
+012000,Popravek vrednosti dolgoročno odloženih stroškov razvijanja
+013,POPRAVEK VREDNOSTI DOLGOROčNIH PREMOŽENJSKIH PRAVIC
+013000,Popravek vrednosti dolgoročnih premoženjskih pravic
+013100,Popravek vrednosti materialnih pravic
+013200,Popravek vrednosti računalniških programov
+015,POPRAVEK VREDNOSTI DRUGIH NEOPREDMETENIH DOLGOROčNIH SREDS.
+015000,Popravek vrednosti drugih neopredmetenih dolgoročnih sreds.
+015400,Popravek vrednosti vlaganj v tuja osnovna sredstva
+017,NALOŽBENE NEPREMIČNINE V GRADNJI OZIROMA IZDELAVI
+017000,Naložbene nepremičnine v gradnji oz. Izdelavi
+019,OSLABITEV VREDNOSTI NALOŽBENIH NEPREMIčNIN
+019000,Oslabitev vrednosti naložbenih nepremičnin
+02,NEPREMIČNINE
+020,ZEMLJIŠŠA
+020000,Zemljišča - nabavna vrednost
+020100,Zemljišča - prevrednotenje zaradi okrepitve
+020200,Zemljišča - prevrednotenje zaradi oslabitve
+021,ZGRADBE
+021000,Zgradbe - nabavna vrednost
+021100,Zgradbe - prevrednotenje zaradi okrepitve
+021200,Zgradbe - prevrednotenje zaradi oslabitve
+021300,Vlaganja v tuja osnovna sredstva
+022,ZEMLJIŠčA VREDNOTENA PO MODELU REVALORIZIRANJA
+022000,Zemljišča vrednotena po modelu revaloriziranja
+023,ZGRADBE VREDNOTENE PO MODELU REVALORIZIRANJA
+023000,Zgradbe vrednotena po modelu revaloriziranja
+026,VLAGANJA V NEPREMIČNINE V TUJI LASTI
+026000,Vlaganja v nepremičnine v tuji lasti
+027,NEPREMIčNINE V GRADNJI OZIROMA IZDELAVI
+027000,Nepremičnine v gradnji oziroma izdelavi
+03,POPRAVEK IN OSLABITEV VREDNOSTI NEPREMIČNIN
+031,ZGRADBE - POPRAVEK VREDNOSTI
+031000,Zgradbe - popravek vrednosti zaradi amortizacije
+031100,Zgradbe - popravek vrednosti zaradi okrepitve
+031200,Zgradbe - popravek vrednosti zaradi oslabitve
+032,"POPRAVEK VREDNOSTI ZEMLJIŠČ (kamnolomov, odlagališč odpadkov) zaradi amortiziranja"
+035,POPRAVEK VREDNOSTI ZGRADB ZARADI AMORTIZIRANJA
+036,POPRAVEK VREDNOSTI VLAGANJ V NEPREMIČNINE V TUJI LASTI
+039,OSLABITEV VREDNOSTI ZGRADB
+04,OPREMA IN DRUGA OPREDMETENA OSNOVNA SREDSTVA
+040,OPREMA IN NADOMESTNI DELI
+040000,Oprema in nadomestni deli - nabavna vrednost
+040010,Oprema in nadomestni deli - dokapitalizacija
+040100,Oprema in nadomestni deli - prevrednotenje zaradi okrepitve
+040200,Oprema in nadomestni deli - prevrednotenje zaradi oslabitve
+041,DROBNI INVENTAR
+041000,Drobni inventar
+043,BIOLOŠKA SREDSTVA – VEČLETNI NASADI
+044,BIOLOŠKA SREDSTVA - OSNOVNA ČREDA
+045,DRUGA OPREDMETENA OSNOVNA SREDSTVA
+045000,Druga opredmetena osnovna sredstva
+046,VLAGANJA V OPREDMETENA OSNOVNA SREDSTVA V TUJI LASTI
+046000,Vlaganja v opredmetena osnovna sredstva  v tuji lasti
+047,OPREMA IN DRUGA OPREDMETENA OSN. SREDSTVA V GRADNJI/IZDELAVI
+047000,Oprema in druga opredmetena osn. sredstva v gradnji/izdelavi
+048,"UMETNIŠKA DELA IN DRUGI PREDMETI KULTURE IN/ALI ZGODOVINSKE VREDNOSTI, KI SE NE AMORTIZIRAJO"
+05,POPRAVEK IN OSLABITEV VREDNOSTI OPREME IN DRUGIH OPREDMETENIH OSN.SRED.
+050,POPRAVEK VREDNOSTI OPREME IN NADOMESTNIH DELOV
+050000,Oprema in nadomestni deli - popravek vrednosti amortizacija
+050010,Oprema in nadomestni deli - popravek vrednosti dokapitaliz.
+050100,Oprema in nadomestni deli - popravek vrednosti okrepitev
+050200,Oprema in nadomestni deli - popravek vrednosti oslabitev
+051,POPRAVEK VREDNOSTI DROBNEGA INVENTARJA
+051000,Popravek vrednosti drobnega inventarja
+052,OSLABITEV VREDNOSTI OPREME IN NADOMESTNIH DELOV
+053,POPRAVEK VREDNOSTI  BIOLOŠKIH SREDSTEV - VEČLETNIH NASADOV ZARADI AMORTIZIRANJA
+053000,Popravek vrednosti večletnih nasadov
+054,POPRAVEK VREDNOSTI BIOLOŠKIH SREDSTEV - OSNOVNE ČREDE ZARADI AMORTIZIRANJA
+054000,Popravek vrednosti osnovne črede
+055,POPRAVEK VREDNOSTI DRUGIH OPREDMETENIH OSNOVNIH SREDSTEV ZARADI AMORTIZIRANJA
+055000,Popravek vrednosti drugih opredmetenih osnovnih sredstev
+056,POPRAVEK VREDNOSTI VLAGANJ V OPREDMETENA OSNOVNA SREDSTVA V TUJI LASTI
+058,OSLABITEV VREDNOSTI BIOLOŠKIH SREDSTEV
+059,POPRAVEK VREDNOSTI OPREME IN DRUGIH OS 
+059000,Popravek vrednosti opreme in drugih OS
+06,"DOLGOROčNE FINANčNE NALOŽBE, RAZEN POSOJIL"
+060,"DOLGOROČNOE FINANČNE NALOŽBE V DELNICE IN DELEŽE ORGANIZACIJ V SKUPINI, RAPOREJENE IN IZMERJENE PO NABAVNI VREDNOSTI"
+063,"DOLGOROČNE FINANČNE NALOŽBE V DELNICE IN DELEŽE PRIDRUŽENIH ORGANIZACIJ IN SKUPAJ OBVLADUJOČIH ORGANIZACIJ, RAZPOREJENE IN IZMERJENE PO NABAVNI VREDNOSTI"
+066,"DRUGE DOLGOROčNE FINANčNE NALOŽBE , RAZPOREJENE IN IZMERJENE PO NABAVNI VREDNOSTI"
+067,"DRUGE DOL.FIN.NAL., POSL.IZID"
+068,FRUGE DOLG. FINANČNE NALOŽBE PREK KAPITALA OZ. LASTNEGA VIRA SREDSTEV
+068000,popravek vrednosti dolg.fin.naložb v kapital - okrepitev
+069,OSLABITEV VREDNOSTI DOLGOROČNIH FINANČNIH NALOŽB
+07,DOLGOROČNO DANA POSOJILA IN TERJATVE ZA NEVPLAANI VPOKLICAN KAPITAL
+070,"DOLGOROČNA POSOJILA , DANA NA PODLAGI POSOJILNIH POGODB ORGANIZACIJAM V SKUPINI, VKLJUČNO Z DOLG. TERJATVAMI IZ FINANČNEGA NAJEMA"
+070000,"Dolgoročna posojila podjetjem v skupini, vključno z dolgoročnimi terjatvami iz finančnega najema"
+071,"DOLGOROčNA POSOJILA ORGANIZACIJAM, VKLJUčNO Z DOLGOROčNIMI TERJATVAMI IZ FINANčNEGA NAJEMA"
+071000,"Dolgoročna posojilaorganizacijam, vključno z dolgoročnimi terjatvami iz finančnega najema"
+072,"Dolgoročna posojila dana drugim, vključno z dolgoročnimi terjatvami iz finančnega najema"
+072000,"Dolgoročna posojila dana drugim, vključno z dolgoročnimi terjatvami iz finančnega najema"
+073,DOLG. DANA POSOJILA Z ODKUPOM OBVEZNIC OD PODJETIJ V SKUPINI
+073000,Dolg. dana posojila z odkupom obveznic od podjetij v skupini
+074,DOLG. DANA POSOJILA Z ODKUPOM OBVEZNIC OD PRIDRUŽENIH ORGANIZACIJ IN SKUPAJ OBVLADAJOČIH ORGANIZACIJ
+074000,DOLG. DANA POSOJILA Z ODKUPOM OBVEZNIC OD PRIDRUŽENIH ORGANIZACIJ IN SKUPAJ OBVLADAJOČIH ORGANIZACIJ
+075,DOLG. DANA POSOJILA Z ODKUPOM OBVEZNIC DRUGIH 
+075000,Dolg. dana posojila z odkupom obveznic drugih 
+076,DOLGOROčNE TERJATVE ZA NEVPLAČANI VPOKLICANI KAPITAL
+076000,Dolgoročne terjatve za nevplačani vpoklicani kapital
+077,DRUGA DOLGOROČNO VLOŽENA SREDSTVA
+077000,Druga dolgoročno vložena sredstva
+078,DANI DOLGOROČNI DEPOZITI
+078000,Dolgoročni dani depoziti
+079,OSLABITEV VREDNOSTI DOLGOROčNIH DANIH POSOJIL 
+079000,Popravek vrednosti dolgoročnih danih posojil - oslabitev
+08,DOLGOROČNE POSLOVNE TERJATVE
+080,"DOLGOROčNI BLAGOVNI KREDITI, DANI V DRŽAVI"
+080000,"Dolgoročni blagovni krediti, dani v državi"
+081,"DOLGOROčNI BLAGOVNI KREDITI, DANI V TUJINI"
+081000,"Dolgoročni blagovni krediti, dani v tujini"
+082,DOLGOROčNI DANI POTROŠNIŠKI KREDITI
+082000,Dolgoročni dani potrošniški krediti
+083,DOLGOROčNO DANI PREDUJMI 
+083000,Dolgoročno dani predujmi (za več kot 1 leto)
+084,Dolgoročno dane varščine
+084000,Dolgoročno dane varščine
+086,DRUGE DOLGOROčNE TERJATVE IZ POSLOVANJA
+086000,Druge dolgoročne terjatve iz poslovanja
+089,OSLABITEV VREDNOSTI DOLG. POSLOVNIH TERJATEV
+089000,Popravek vrednosti dolg. terjatev iz poslovanja - oslabitev
+09,ODLOŽENE TERJATVE ZA DAVEK
+090,TERJATVE ZA ODLOŽENI DAVEK IZ ODBITNIH ZAČASNIH RAZLIK
+091,"ODLOŽENE TERJATVE ZA DAVEK IZ NEIRABLJENIH DAVČNIH IZGUB, PRENESENIH V NASLEDNJA DAVČNA OBDOBJA"
+092,"ODLOŽENE TERJATVE ZA DAVEK IZ DAVČNIH DOBROPISOV, PRENESENIH V NASLEDNJA DAVČNA OBDOBJA"
+1,"KRATKOROčNA SREDSTVA, RAZEN ZALOG IN AČR"
+10,DENARNA SREDSTVA V BLAGAJNI IN TAKOJ UNOVčLJIVE VREDNOSTNICE
+100,DENARNA SREDSTVA V BLAGAJNI
+100000,DENARNA SREDSTVA V BLAGAJNI
+101,DEVIZNA SREDSTVA V BLAGAJNI
+101000,Devizna sredstva v blagajni
+102,IZDANI čEKI (ODBITNA POSTAVKA)
+102000,Izdani čeki (odbitna postavka)
+103,PREJETI čEKI
+103000,Prejeti čeki
+104,NETVEGANI TAKOJ UNOVČLJIVE VREDNOSTNICE
+104000,NETVEGANI TAKOJ UNOVČLJIVE VREDNOSTNICE
+109,DENAR NA POTI
+109000,Denar na poti
+11,DOBROIMETJE PRI BANKAH IN DRUGIH FINANčNIH INŠTITUCIJAH
+110,DENARNA SREDSTVA NA RAČUNIH
+110000,Denarna sredstva na računu Probanka
+110200,Prehodni konto za nerazporejena plačila
+110900,Prehodni konto
+111,"KRATKOROČNI DEPOZITI NA ODPOKLIC, TAZEN DEVIZNIH"
+111000,Kratkoročnii depoziti na odpoklic
+112,DEVIZNA SREDSTVA NA RAčUNIH
+112000,Devizni sredstva na računih
+113,DEVIZNI DEPOZITI NA ODPOKLIC
+113000,Devizni depoziti na odpoklic
+114,DENARNA SREDSTVA NA POSEBNIH RAčUNIH OZIROMA ZA POS. NAMENE
+114000,Denarna sredstva na posebnih računih oziroma za pos. namene
+114001,Druga denarna sredstva - BONI
+12,KRATKOROčNE TERJATVE DO KUPCEV
+120,KRATKOROčNE TERJATVE DO KUPCEV V DRŽAVI
+120000,Kratkoročne terjatve do kupcev v državi
+120900,Sporne in dvomljive terjatve
+121,KRATKOROčNE TERJATVE DO KUPCEV V TUJINI
+121000,Kratkoročne terjatve do kupcev v tujini
+122,"KRATKOROčNI BLAGOVNI KREDITI, DANI KUPCEM V DRŽAVI"
+122000,"Kratkoročni blagovni krediti, dani kupcem v državi"
+123,"KRATKOROčNI BLAGOVNI KREDITI, DANI KUPCEM V TUJINI"
+123000,"Kratkoročni blagovni krediti, dani kupcem v tujini"
+124,"KRATKOROčNI POTROŠNIŠKI KREDITI, DANI KUPCEM V DRŽAVI"
+124000,"Kratkoročni potrošniški krediti, dani kupcem v državi"
+125,KRATKOROČNE TERJATVE DO ČLANOV
+126 ,KRATKOROČNE TERJATVE ZA NERAČUNANO BLAGO IN STORITVE
+129,OSLABITEV VREDNOSTI KRATK. TERJATEV DO KUPCEV - OSLABITEV
+129000,Oslabitev  vrednosti kratk. terjatev do kupcev - oslabitev
+13,KRATKOROčNI DANI PREDUJMI IN VARŠčINE
+130,"KRATKOROčNI PREDUJMI, DANI ZA OPREDMETENA OSNOVNA SREDSTVA"
+130000,"Kratkoročni predujmi, dani za obratna sredstva"
+130200,"Kratkoročni predujmi, dani za opremo"
+131,"KRATKOROčNI PREDUJMI, DANI ZA NEOPREDMETENA OSNOVNA SREDSTVA"
+131000,"Kratkoročni predujmi, dani za neopredmetena dolgoročna sred."
+132,"KRATKOROčNI PREDUJMI, DANI ZA ZALOGE MATERIALA IN STORITVE"
+132000,"Kratkoročni predujmi, dani za zaloge materiala in storitve"
+132100,"Kratkoročni predujmi, dani za zaloge domačim dobaviteljem"
+132200,"Kratkoročni predujmi, dani za zaloge tujim dobaviteljem"
+133,DRUGI KRATKOROčNI DANI PREDUJMI IN PREPLAČILA
+133000,Drugi kratkoročni dani predujmi in preplačila
+134,KRATKOROčNE DANE VARŠčINE
+134000,Kratkoročne dane varščine
+139,OSLABITEV VREDNOSTI KRAT.DANIH PREDUJMOV IN VARŠčIN-OSLABITEV
+139000,OSLABITEV VREDNOSTI KRAT.DANIH PREDUJMOV IN VARŠčIN-OSLABITEV
+14,KRATKOROčNE TERJATVE IZ POSLOVANJA ZA TUJ RAčUN
+140,KRATKOROčNE TERJATVE DO IZVOZNIKOV
+140000,Kratkoročne terjatve do izvoznikov
+141,KRATKOROčNE TERJATVE IZ UVOZA ZA TUJ RAčUN
+141000,Kratkoročne terjatve iz uvoza za tuj račun
+142,KRATKOROčNE TERJATVE IZ KOMISIJSKE IN KONSIGNACIJSKE PRODAJE
+142000,Kratkoročne terjatve iz komisijske in konsignacijske prodaje
+145,DRUGE KRATKOROčNE TERJATVE IZ POSLOVANJA ZA TUJ RAčUN
+145000,Druge kratkoročne terjatve iz poslovanja za tuj račun
+149,OSLABITEV VREDNOSTI KRAT.TERJ. IZ POS.ZA TUJ RAč.-OSLABITEV
+149000,OSLABITEV VREDNOSTI KRAT.TERJ. IZ POS.ZA TUJ RAč.-OSLABITEV
+15,"KRATKOROčNE TERJATVE, POVEZANE S FINANčNIMI PRIHODKI"
+150,KRATKOROčNE TERJATVE ZA OBRESTI
+150000,Kratkoročne terjatve za obresti po depozitu
+150002,Terjatve za obresti od kratkoročnih posojil
+151,KRATKOROčNE TERJATVE IZ NASLOVA DIVIDEND
+151000,Kratkoročne terjatve iz naslova dividend
+152,KRATKOROčNE TERJATVE IZ NASLOVA DRUGIH DELEŽEV V DOBIčKU
+152000,Kratkoročne terjatve iz naslova drugih deležev v dobičku
+155,"DRUGE KRATKOROčNE TERJATVE, POVEZANE S FINANčNIMI PRIHODKI"
+155000,"Druge kratkoročne terjatve, povezane s finančnimi prihodki"
+159,OSLABITEV VREDNOSTI KRAT.TERJATEV IZ FIN.PRIH.-OSLABITEV
+159000,OSLABITEV VREDNOSTI KRAT.TERJATEV IZ FIN.PRIH.-OSLABITEV
+16,DRUGE KRATKOROčNE TERJATVE
+160,KRATKOROČNE TERJATVE ZA VSTOPNI DDV
+160000,Terjatve za vstopni DDV
+160010,DDV po osnovni stopnji
+160011,Terjatve za preveč plačan davek od dobička
+160020,DDV po znižani stopnji
+160090,DDV po pavšalni stopnji
+160100,Terjatve za preveč plačane  prispevke plače
+160110,DDV po osnovni stopnji od predplačil
+160120,DDV po znižani stopnji od predplačil
+160200,Terjatve do ZZZS – boleznine in nege
+160210,"DDV po osnovni stopnji, ki se ne refundira"
+160220,"DDV po znižani stopnji, ki se ne refundira"
+160300,Terjatve do minist.za obrambo-orožne vaje
+160310,DDV po osnovni stopnji še nepriznan
+160320,DDV po znižani stopnji še nepriznan
+160390,DDV po pavšalni stopnji  še nepriznan
+160410,DDV iz EU po osnovni stopnji
+160420,DDV iz EU po znižani stopnji
+160450,DDV od nerezidentov po osnovni stopnji
+160460,DDV od nerezidentov po znižani stopnji
+160470,DDV iz EU po osnovni stopnji še nepriznan
+160480,DDV iz EU po znižani stopnji še nepriznan
+160500,Terjatve do države za DDV fiz.oseb
+160600,Terjatev za preveč plačan davek od dobička
+160700,Terjatev za vračilo razlike med vstopnim in obrač.DDV
+160800,Terjatev za vračilo DDV po obračunu
+160810,Terjatev za preveč plačan DDV
+160900,Terjatev za trošarino
+161," KRATKOROčNE TERJATVE ZA DAVEK OD DOHODKOV PRAVNIH OSEB, VKLJUČNO Z DAVKOM PLAČANIM V TUJINI"
+161000,Akontacija davka od dobička
+161500,Terjatve do sklada za izobraževanje delavcev
+162,"KRATKOROČNE   TERJATVE ZA DOHODNINO OD DOHODKA IZ DEJAVNOSTI S.P., VKLJUČNO Z DAVKOM PLAČANIM V TUJINI"
+164,DRUGE KRATKOROČNE TERJATVE DO DRŽAVNIH INŠTITUCIJ
+164000,Terjatve za refundacije
+165,OSTALE KRATKOROčNE TERJATVE
+165000,Ostale kratkoročne terjatve
+16501,Terjatve do zaposlenih iz naslova predujmov za potne stroške
+165100,Ostale kratkoročne terjatve - čeki
+165200,Ostale kratkoročne terjatve - kartice
+165300,Ostale kratkoročne terjatve do delavcev (tudi pot.stroški)
+165400,Ostale kratkoročne terjatve do lastnika
+165500,Ostale kratkoročne terjatve iz poslovanja
+165700,Terjatve iz naslova CESIJ
+165800,Terjatve iz naslova ASIGNACIJ
+166,"TERJATVE ZA DDV, VRNJEN TUJCEM"
+166000,"Terjatve za DDV, vrnjen tujcem"
+167,"KRATKOROčNE TERJATVE ZA DDV, PLAČAN V TUJINI"
+169,OSLABITEV VREDNOSTI DRUGIH KRATKOROčNIH TERJATEV
+169000,Oslabitev vrednosti drugih kratkoročnih terjatev 
+17,"KRATKOROčNE FINANčNE NALOŽBE, RAZEN POSOJIL"
+170,KRATKOROČNE FIN. NALOŽBE V DELNICE IN DELEŽE ORGANIZACIJ V ORGANIZACIJAH V SKUPINI PO NABAVNI VREDNOSTI
+173,"DRUGI DELEŽI, KUPLJENI ZA PRODAJO"
+176,DRUGE KRATKOROčNE FIN. NALOŽBE
+177,DRUGE KRAT.FIN.NALOŽBE PO POŠTENI VREDNOSTI PREKO POSLOVNEGA IZDIDA
+178,DRUGE KRAT.FIN.NALOŽBE PO POŠTENI VREDNOSTI PREKO KAPITALA OZIROMA LASTNEGA VIRA SREDSTEV
+179,OSLABITEV VREDNOSTI KRATKOROčNIH FINANčNIH NALOŽB 
+179000,OSLABITEV VREDNOSTI KRATKOROčNIH FINANčNIH NALOŽB 
+18,KRATKOROČNA POSOJILA IN KRATKOROČNE TERJATVE ZA NEVPLAČANI KAPITAL
+180,"KRAT. POSOJILA, NA PODLAGI POSOJILNIH POGODB ORGANIZACIJAM V SKUPINI"
+180000,Kratkoročna posojila na podlagi posojilnih pogodb
+181,"KRATKOROčNA POSOJILA, DANA NA PODLAGI POSOJILNIH POGODB, PRIDRUŽENIM ORGANIZACIJAM"
+182,"KRATKOROčNA POSOJILA, DANA DRUGIM, VKLJUČNO S KRAT.TERJATVAMI IZ FINANČNEGA NAJEMA"
+183,KRATKOROčNI DEPOZITI V BANKAH IN DRUGIH FINANčNIH ORGANIZ.
+184,DANA KRATKOROčNA  POSOJILA Z ODKUPOM OBVEZNIC
+185,PREJETE MENICE
+185000,Prejete menice
+186,DANA KRATKOROČNA POSOJILA Z ODKUPOM DRUGIH DOLŽNIŠKIH VREDNOSTNIH PAPIRJEV
+186000,Kratkoročno dana posojila z odkupom drugih dolžniških vrednostnih papirjev
+187,KRATKOROČNO NEVPLAČANI VPOKLICANI KAPITAL
+187000,Kratkoročno nevplačani vpoklicani kapital
+189,OSLABITEV VREDNOSTI KRATKOROčNIH POSOJIL
+189000,Oslabitev vrednosti kratkoročnih posojil
+19,AKTIVNE čASOVNE RAZMEJITVE
+190,KRATKOROčNO ODLOŽENI STROŠKI OZIROMA ODHODKI
+190000,Kratkoročno odloženi stroški oziroma odhodki
+191,KRATKOROčNO NEZARAčUNANI PRIHODKI
+191000,Kratkoročno nezaračunani prihodki
+192,VREDNOTNICE
+192000,Vrednotnice
+195,DDV OD PREJETIH PREDUJMOV
+195000,DDV od prejetih predujmov
+2,KRATKOROčNE OBVEZNOSTI (DOLGOVI) IN PČR
+21,"OBVEZNOSTI, VKLJUčENE V SKUPINE ZA ODTUJITEV"
+210,"OBVEZNOSTI, VKLJUčENE V SKUPINE ZA ODTUJITEV"
+22,KRATKOROčNE OBVEZNOSTI DO DOBAVITELJEV
+220,KRATKOROčNE OBVEZNOSTI DO DOBAVITELJEV V DRŽAVI
+220000,Kratkoročne obveznosti do dobaviteljev v državi
+221,KRATKOROčNE OBVEZNOSTI DO DOBAVITELJEV V TUJINI
+221000,Kratkoročne obveznosti do dobaviteljev v tujini
+222,"KRATKOROčNI BLAGOVNI KREDITI, PREJETI V DRŽAVI"
+222000,"Kratkoročni blagovni krediti, prejeti v državi"
+223,"KRATKOROčNI BLAGOVNI KREDITI, PREJETI V TUJINI"
+223000,"Kratkoročni blagovni krediti, prejeti v tujini"
+224,KRATKOROčNE OBVEZNOSTI ZA NEZARAčUNANO BLAGO IN STORITVE
+224000,Kratkoročne obveznosti za nezaračunano blago in storitve
+23,KRATKOROčNE OBVEZNOSTI ZA PREJETE PREDUJME IN VARŠčINE
+230,KRATKOROčNI PREJETI PREDUJMI
+230000,Kratkoročni prejeti predujmi
+231,KRATKOROčNE PREJETE VARŠčINE
+231000,Kratkoročne prejete varščine
+24,KRATKOROčNE OBVEZNOSTI IZ POSLOVANJA ZA TUJ RAčUN
+240,KRATKOROčNE OBVEZNOSTI IZ IZVOZA ZA TUJ RAčUN
+240000,Kratkoročne obveznosti iz izvoza za tuj račun
+241,KRATKOROčNE OBVEZNOSTI DO UVOZNIKOV
+241000,Kratkoročne obveznosti do uvoznikov
+242,KRATKOROčNE OBVEZNOSTI IZ KOMISIJSKE IN KONSIGNAC.PRODAJE
+242000,Kratkoročne obveznosti iz komisijske in konsignac.prodaje
+245,DRUGE KRATKOROčNE OBVEZNOSTI IZ POSLOVANJA ZA TUJ RAčUN
+245000,Druge kratkoročne obveznosti iz poslovanja za tuj račun
+25,KRATKOROčNE OBVEZNOSTI ZA PLAČE
+250,OBVEZNOSTI ZA VRAčUNANE IN NEOBRAčUNANE PLAčE
+250000,Obveznosti za vračunane in neobračunane plače
+250001,Obveznosti za vračunan in neobračunan regres
+250200,Obveznosti za prostovoljno pokojn.zavarovanje
+251,OBVEZNOSTI ZA čISTE PLAčE IN NADOMESTILA PLAč
+251000,Obveznosti za čiste plače in nadomestila plač
+251100,Obveznosti za čiste plače zaposlencev
+251200,Obveznosti za nadomestila čistih plač zaposlencev
+251300,Obveznosti za čisti regres zaposlencev
+251400,Obveznosti za materialna nadomestila zaposlencev
+251410,Obveznosti za prehrano zaposlencev
+251420,Obveznosti za prevoz na delo zaposlencev
+251430,Obveznosti za druga materialna nadomestila zaposlencem
+251500,Obveznosti za izplačilo najemnin
+251600,Obveznosti za izplačilo avtorskega honorarja
+252,KRAT.OBVEZNOSTI ZA PRISPEVKE ZA SOC. VARNOST
+253,KRAT. OBVEZNOSTI ZA PRISPEVKE IZ BRUTO PLAČ IN NADOMESTIL PLAČ
+253000,Obveznosti za prispevke izbruto plač in nadomestil plač
+254,OBVEZNOSTI ZA DAVKE IZ KOSMATIH PLAč IN NADOMESTIL PLAč
+254000,Obveznosti za davke iz bruto plač in nadomestil plač
+254100,Obveznosti za dohodnino  iz regresa
+255,KRAT. OBVEZNOSTI ZA DRUGE PREJEMKE IZ DELOVNEGA RAZMERJA
+255000,Obveznosti za druge prejemke iz delovnega razmerja
+255300,Obveznosti za druge prejemke (regres)
+255400,Obveznosti za druge prejemke (mat.nadomestila)
+255410,Obveznosti za druge prejemke (prehrana)
+255411,Obveznosti za druge prejemke (prehrana zasebnik)
+255420,Obveznosti za druge prejemke (prevoz)
+255421,Obveznosti za druge prejemke (prevoz zasebnik)
+255430,Obveznosti za druge prejemke (druga nadomestila)
+255440,Obveznosti za druge prejemke (dodatek po zakonu)
+255500,Obveznosti za druge prejemke (založena sredstva)
+255600,"Obveznosti za druge prejemke (jubileji, nagrade)"
+255700,"Obveznosti za druge prejemke (štipendije, nagr.študentom)"
+255800,Obveznosti za druge prejemka (neto nakazila pogodb)
+256,KRAT. OBVEZNOSTI ZA PRISP. IZ DRUGIH PREJEMKOV (NE OBRAČ. S PLAčO)
+256000,Obveznosti za prisp.iz drugih prejemkov (ne obrač.s plačo)
+257,KRAT. OBVEZNOSTI ZA DAVEK IZ DRUGIH PREJEMKOV (NE OBRAč. S PLAčO)
+257000,Obveznosti za davek iz drugih prejemkov (ne obrač.s plačo)
+258,OBVEZNOSTI ZA PRISPEVKE IZPLAčEVALCA
+258000,Obveznosti za prispevke izplačevalca
+26,OBVEZNOSTI DO DRŽAVNIH IN DRUGIH INŠTITUCIJ
+260,OBVEZNOSTI ZA OBRAčUNANI DDV
+260000,Obveznosti za obračunani DDV
+260010,Obveznosti za DDV od prodaje zavezancem OSNOVNA stopnja
+260011,Obveznosti za DDV od prodaje končnim kupcem OSNOVNA stopnja
+260012,Obveznosti za DDV iz prejetih avansov OSNOVNA stopnja
+260020,Obveznosti za DDV od prodaje zavezancem ZNIŽANA stopnja
+260021,Obveznosti za DDV od prodaje končnim kupcem ZNIŽANA stopnja
+260022,Obveznosti za DDV iz prejetih avansov ZNIŽANA stopnja
+260410,Obveznosti za DDV iz EU osnovna stopnja
+260420,Obveznosti za DDV iz EU znižana stopnja
+260450,Obveznosti za DDV nerezidenti osnovna stopnja
+260460,Obveznosti za DDV nerezidenti znižana stopnja
+260600,Obveznosti za trošarino
+260700,Obveznosti za DDV po obračunu
+260800,Obveznosti za plačilo DDV po obračunu
+261,"OBVEZNOSTI ZA DDV, CARINO IN DR.DAJATVE OD UVOŽENEGA BLAGA"
+261000,"Obveznosti za DDV, carino in dr.dajatve od uvoženega blaga"
+261010,Obveznosti za DDV od uvoženega blaga OSNOVNA stopnja
+261011,Obveznosti za DDV od uvoženega blaga ZNIŽANA stopnja
+261100,Obveznosti za obresti dolgoročnih posojil
+262,OBVEZNOSTI ZA PRISPEVKE 
+262000,Obveznosti za prispevke izplačevalca
+262200,Obveznosti za dodatno pokojninsko zavarovanje
+263,OBVEZNOSTI ZA AKONTACIJO DOHODNINE OD DOHODKA IZ DEJAVNOSTI
+263000,Obveznosti za akontacijo dohodnine od dohodka iz dejavnosti
+264,OBVEZNOSTI ZA DAVEK OD DOHODKOV PRAVNIH OSEB
+264000,Obveznosti za davek od dohodka pravnih oseb
+265,OBVEZNOSTI ZA DAVČNI ODTEGLAJ
+265000,Druge kratkoročne obveznosti do državnih in drugih inštituc.
+265001,"prisp.za PIZ od sejnin, pog. dela"
+265002,"Posebni davek od pog.dela, avt.honorar"
+265003,"Prisp.za zdr.varstvo od pog.dela, avt.honorar"
+265010,Obveznosti za davek od nepremičnin
+265400,Obveznosti iz CESIJ
+265410,Obveznosti za samoprispevek
+265600,Obveznosti za prispevke in članarino za dopolnilno dejavnost
+265700,"Obveznosti za izplačila, vezana na zakon o dohodnini"
+265800,Obveznosti za takse
+265910,Obveznosti za davek (dohodnino) iz avtorskih honorarjev
+265920,Obveznosti za davek (dohodnino) iz pogodb
+265921,Obveznosti za davek (dohodnino) iz najemnin
+265930,Posebni davek od pogodb
+265940,Obveznosti za prispevke od pogodb
+265941,Obveznosti za pavšal-ŠTUDENTSKI SERVIS
+266,DRUGE KRAT. OBVEZNOSTI DO DRŽAVNIH IN DRUGIH INŠTITUCIJ - DRUGO
+267,KRAT. OBV. ZA PRISPEVKE ZA SOCIALNO VARNOST S.P.
+27,KRATKOROčNE FINANČNE OBVEZNOSTI
+270,"KRATKOROčNA POSOJILA, DOBLJENA PRI ORGANIZACIJAH  V SKUPINI"
+270000,"Kratkoročna posojila, dobljena pri organizacijah v skupini"
+271,"KRATKOROčNA POSOJILA, DOBLJENA PRI PRIDRUŽENIH ORGANIZACIJAH IN SKUPAJ OBVLADOVALNIH ORGANIZACIJ"
+271000,"Kratkoročna posojila, dobljena pri organizacijah v skupini in obvladovanih organizacijah"
+272,"KRATKOROčNA POSOJILA, DOBLJENA PRI BANKAH IN ORGANIZACIJAH V DRŽAVI"
+272000,"Kratkoročna posojila, dobljena pri bankah organizacijah v državi"
+273,"KRATKOROčNA POSOJILA, DOBLJENA PRI BANKAH IN ORGANIZACIJAH V TUJINI"
+273000,"Kratkoročna posojila, dobljena pri bankah organizacijah v tujini"
+274,KRATKOROčNE FINANČNE OBVEZNOSTI V ZVEZI Z OBVEZNICAMI
+274000,Kratkoročne finančne obveznosti v zvezi z obveznicami
+275,KRATKOROčNEOBVEZNOSTI IZ FINANČNEGA NAJEMA
+275000,Kratkoročne obveznosti iz finančnega najema
+276,KRATKOROčNE FINANčNE OBVEZNOSTI DO FIZIčNIH OSEB
+276000,Kratkoročne finančne obveznosti do fizičnih oseb
+276100,Vložek za dokapitalizacijo
+276200,Kratkoročne obveznosti do lastnikov - zal.sredstva
+277,KRAT.OBVEZNOSTI V ZVEZI Z RAZDELITVIJO POSLOVNEGA IZIDA
+278,OBVEZNOSTI IZ VPLAčILA KAPITALA DO VPISA V SODNI REGISTER
+279,DRUGE KRATKOROčNE FINANčNE OBVEZNOSTI
+28,DRUGE KRATKOROčNE OBVEZNOSTI
+280,KRATKOROčNE OBVEZNOSTI ZA OBRESTI
+280000,Kratkoročne obveznosti za obresti
+281,KRATKOROčNE MENIČNE OBVEZNOSTI
+281000,Kratkoročne menične obveznosti 
+282,KRAT. OBVEZNOSTI V ZVEZI Z ODTEGLAJI OD PLAČ IN NADOMESTIL PLAČ ZAPOSLENIM
+282000,Obveznosti na podlagi odtegljajev od plač in nadomestil plač
+282100,Obveznosti za sodne in administrativne prepovedi
+285,OSTALE KRATKOROčNE OBVEZNOSTI
+285000,Ostale kratkoročne obveznosti
+285001,Obv. za izplačilo pogodbenega dela
+285003,Obv. za izplačilo potnih stroškov
+285004,Obv. za vračilo založenih sredstev
+285005,Obveznost do delničarjev
+285100,Obveznosti iz cesij
+285200,Obv.  za izplačilo sejnin
+285310,Obveznosti za izplačilo štipendij
+285320,Obveznosti za izplačilo nagrad po učni pogodbi
+285400,Obveznosti za izplačilo na osnovi odkupa od kmetov
+29,KRATKOROČNE PASIVNE čASOVNE RAZMEJITVE
+290,VNAPREJ VRAčUNANI STROŠKI OZIROMA ODHODKI
+290000,Vnaprej vračunani stroški oziroma odhodki
+291,KRATKOROčNO ODLOŽENI PRIHODKI
+291000,Kratkoročno odloženi prihodki
+295,DDV OD DANIH PREDUJMOV
+3,ZALOGE SUROVIN IN MATERIALA
+30,OBRAčUN NABAVE SUROVIN IN MATERIALA (tudi DI in embalaže)
+300,VREDNOST SUROVIN IN MATERIALA PO OBRAčUNIH DOBAVITELJEV
+300000,Vrednost surovin in materiala po obračunih dobaviteljev
+301,ODVISNI STROŠKI NABAVE SUROVIN IN MATERIALA
+301000,Odvisni stroški nabave surovin in materiala
+302,CARINA IN DRUGE UVOZNE DAVŠčINE OD SUROVIN IN MATERIALA
+302000,Carina in druge uvozne davščine od surovin in materiala
+303,DDV IN DRUGE DAVŠčINE OD SUROVIN IN MATERIALA
+303000,DDV in druge davščine od surovin in materiala
+309,OBRAčUN NABAVE SUROVIN IN MATERIALA
+309000,Obračun nabave surovin in materiala
+31,ZALOGE SUROVIN IN MATERIALA
+310,ZALOGE SUROVIN IN MATERIALA V SKLADIŠčU
+310000,Zaloge surovin in materiala v skladišču
+310010,Zaloge materiala - gostinstvo
+310020,Zaloge materiala - bife
+310100,Zaloga pijače v skladišču
+310200,Zaloga hrane v skladišču
+310300,Zaloga tobaka v skladišču
+312,ZALOGE SUROVIN IN MATERIALA NA POTI
+316,"ZALOGE SUROVIN IN MATERIALA V DODELAVI, PREDELAVI IN "
+316000,"Zaloge surovin in materiala v dodelavi, predelavi"
+319,ODMIKI OD STALNIH CEN ZALOG SUROVIN IN MATERIALA
+319000,ODMIKI OD STALNIH CEN ZALOG SUROVIN IN MATERIALA
+32,ZALOGE DROBNEGA INVENTARJA IN EMBALAŽE
+320,ZALOGE DROBNEGA INVENTARJA IN EMBALAŽE V SKLADIŠčU
+320000,Zaloge drobnega inventarja in embalaže v skladišču
+320100,Zaloga embalaže v skladišču
+320200,Zaloga drobnega inventarja v skladišču
+320300,Drobni inventar v uporabi
+321,ZALOGE DROBNEGA INVENTARJA IN EMBALAŽE DANE V UPORABO
+321000,Zaloge drobnega inventarja in embalaže dane v uporabo
+329,ODMIKI OD STALNIHCEN DROBNEGA INVENTARJA IN EMBALAŽE
+329000,ODMIKI OD STALNIHCEN DROBNEGA INVENTARJA IN EMBALAŽE
+4,STROŠKI
+40,STROŠKI MATERIALA
+400,STROŠKI MATERIALA
+400000,Stroški materiala
+401,STROŠKI POMOŽNEGA MATERIALA
+401000,Stroški pomožnega materiala
+402,STROŠKI ENERGIJE
+402000,Stroški energije
+402100,Stroški električne energije
+402200,Stroški goriva in maziva
+402300,Stroški kurjave
+403,STROŠKI NADOMESTNIH DELOV ZA OS IN MATERIALA ZA VZDRŽ. OS
+403000,Stroški nadomestnih delov za OS in materiala za vzdrž. OS
+404,ODPIS DROBNEGA INVENTARJA IN EMBALAŽE 
+404000,ODPIS DROBNEGA INVENTARJA IN EMBALAŽE 
+405,USKLADITEV STROŠKOV MATERIALA IN DI ZARADI POPISNIH RAZLIK
+405000,Uskladitev stroškov materiala in DI zaradi popisnih razlik
+406,STROŠKI PISARNIŠKEGA MATERIALA IN STROKOVNE LITERATURE
+406100,Stroški pisarniškega materiala
+406200,Stroški literature in časopisov
+407,DRUGI STROŠKI MATERIALA
+407000,Drugi stroški materiala
+407100,Stroški materiala za čiščenje
+41,STROŠKI STORITEV
+410,STROŠKI STORITEV PRI PROIZVAJANJU PROIZVODOV IN OPR.STORITEV
+410000,Stroški storitev pri proizvajanju proizvodov in opr.storitev
+410100,Drugi stroški storitev- strokovna mnenja
+411,STROŠKI TRANSPORTNIH STORITEV
+411000,Stroški transportnih storitev
+411001,Stroški transporta - tujina
+411100,Stroški prevoznih storitev
+411200,Stroški špediterskih storitev
+412,STROŠKI STORITEV V ZVEZI Z VZDRŽEVANJEM
+412000,Stroški storitev v zvezi z vzdrževanjem 
+413,NAJEMNINE
+413000,Najemnine
+413100,Najemnina po pogodbah o najemu
+414,NADOMESTILA STROŠKOV ZAPOSLENCEV V ZVEZI Z DELOM
+414000,Nadomestila stroškov zaposlencev v zvezi z delom
+414100,Nadomestilo za prehrano zaposlencev
+414110,Dnevnica za službeno potovanje v domovini
+414140,Kilometrina pri uporabi lastnega vozila za sl.pot. v domovini
+414180,Parkirnina za osebna vozila v lasti zaposlenih v domovini
+414200,Nadomestilo za prevoz na delo zaposlencev
+414300,Potni stroški zaposlencev
+414309,"Stroški cestnin, parkirnin, DARS..."
+414310,Domače dnevnice zaposlencev
+414311,Tuje dnevnice zaposlencev
+414320,Kilometrina zaposlencev
+414330,Javni prevoz zaposlencev
+414390,Drugi potni stroški zaposlencev
+414400,Terenski dodatek
+414900,Druga materialna nadomestila
+415,"STROŠKI PLAčIL. PROMETA IN BANčNIH STORITEV, STROŠKI POSLOV IN ZAV.PREMIJE"
+415000,Stroški plačil. prometa in bančnih storitev
+415200,Stroški zavarovalnih premij
+415300,Stroški prometa s plačilnimi karticami
+415400,"Stroški zavarovanj dodatno,pokojninski steber,poškodbe"
+416,STROŠKI INTELEKTUALNIH IN OSEBNIH STORITEV
+416000,Stroški intelektualnih in osebnih storitev 
+416100,Stroški izobraževanja
+416200,Stroški odvetniških storitev
+416300,Stroški zdravstvenih storitev
+416400,"Stroški sodnih taks, kolekov, pristojbin"
+416500,Stroški računovodstva
+416600,Stroški revizorja
+417,"STROŠKI SEJMOV, REKLAME IN REPREZENTANCE"
+417000,Stroški sejmov
+417100,Stroški  reklame
+417101,Stroški  reklame v tujini
+417102,Stroški prireditev
+417200,Stroški reprezentance
+417201,Stroški reprezentance - tujina
+418,"STROŠKI STORITEV FIZIčNIH OSEB, KI NE OPRAVLJAJO DEJAVNOSTI, SKUPAJ Z DAJATVAMI"
+418000,Stroški storitev fizičnih oseb skupaj z dajatvami
+418100,Stroški pogodbenega dela fizičnih oseb
+418200,Stroški avtorskih honorarjev fizičnim osebam
+418300,Stroški dela študentov in dijakov
+418310,Stroški donacij
+418311,Stroški sponzorstev po pogodbi
+418312,"Stroški prostovoljnih prispevkov-društva,šport,kultura"
+418400,Stroški štipendij po pogodbi
+418500,Stroški sejnin
+419,STROŠKI DRUGIH STORITEV
+419000,Stroški drugih storitev
+419110,Stroški poštnih storitev
+419121,Stroški telefonskih storitev - fiksno omrežje
+419122,Stroški telefonskih storitev - mobilno omrežje
+419130,Stroški interneta
+419200,Stroški komunalnih storitev
+419300,Stroški upravljanja
+419301,Stroški nadzora na trgu vred.papirjev
+419400,Stroški RTV prispevka
+419500,Stroški vodenja registra KDD
+419600,"Stroški fotokopiranje, kuvertiranje"
+419900,Stroški ostalih storitev
+43,AMORTIZACIJA
+430,AMORTIZACIJA NEOPREDMETENIH DOLGOROčNIH SREDSTEV
+430000,Amortizacija neopredmetenih dolgoročnih sredstev
+431,AMORTIZACIJA ZGRADB
+431000,Amortizacija zgradb
+432,AMORTIZACIJA OPREME IN NADOMESTNIH DELOV
+432000,Amortizacija opreme in nadomestnih delov
+433,AMORTIZACIJA DROBNEGA INVENTARJA
+433000,Amortizacija drobnega inventarja
+434,AMORTIZACIJA DRUGIH OPREDMETENIH OSNOVNIH SREDSTEV
+434000,Amortizacija drugih opredmetenih osnovnih sredstev
+435,AMORTIZACIJA NALOŽBENIH NEPREMIčNIN
+435000,Amortizacija naložbenih nepremičnin
+436,AMORTIZACIJA BIOLOŠKIH SREDSTEV
+44,REZERVACIJE
+440,REZERVACIJE ZA STROŠKE REORGANIZACIJE ORGANIZACIJE
+440000,REZERVACIJE ZA STROŠKE REORGANIZACIJE ORGANIZACIJE
+441,Rezervacije za dana jamstva
+441000,Rezervacije za dana jamstva
+442,REZERVACIJE ZA POKRIVANJE IZGUB IZ KOčLJIV.POGOD.
+442000,REZERVACIJE ZA POKRIVANJE IZGUB IZ KOčLJIV.POGOD.
+449,REZERVACIJE ZA POKRIVANJE DRUGIH OBVEZNOSTI IZ PRETEKLEGA POSLOVANJA
+45,STROŠKI OBRESTI
+450,STROŠKI OBRESTI
+450000,STROŠKI OBRESTI
+47,STROŠKI DELA
+470,PLAčE ZAPOSLENIH
+470000,Plače zaposlenih
+470100,Bonitete
+470110,Življenjska zavarovanja
+470190,Druge bonitete
+471,NADOMESTILA PLAč ZAPOSLENIH
+471000,Nadomestila plač zaposlenih
+472,STROŠKI DODATNEGA POKOJNINSKEGA ZAVAROVANJA ZAPOSLENIH
+472000,Stroški dodatnega pokojninskega zavarovanja zaposlenih
+473,"REGRES ZA LETNI DOPUST, POVRAčILA IN DRUGI PREJEMKI ZAPOSLENIH"
+473000,"Regres za letni dopust, povračila in drugi prejemki zaposlenih"
+473100,Regres za letni dopust
+473200,Povračila
+473700,Jubilejne nagrade
+473900,Drugi prejemki zaposlenih ločrno življenje)
+474,"DELODAJALčEVI PRISPEVKI OD PLAč, NADOMESTIL, BONITET, POVRAČIL IN DRUGIH PREJEMKOV"
+474000,"Delodajalčevi prispevki od plač, nadomestil, bonitet, povračil in drugih prejemkov"
+474100,"Delodajalčevi prispevki od plač, nadomestil za PIZ"
+474200,"Delodajalčevi prispevki od plač, nadomestil razen za PIZ"
+475,"DRUGE DELODAJALčEVE DAJATVE OD PLAč, NADOMESTIL, BONITET IN DRUGIH NADOMESTIL"
+475000,"Druge delodajalčeve dajatve od plač, nadomestil, bonitet, drugih nadomestil"
+476,"NAGRADE VAJENCEM SKUPAJ Z DAJATVAMI, KI BREMENIJO ORGANIZACIJO"
+476000,"Nagrade vajencem skupaj z dajatvami, ki bremenijo organizacijo"
+477,"STROŠKI POSLOVODSTVA, OBRAČUNANI NA DRUGIH PODLAGAH KOT JE DELOVNO RAZMERJE"
+478,DRUGI STROŠKI DELA
+479,"REZERVACIJE ZA POKOJNINE, JUBILEJNE NAGRADE IN ODPRAVNINE OB UPOKOJITVI"
+48,DRUGI STROŠKI
+480,"DAJATVE,KI NISO ODVISNE OD STROŠKOV DELA ALI DRUGIH VRST STROŠKOV"
+480000,"Dajatve,ki niso odvisne od stroškov dela ali drugih vrst stroškov"
+480001,Dajatve za nedovoljen kalo in odpis
+480002,Dajatve za članarine zbornicam in združenjem
+481,IZDATKI ZA VARSTVO OKOLJA
+481000,Izdatki za varstvo okolja
+482,NAGRADE DIJAKOM IN šTUDENTOM NA DELOVNI PRAKSI SKUPAJ Z DAJATVAMI
+482000,Nagrade dijakom in študentom na delovni praksi skupaj z dajatvami
+483,ŠTIPENDIJE DIJAKOM IN ŠTUDENTOM
+483000,Štipendije dijakom in študentom
+484,PRISPEVKI ZA SOCIALNO VARNOST S.P.
+484000,Prispevki za socialno varnost s.p.
+486,POVRAČILO STROŠKOV S.P.
+488,Dotacije drugim društvom in pravnim osebam
+489,OSTALI STROŠKI
+489000,Ostali stroški
+489001,Takse
+489003,Prispevek  ZZZS - pavšal
+489800,Davčno nepriznani odhodki
+489900,Nepriznan DDV
+489990,Davčno nepriznani DDV
+49,PRENOS STROŠKOV
+490,PRENOS STROŠKOV V ZALOGE
+490000,Prenos stroškov v zaloge
+491,PRENOS STROŠKOV NEPOSREDNO V ODHODKE
+491000,Prenos stroškov neposredno v odhodke
+6,"ZALOGE PROIZVODOV, STORITVE  BLAGA IN NEKRATKOROČNIH SREDSTEV (SKUPINE ZA ODTUJEV) ZA PRODAJO"
+60,NEDOKONčANA PROIZVODNJA IN STORITVE
+600,NEDOKONčANA PROIZVODNJA
+600000,Nedokončana proizvodnja
+601,NEDOKONčANE STORITVE
+601000,Nedokončane storitve
+602,POLIZDELKI
+602000,Polizdelki
+604,"PROIZVODNJA V DODELAVI, PREDELAVI"
+604000,"Proizvodnja v dodelavi, predelavi"
+609,ODMIKI OD CEN NEDOKONČANE PROIZVODNJE IN STORITEV
+609000,ODMIKI OD CEN NEDOKONČANE PROIZVODNJE IN STORITEV
+61,ZALOGE PRIDELKOV (POSPRAVLJENIH) IZ BIOLOŠKIH SREDSTEV
+610,POSPRAVLJENI PRIDELKI PO POŠTENI VREDNOSTI
+618,POSPRAVLJENI PRIDELKI PO NABAVNI VREDNOSTI
+619,ODMIKI OD CEN PRIDELKOV
+63,PROIZVODI
+630,PROIZVODI V LASTNEM SKLADIŠčU
+630000,Proizvodi v lastnem skladišču
+631,PROIZVODI V TUJEM SKLADIŠčU
+631000,Proizvodi v tujem skladišču
+632,PROIZVODI NA POTI
+633,PROIZVODI V LASTNI PRODAJALNI
+633000,Proizvodi v lastni prodajalni
+634,VRAčUNANI DDV OD PROIZVODOV V PRODAJALNI
+634000,Vračunani ddv od proizvodov v prodajalni
+635,PROIZVODI V DODELAVI IN PREDELAVI
+635000,Proizvodi v dodelavi in predelavi
+638,"BIOLOŠKA SREDSTVA, KI SO ZALOGE"
+639,ODMIKI OD CEN PROIZVODOV
+639000,Odmiki od cen proizvodov
+65,OBRAčUN NABAVE BLAGA
+650,VREDNOST BLAGA PO OBRAčUNIH DOBAVITELJEV
+650000,Vrednost blaga po obračunih dobaviteljev
+651,ODVISNI STROŠKI NABAVE BLAGA
+651000,Odvisni stroški nabave blaga
+652,CARINA IN DRUGE UVOZNE DAVŠČINE OD BLAGA
+652000,Odvisni stroški nabave blaga - carina
+653,DDV IN DRUGE DAVŠČINE OD BLAGA
+659,OBRAčUN NABAVE BLAGA
+659000,Obračun nabave blaga
+66,ZALOGE BLAGA
+660,BLAGO V LASTNEM SKLADIŠčU
+660000,BLAGO V LASTNEM SKLADIŠčU
+661,BLAGO V TUJEM SKLADIŠčU
+661000,Blago v tujem skladišču
+662,BLAGO NA POTI
+663,BLAGO V PRODAJALNI
+663000,Blago v prodajalni
+664,VRAčUNANI DDV V ZALOGAH BLAGA
+664000,Vračunani DDV v zalogah blaga
+664100,Vračunani DDV v zalogah blaga osnovna stopnja 
+664200,Vračunani DDV v zalogah blaga znižana stopnja 
+669,VRAČUNANA RAZLIKA V CENAH ZALOG BLAGA
+669000,VRAČUNANA RAZLIKA V CENAH ZALOG BLAGA
+67,NEKRATKOROčNA SREDSTVA (SKUPINE ZA ODTUJITEV) ZA PRODAJO
+670,"OPREDMETENA OSNOVNA SREDSTVA, NAMENJENA PRODAJI"
+671,"NALOŽBENE NEPREMIčNINE,VREDNOTENE PO MODELU NABAVNE VREDNOSTI NAMENJENE PRODAJI"
+672,"DRUGA NEKRATKOROčNA SREDSTVA, NAMENJENA PRODAJI"
+7,ODHODKI IN PRIHODKI
+70,POSLOVNI ODHODKI (I.različica)
+700,VREDNOST PRODANIH POSLOVNIH UčINKOV
+700000,Vrednost prodanih poslovnih učinkov
+701,VREDNOST USREDSTVENIH LASTNIH PROIZVODOV IN STORITEV
+701000,Vrednost usredstvenih lastnih proizvodov in storitev
+702,NABAVNA VREDNOST PRODANEGA MATERIALA IN BLAGA
+702000,Nabavna vrednost prodanega materiala in blaga
+702200,Kalo in lom
+702300,Primanjkljaji pri popisu blaga
+703,DRUGI POSLOVNI ODHODKI
+703000,Drugi poslovni odhodki
+71,POSLOVNI ODHODKI (II. Različica)
+710,VREDNOST PRODANIH POSLOVNIH UčINKOV
+710000,Vrednost prodanih poslovnih učinkov
+711,NABAVNA VREDNOST PRODANEGA MATERIALA IN BLAGA
+711000,Nabavna vrednost prodanega materiala in blaga
+712,STROŠKI PRODAJANJA
+712000,Stroški prodajanja
+713,STROŠKI SPLOšNIH DEJAVNOSTI (NABAVE IN UPRAVE)
+713000,Stroški splošnih dejavnosti (nabave in uprave)
+714,"DRUGI STROŠKI, KI SE NE ZADRŽUJEJO V ZALOGAH"
+714000,"Drugi stroški, ki se ne zadržujejo v zalogah"
+72,PREVREDNOTOVALNI POSLOVNI ODHODKI
+720,PREVREDNOTOVALNI ODHODKI NEOPR.DOLG.SREDSTEV IN OPREDM. OS IN NALOŽ. NEPREMIčNIN
+720000,Prevrednotovalni odhodki neopr.dolg.sredstev in opredm. OS in naložbenih nepremičnin
+721,PREVREDNOTOVALNI ODHODKI V ZVEZI Z ZALOGAMI
+721000,Prevrednotovalni odhodki v zvezi z zalogami
+722,PREVREDNOTOVALNI POSLOVNI ODHODKI LOT POSLEDICA PREVREDNOTENJA OSLABITVE V ZVEZI S POSLOVNIMI TERJATVAMI
+722000,Prevrednotovalni poslovni odhodki zaradi oslabitve poslovnih terjatev
+723,PREVREDNOTOVALNIPOSLOVNI ODHODKI KOT POSLEDICA ODPISOV V ZVEZI S POSLOVNIMI TERJATVAMI
+724,"DRUGI PREVREDNOTOVALNI POSLOVNI ODHODKI V ZVEZI S KRATKOROČNIMI SREDSTVI, RAZEN FIN. NALOŽBAMI"
+74,FINANčNI ODHODKI
+740,"ODHODKI IZ POSOJIL, PREJETIH OD OGRANIZACIJ V SKUPINI"
+740000,Odhodki za obresti
+740100,Odhodki za realne obresti
+740200,Odhodki za obresti iz naslova leasinga
+740300,Odhodki za zamudne obresti
+740310,Odhodki za zamudne obresti od davkov in prispevkov
+740400,Zamudne obresti za nepravočasno plačane davke in prispevke
+741,"ODHODKI IZ POSOJIL, PREJETIH OD BANK"
+742,ODHODKI IZ IZDANIH OBVEZNIC
+742000,Odhodki od prevrednotenja IZDANIH OBVEZNIC
+743,ODHODKI IZ DRUGIH FINANČNIH OBVEZNOSTI
+743000,Odhodki od prodaje finančnih naložb
+744,ODHODKI IZ POSLOVNIH OBVEZNOSTI DO ROGANIZACIJ V SKUPINI
+745,ODHODKI IZ OBVEZNOSTI DO DOBAVITELJEV IN MENIČNIH OBVEZNOSTI
+745000,Drugi finančni odhodki - pozneje priznani popusti
+746,"ODHODKI IZ DRUGIH POSLOVNIH OBVEZNOSTI, VKLJUČNO ZA STROŠKE OBRESTI IZ NASLOVA PRERAČUNA ODPRAVNIN OB UPOKOJITVI"
+747,"ODHODKI IZ SREDSTEV, RAZPOREJENEH PO POŠTENI VREDNOSTI PREK POSLOVNEGA IZIDA IN ODHODKI IZ VREDNOTENJA NALOŽBENIH NEPREMIČNIN PO POŠTENI VREDNOSTI"
+748,ODHODKI IZ OSLABITVE FINANČNIH NALOŽB
+748100,"Odhodki iz oslabitve finančnih sredstev, razpol.za prodajo"
+748200,Odhodki iz oslabitve posojil in fin.naložb (odplačna vredn.)
+748300,Odhodki iz oslabitve fin.nalož.v odvisna pod.(nabavna vred.)
+748400,Odhodki iz oslabitve fin.nalož.v kap.in izp.in.(nabav.vred.)
+749,"ODHODKI IZ ODPRAVE PRIPOZNANJA FINANČNIH NALOŽB IN NALOŽBENIH NEPREMIČNIN, IZMERJENIH PO POŠTENI VREDNOSTI"
+749000,Prevrednotovalni finančni odhodki zaradi oslabitve
+75,DRUGIODHODKI
+752,"DENARNE KAZNI, KI NISO POVEZANE S POSLOVNIMI UČINKI"
+752000,Denarne kazni
+752100,Druge neobičajne postavke - sodni stroški
+753,"ODŠKODNINE, KI NISO POVEZANE S POSLOVNIMI UČINKI"
+753000,Odškodnine
+754,DONACIJE
+755,"SUBVENCIJE, DOTACIJE IN PODOBNI ODHODKI, KI NISO POVEZANI S POSLOVNIMI UČINKI"
+758,NEGATIVNE EVRSKE IZRAVNAVE
+758000,Negativne evrske izravnave
+759,"OSTALI ODHODKI, KI NISO POVEZANI S POSLOVNIMI UČINKI"
+759000,Ostali odhodki
+76,POSLOVNI PRIHODKI
+760,PRIHODKI OD PRODAJE PROIZVODOV IN STORITEV NA DOMAčEM TRGU
+760000,Prihodki od prodaje proizvodov in storitev na domačem trgu
+760100,Prihodki od prodaje proizvodov na domačem trgu
+760200,Prihodki od prodaje storitev na domačem trgu
+760210,Prihodki od prodaje storitev - posredništvo
+760220,Prihodki od prodaje storitev - gostinstvo
+760230,Prihodki od prodaje storitev - storitve za principala (avti)
+760270,Prihodki od prodaje storitev - provizija komisijske prodaje
+760280,Prihodki od prodaje storitev - gotovina
+760290,Prihodki od prodaje storitev - lastni prevoz
+760900,Prihodki od prodaje storitev - ostale storitve
+761,PRIHODKI OD PRODAJE PROIZVODOV IN STORITEV NA TUJEM TRGU
+761000,Prihodki od prodaje proizvodov in storitev na tujem trgu
+761100,Prihodki od prodaje proizvodov na tujem trgu
+761200,Prihodki od prodaje storitev na tujem trgu
+761290,Prihodki od prodaje storitev na tujem trgu - lastni prevoz
+762,PRIHODKI OD PRODAJE TRGOVSKEGA BLAGA IN MATERIALA NA DOMAČEM TRGU
+762000,Prihodki od prodaje materiala in blaga na domačem trgu
+763,PRIHODKI OD PRODAJE TRGOVSKEGA BLAGA IN MATERIALA NA TUJEM TRGU
+763000,Prihodki od prodaje materiala in blaga na tujem trgu
+764,PRIHODKI OIZ VREDNOTENJA BIOLOŠKIH SREDSTEV IN POSPRAVITVE KMETIJSKIH PRIDELKOV
+765,PRIHODKI OD NAJEMNIN
+765000,Prihodji od najemnin
+766,PRIHODKI OD  ODPRAVE DOLGOROčNIH REZERVACIJ IN PČR NA RAČUN V NAPREJVRAČUNANIH STROŠKOV OZ. ODHODKOV
+766000,Prihodki od porabe in odprave dolgoročnih rezervacij
+767,PRIHODKI OD POSLOVNIH ZDRUŽITEV (PRES.IZ PREV.-SLABO IME)
+768,"DRUGI PRIHODKI (SUBVENCIJE, DOTACIJE, REGRESI, PREMIJE,...)"
+768000,"Drugi prihodki (subvencije, dotacije, regresi, premije,...)"
+768100,Prihodki od subvencij
+768200,Prihodki od dotacij
+768300,Prihodki od kompenzacij
+768400,Prihodki drugih
+769,PREVREDNOTOVALNI POSLOVNI PRIHODKI
+769000,Prevrednotovalni poslovni prihodki
+77,FINANčNI PRIHODKI
+770,FINANČNI PRIHODKI IZ DELEŽEV V ORGANIZACIJA V SKUPINI
+770000,Prihodki od obresti
+771,FINANČNI PRIHODKI IZ DELEŽEV PRIDRUŽENIH ORGANIZACIJAH IN SKUPAJ OBVLADOVANIH ORGANIZACIJAH
+771000,Prihodki od dividend in drugih deležev v dobičku
+772,FINANČNI PRIHODKI IZ DELEŽEV V DRUGIH ORGANIZACIJAH
+772000,Prihodki od prevrednotenja terjatev in dolgov za ohran.vred.
+773,PRIHODKI V ZVEZI Z DRUGIH NALOŽB
+773000,Prihodki v zvezi z danimi posojili
+774,"FINANČNI PRIHODKI IZ POSOJIL, DANIH ORGANIZACIJAM V SKUPINI"
+775,"FINANčNI PRIHODKI IZ POSOJIL, DANIH DRUGIM, TUDI OD DEPOZITOV"
+775000,"Finančni prihodki od posojil, danih drugim, tudi od depozitov"
+776,FINANčNI PRIHODKI IZ POSLOVNIH TERJATEV DO ORGANIZACIJ V SKUPINI
+776000,Drugi finančni prihodki
+776100,Drugi finančni prihodki - naknadno prejeti popusti
+777,FINANčNI PRIHODKI IZ POSLOVNIH TERJATEV DO DRUGIH
+778,FINANčNI PRIHODKI IZ FIN.SRED.PO POŠTENI VRED.PREK POSL.IZ.
+779,FINANČNI PRIHODKI IZ VREDNOTENJA NALOŽBENIH NEPREMIČNIN PO POŠTENI VREDNOSTI  IN PRIHODKI OD ODTUJITVE NALOŽ.NEPREMIČNIN PO POŠTENI VREDNOSTI
+78,DRUGI PRIHODKI
+784,DONACIJE
+784000,Prejete donacije
+785,"SUBVENCIJE, DOTACIJE IN PODOBNI PRIHODKI, KI NISO POVEZANI S POSLOVNIMI UČINKI"
+785000,"Subvencije, dotacije in podobni prihodki"
+786,"ODŠKODNINE, KI NISO POVEZANE S POSLOVNIMI UČINKI"
+786000,Prejete odškodnine
+787,"KAZNI, KI NISO POVEZANE S POSLOVNIMI UČINKI"
+787000,Prejete kazni
+788,POZITVINE EVRSKE IZRAVNAVE
+789000,Pozitivne evrske izravnave
+78902,Izredni prihodki od zaokroževanja/izravnave zneskov v prejetih računih
+78904,Izredni prihodki iz pozitivnih tečajnih razlik
+789000,"OSTALI PRIHODKI, KI NISO POVEZANI S POSLOVNIMI UČINKI"
+79,USREDSTVENI LASTNI PROIZVODI IN LASTNE STORITVE
+790,USREDSTVENI LASTNI PROIZVODI IN LASTNE STORITVE
+790000,Usredstveni lastni proizvodi in lastne storitve
+790100,Prihodki od uporabe proizvodov in storitev za lastne potrebe
+790200,Usredstveno lastno blago in lastni materiali
+8,POSLOVNI IZID
+80,POSLOVNI IZDID  PRED OBDAVčITVIJO
+800,DOBIčEK ALI IZGUBA PRED OBDAVČITVIJO OZ. PRESEŽEK PRIHODKOV ALI PRESEŽEK ODHODKOV
+800000,Dobiček ali izguba pred obdavčitvijo oz. Presežek prihodkov ali presežek odhodkov
+801,UGOTOVITEV ALI PRENOS DOHODKA SAMOSTOJNIH PODJETNIKOV
+801000,Ugotovitev in prenos dohodka samostojnih podjetnikov posameznikov
+803,UGOTOVITEV IN PRENOS NEGATIVNEGA POSLOVNEGA IZIDA
+803000,Ugotovitev in prenos negativnega poslovnega izida
+804,"PRESEŽEK PRIHODKOV IZ PREJŠNJIH LET, NAMENJEN POKRIVANJU PRESEŽKA ODHODKOV OBRAČUNSKEGA OBDOBJA"
+804000,"Presežek prihodkov iz prejšnjih let, namenjen pokrivanju presežka odhodkov obračunskega obdobja"
+805,"PRESEŽEK ODHODKOV IZ PREJŠNJIH LET, KI SE POKRIVA IZ PRESEŽKA PRIHODKOV OBRAČUNSKEGA OBDOBJA"
+805000,"Presežek odhodkov iz prejšnjih let, ki se pokriva iz presežka prihodkov obračunskega obdobja"
+806,CELOTNI PRESEŽEK PRIHODKOV ALI CELOTNI PRESEŽEK ODHODKOV
+806000,Celotni presežek prihodkov ali celotni presežek odhodkov
+81,RAZPOREDITEV DOBIČKA OZIROMA CELOTNEGA PRESEŽKA PRIHODKOV
+810,DAVEK OD DOHODKOV PRAVNIH OSEB
+810000,Davek od dohodkov pravnih oseb
+812,"DRUGI DAVKI, KI NISO IZKAZANI V DRUGIH POSTAVKAH"
+812000,"Drugi davki, ki niso izkazani v drugih postavkah"
+813,PRIHODKI (ODHODKI) IZ NASLOVA ODLOŽENEGA DAVKA
+815,ČISTI DOBIčEK POSLOVNEGA LETA OZ. ČISTI PRESEŽEK PRIHODKOV
+815000,Čisti dobiček poslovnega leta oz. Presežek prihodkov
+82,RAZPOREDITEV čISTEGA DOBIčKA POSLOVNEGA LETA OZIROMA ČISTEGA PRESEŽKA PRIHODKOV
+820,ČISTI DOBIčEK ZA KRITJE PRENEŠENIH IZGUB
+820000,Čisti dobiček za kritje prenešenih izgub
+821,ČISTI DOBIčEK ZA OBLIKOVANJE ZAKONSKIH REZERV
+821000,Čisti dobiček za oblikovanje zakonskih rezerv
+822,čisti dobiček za oblikovanje rezerv za lastne delnice/deleže
+822000,čisti dobiček za oblikovanje rezerv za lastne delnice/deleže
+823,čISTI DOBIčEK ZA OBLIKOVANJE STATUTARNIH REZERV
+823000,čisti dobiček za oblikovanje statutarnih rezerv
+824,čISTI DOBIčEK ZA DRUGE REZERVE IZ DOBIčKA
+824000,čisti dobiček za druge rezerve iz dobička
+825,ČISTI PRESEŽEK PRIHODKOV ZA DOLOČEN NAMEN (SKLAD)
+825000,Čisti presežek prihodkov za določen namen (sklad)
+829,PRENOS NEUPORABLJENEGA ČISTEGA DOBIČKA OZ. ČISTEGA PRESEŽKA PRIHODKOV POSLOVNEGA LETA
+829000,Prenos neuporabljenega čistega dobička oz. Čistega presežka prihodkov poslovnega leta
+89,IZGUBA IN OZ. ČISTI PRESEŽEK ODHODKOV IN PRENOS ČISTE IZGUBE OZ. ČISTEGA PRESEŽKA ODHODKOV
+890,Čista izguba tekočega leta oz. Čisti presežel odhodkov
+890000,Čista izguba tekočega leta oz. Čisti presežel odhodkov
+899,PRENOS ČISTE IZGUBE TEKOČEGA LETA OZIROMA PRENOS ČISTEGA PRESEŽKA 
+899000,Prenos čiste izgube tekočega leta oz. Prenos čistega presežka
+9,"KAPITAL, DOLGOROčNE OBVEZNOSTI  (DOLGOVI) IN DOGOROčNE REZERVACIJE"
+90,VPOKLICANI KAPITAL
+900,OSNOVNI DELNIŠKI KAPITAL -  DELNICE
+900000,Osnovni delniški kapital -  delnice
+901,OSNOVNI  KAPITAL – KAPITALSKI DELEŽI ALI KAPITALSKA VLOGA
+901000,Osnovni  kapital -kapitalski deleži in kapitalska vloga
+902,ZAČETNI KAPITAL – S.P.
+902000,Začetni kapital s.p.
+905,NERAZDRUŽLJIVI ZADRUŽNI KAPITAL
+906,DELEŽI ČLANOV ZADRUGE
+907,USTANOVITVENA IN KASNEJŠE VLOGE
+909,NEVPOKLICANI KAPITAL (ODBITNA POSTAVKA)
+909000,Nevpoklicani kapital
+91,KAPITALSKE REZERVE IN PRENOSI SREDSTEV
+910,VPLAč. NAD NOMINALNIMI ZNESKI DELNIC OZ. DELEŽEV
+910000,Vplač. nad nominalnimi zneski delnic oz. deležev
+911,VPLAč. NAD KNJI.VRED.PRI ODTUJITVI LAST.DELNIC IN DELEŽEV
+911000,Vplač. nad knji.vred.pri odtujitvi last.delnic in deležev
+912,VPLAč. NAD NOM.ZNES.KAP. Z IZDAJO ZAMENLJ.OBV./OBV.Z DEL.OP.
+912000,Vplač. nad nom.znes.kap. z izdajo zamenlj.obv./obv.z del.op.
+913,VPLAč. ZA PRIDOBITEV DODAT. PRAVIC IZ DELEŽEV DELNIC/DELEŽEV
+913000,Vplač. za pridobitev dodat. pravic iz deležev delnic/deležev
+914,DRUGA VPLAčILA KAPITALA NA PODLAGI STATUTA
+914000,Druga vplačila kapitala na podlagi statuta
+915,ZNESKI IZ POENOSTAVLJENEGA ZMANJŠ.OSNOVNEGA  KAPITALA  IN ZNESKI ZMANJŠANJA OSNOVNEGA KAPITALA Z UMIKOM DELNIC OZIROMA DELEŽEV
+915000,Zneski iz poenostavljenega zmanjš. osnovnega kapitala in zneski zmanjšanja osnovnega kapitala z umikom delnic oziroma deležev
+916,SPLOŠNI PREVREDNOTOVALNI POPRAVEK KAPITALA
+917,ZNESKI IZ UčINKOV POTJENE PRISILNE PORAVNAVE
+917000,Zneski iz učinkov potjene prisilne poravnave
+918,PRENOSI STVARNEGA PREMOŽENJA MED OPRAVLJANJEM DEJAVNOSTI
+918000,Prenosi strvarnega premoženja med opravljanjem dejavnosti
+919,PRETOKI IN ODTOKI MED POSJETJEM IN GOSPODINJSTVOM
+919000,Pretoki in odtoki gotovine
+92,REZERVE IZ DOBIčKA OZ. RAZPOREJENI ČISTI PRESEŽEK PRIHODKOV
+920,ZAKONSKE REZERVE
+920000,Zakonske rezerve
+921,REZERVE ZA LASTNE DELNICE OZIROMA DELEŽE
+921000,Rezerve za lastne delnice oziroma deleže
+922,STATUTARNE REZERVE
+922000,Statutarne rezerve
+923,DRUGE REZERVE IZ DOBIčKA
+923000,Druge rezerve iz dobička
+924,PROSTOVOLJNE ZADRUŽNE REZERVE
+925,PROSTOVOLJNI ZADRUŽNI SKLADI
+926,DEL ČISTEGA PRESEŽKA PRIHODKOV ZA DOLOČEN NAMEN (SKLAD)
+929,PRIDOBLJENE LASTNE DELNICE OZIROMA LASTNI POSLOVNI DELEŽI (ODBITNA POSTAVKA)
+93,čISTI DOBIčEK ALI čISTA IZGUBA OZ. NERAZPOREJENI ČISTI PRESEŽEK PRIHODKOV ALI ČISTI PRESEŽEK ODHODKOV
+930,PRENEŠENI čISTI DOBIčEK IZ PREJŠNJIH LET
+930000,Preneseni čisti dobiček iz prejšnjih let
+931,PRENESENA čISTA IZGUBA IZ PREJŠNJIH LET
+931000,Prenesena čista izguba iz prejšnjih let
+932,NERAZPOREJEN DEL  čISTEGA DOBIčKA POSLOVNEGA LETA OZ. NERAZPOREJEN ČISTI PRESEŽEK PRIHODKOV
+932000,Nerazporejen čistega dobička poslovnega leta oz. Nerazporejen čisti presežek prihodkov
+933,čISTA IZGUBA POSLOVNEGA LETAOZ. ČISTI PRESEŽEK ODHODKOV
+933000,čISTA IZGUBA POSLOVNEGA LETA oz. Čisti presežek odhodkov
+935,DOHODEK SAMOSTOJNIH PODJETNIKOV POSAMEZNIKOV
+935000,Dohodek samostojnih podjetnikov posameznikov
+937,NEGATIVNI POSLOVNI IZID SAMOSTOJNIH PODJETNIKOV POSAMEZNIKOV
+937000,Negativni poslovni izid samostojnih podjetnikov posameznikov
+94,REVALORIZACIJSKE REZERVE
+940,REVALORIZACIJSKE REZERVE IZ PREVREDOTOVANJA ZEMLJIŠČ
+940000,Revalorizacijske rezerve iz prevredotovanja zemljišč
+941,REVALORIZACIJSKE REZERVE IZ PREVREDNOTOVANJA ZGRADB
+941000,REVALORIZACIJSKE REZERVE IZ PREVREDNOTOVANJA ZGRADB
+949,POPRAVEK VREDNOSTI REVALORIZACIJSKIH REZERV ZA ODLOŽENE OBVEZNOSTI ZA DAVEK
+949000,Popravek vrednosti revalorizacijskih rezerv za odložene obveznosti za davek
+95,"REZERVE, NASTALE ZARADI VREDNOTENJA PO POŠTENI VREDNOSTI"
+954,"REZERVE, NASTALE ZARADI VREDNOTENJAKRATKOROČNIH NALOŽB PO POŠTENI VREDNOSTI"
+954000,"Rezerve, nastale zaradi vrednotenja dolgoročnih fin. Naložb po poš.vrednosti"
+955,"REZERVE, NASTALE ZARADI VREDNOTENJA DOLGOROČNIH NALOŽB PO POŠTENI VREDNOSTI"
+955000,"Rezerve, nastale zaradi vrednotenja kratkoročnih fin. Naložb po poš.vrednosti"
+956,"ZNESKI DOZAKANEGA DOBIČKA ALI DOKAZANE IZGUBE IZ SPREMEMB POŠTENE VREDNOSTI FIN.REDSTEV, RAZPOLOŽLJIVIH ZA PRODAJO, KI NI DEL RAZMERJA PRI VAROVANJU VREDNOSTI"
+957,AKTUALNI DOBIČKI ALI IZGUBE OD DOLOČENIH ZASLUŽKOV
+959,"POPRAVEK VREDNOSTI REZERV, NASTALIH ZARADI VREDNOTENJA PO POŠTENI VRED. ZA ODLOŽENE OBVEZNOSTI ZA DAVEK"
+96,REZERVACIJE IN DOLGOROČNE PČR
+960,REZERVACIJE ZA STROŠKE REORGANIZACIJE ORGANIZACIJE
+960000,Rezervacije za stroške reorganizacije organizacije
+961,REZERVACIJE ZA POKRIVANJE PRIHODNJIH STROŠKOV OZ. ODHODKOV ZARADI RAZGRADNJE IN PONOVNE VZPOSTAVITVE PRVOTNEGA STANJA TER DRUGE PODOBNE REZERVACIJE
+961000,Rezervacije za pokrivanje stroškov zaradi razgradnje in podobe rezervacije
+962,REZERVACIJE ZA KOČLJIVE POGODBE
+962000,Rezervacije za kočljive pogodbe
+963,"REZERVACIJE ZA POKOJNINE, JUBILEJNE NAGRADE IN ODPRAVNINE OB UPOKOJITVI"
+963000,"Rezervacije za pokojnine, jubilejne nagrade in odpravnine ob upokojitvi"
+964,REZERVACIJE ZA DANA JAMSTVA
+964000,Rezervacije za dana jamstva
+965,DRUGE REZERVACIJE IZ NASLOVA DOLGOROčNO VNAPREJ VRAčUNANIH STROŠKOV
+965000,Druge rezervacije iz naslova dolgoročno vnaprej vračunanih stroškov
+966,PREJETE DRŽAVNE PODPORE
+966000,Prejete državne podpore
+967,PREJETE DONACIJE
+967000,Prejete donacije
+968,DRUGE DOLGOROčNE PASIVNE čASOVNE RAZMEJITVE
+968000,Dolgoročne rezervacije - druge rezervacije
+97,DOLGOROčNE FINANčNE OBVEZNOSTI
+970,"DOLGOROČNA POSOJILA, DOBLEJNA PRI ORGANIZACIJAH V SKUPINI"
+970000,"Dolgoročna posojila, dobljena pri organizacijah v skupini"
+971,"DOLGOROčNA POSOJILA, DOBLJENA PRI PRIDRUŽENIH ORGANIZACIJAH"
+971000,"Dolgoročna posojila, dobljena pri pridruženih organizacijah"
+972,"DOLGOROčNA POSOJILA, DOBLJENA PRI  BANKAH in organizacijah v državi"
+972000,"Dolgoročna posojila, dobljena pri  bankah in organizacijah v državi"
+973,"DOLGOROčNA POSOJILA, DOBLJENA PRI BANKAH IN ORGANIZACIJAH V TUJINI"
+973000,"Dolgoročna posojila, dobljena pri bankah in organizacijah v tujini"
+974,DOLGOROČNE FINANČNE OBVEZNOSTI V ZVEZI Z OBVEZNICAMI IN MENICAMI
+974000,Dolgoročne finančne obveznosti v zvezi z obveznicami in menicami
+975,DOLGOROčNI DOLGOVI IZ FINANčNEGA NAJEMA
+975000,Dolgoročni dolgovi iz finančnega najema
+976,DOLGOROčNEFINANčNE OBVEZNOSTI DO FIZIčNIH OSEB
+976000,Dolgoročnefinančne obveznosti do fizičnih oseb
+979,DRUGE DOLGOROČNE FINANČNE OBVEZNOSTI
+979000,Druge dolgoročne finančne obveznosti
+98,DOLGOROčNE POSLOVNE OBVEZNOSTI
+980,"DOLGOROČNI KREDITI, DOBLJENI NA PODLAGI KREDITNIH POGODB OD ORGANIZACIJ V SKUPINI"
+980000,"Dolgoročni krediti , dobljeni na podlagi kreditinih pogodb od organizacij v skupini"
+981,"DOLGOROČNI KREDITI, DOBLJENI NA PODLAGI KREDITNIH POGODB OD PRIDRUŽENIH ORGANIZACIJ IN SKUPAJ OBVLADOVANIH ORGANIZACIJ"
+981000,"Dolgoročni krediti , dobljeni na podlagi kreditinih pogodb od pridruženih organizacij skupaj obvladovanih  organizacij"
+982,DOLGOROčNI KREDITI DOBLJENI OD DRUGIH DOMAčIH DOBAVITELJEV
+982000,"Dolgoročni krediti, dobljeni od drugih domačih dobaviteljev"
+983,"DOLGOROčNI KREDITI, DOBLJENI OD DRUGIH TUJIH DOBAVITELJEV"
+983000,"Dolgoročni krediti, dobljeni od drugih tujih dobaviteljev"
+985,DOLGOROčNE MENIčNE OBVEZNOSTI
+985000,Dolgoročne menične obveznosti
+986,DOLGOROčNI DOBLJENI PREDUJMI IN VARŠčINE
+986000,Dolgoročni dobljeni predujmi in varščine
+988,ODLOŽENE OBVEZNOSTI ZA DAVEK
+988000,Odložene obveznosti za davek
+989,DRUGE DOLGOROčNE POSLOVNE OBVEZNOSTI
+989000,Druge dolgoročne obveznosti
+99,ZUNAJBILANčNI KONTI 
+990,"NAJETA, IZPOSOJENA IN ZAKUPLJENA (TUJA) SREDSTVA"
+990000,"NAJETA, IZPOSOJENA IN ZAKUPLJENA (TUJA) SREDSTVA"
+991,"MENICE IN DRUGI VREDNOSTNI PAPIRJI, PREJETI ZA ZAV.PLAčIL"
+992,BLAGO PREJETO V KOMISIJSKO IN KONSIGNACIJSKO PRODAJO
+993,"VREDNOTNICE, IZDANE ZA OBRAčUNAVANJE ZNOTRAJ ORGANIZACIJE"
+994,DRUGI AKTIVNI ZUNAJBILANčNI KONTI
+995,"LASTNIK NAJETIH, IZPOSOJENIH IN ZAKUPLJENIH SREDSTEV"
+996,"DOLŽNIKI,KI SO ZAVAROVALI PLAčILA Z MENICAMI IN DR.VRED.PA."
+997,"OBVEZNOSTI IZ BLAGA,PREJETEGA V KOMISIJSKO IN KONSIGNAC.PRODAJO"
+998,"NOMINALNA VREDNOST VREDNOTNIC, IZDANIH ZA OBRAč.ZNOTRAJ ORGANIZACIJE"
+999,DRUGI PASIVNI ZUNAJBILANČNI KONTI

@@ -18,11 +18,9 @@ class ProductController extends Controller {
             $product = new \App\Product;
         }
         $product->name = $this->request->input('name');
-        $product->idCompany = $this->request->input('idCompany');
         $product->idManufacturer = $this->request->input('idManufacturer');
         $product->idProductGroup = $this->request->input('idProductGroup');
-        $product->codeVendor = $this->request->input('codeVendor');
-        $product->priceVendor = $this->request->input('priceVendor');
+        $product->codeManufact = $this->request->input('codeManufact');
         $product->codeSelf = $this->request->input('codeSelf');
         $product->priceSelf = $this->request->input('priceSelf');
         $product->oemCodes = $this->request->input('oemCodes');
@@ -46,16 +44,16 @@ class ProductController extends Controller {
     }
 
     public function index() {
-        $idComp = $this->request->input('idCompany');
+        $idManufact = $this->request->input('idManufact');
         $idProG = $this->request->input('idProductGroup');
 
         $q = DB::table('product')
-                ->select('product.id', 'product.name', 'product.priceSelf', 'product.priceVendor','product.codeVendor','product.codeSelf','product.note',
-                        'company.name as cname', 'productgroup.name as gname')
-                ->leftJoin('company', 'product.idCompany', '=', 'company.id')
+                ->select('product.id', 'product.name', 'product.priceSelf', 'product.codeManufact','product.codeSelf','product.note',
+                         'manufacturer.name as mname','productgroup.name as gname')
+                ->leftJoin('manufacturer', 'product.idManufacturer', '=', 'manufacturer.id')
                 ->leftJoin('productgroup', 'product.idProductGroup', '=', 'productgroup.id');
-        if ($idComp > 0) {
-            $q->where('product.idCompany', $idComp);
+        if ($idManufact > 0) {
+            $q->where('product.idManufacturer', $idManufact);
         }
         if ($idProG > 0) {
             $q->where('product.idProductGroup', $idProG);
@@ -64,20 +62,18 @@ class ProductController extends Controller {
 
         return view('product.index')
                         ->with('actProd', 'active')
-                        ->with('company', array('0' => 'izberi podjetje') + DB::table('company')->orderBy('name')->pluck('name', 'id')->toArray())
-                        ->with('productgroup', array('0' => 'izberi grupo') + DB::table('productGroup')->orderBy('name')->pluck('name', 'id')->toArray())
-                        ->with('idComp', $idComp)
+                        ->with('manufacturer', array('0' => 'izberi proizvajalca') + DB::table('manufacturer')->orderBy('name')->pluck('name', 'id')->toArray())
+                        ->with('productgroup', array('0' => 'izberi skupino') + DB::table('productGroup')->orderBy('name')->pluck('name', 'id')->toArray())
+                        ->with('idManufact', $idManufact)
                         ->with('idProG', $idProG)
                         ->with('obj', $product);
     }
     public function create() {
-        $compList = array(''=>'izberi') + DB::table('company')->where('indVendor',1)->pluck('name','id')->toArray();
         $manuList = array(''=>'izberi') + DB::table('manufacturer')->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
         return view('product.form')
                         ->with('formAction', 'product.store')
                         ->with('formMethod', 'POST')
-                        ->with('compList',$compList)
                         ->with('manuList',$manuList)
                         ->with('grList',$grList)
                         ->with('actProd', 'active')
@@ -92,7 +88,6 @@ class ProductController extends Controller {
     }
 
     public function edit($id) {
-        $compList = array(''=>'izberi') + DB::table('company')->pluck('name','id')->toArray();
         $manuList = array(''=>'izberi') + DB::table('manufacturer')->pluck('name','id')->toArray();
         $grList = array(''=>'grupe') + DB::table('productGroup')->pluck('name', 'id')->toArray();
         $image = DB::table('fileUpload')->where('idProduct', $id)->first();
@@ -100,7 +95,6 @@ class ProductController extends Controller {
                         ->with('formAction', 'product.update')
                         ->with('formMethod', 'PUT')
                         ->with('displayCancel','inline')
-                        ->with('compList',$compList)
                         ->with('manuList',$manuList)
                         ->with('image',$image)
                         ->with('grList',$grList)
