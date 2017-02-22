@@ -68,7 +68,7 @@ class InvoiceInController extends Controller {
         return $invoiceinart->id;
     }
     public function index() {
-        $invoicein = \App\InvoiceIn::with('company')->get();
+        $invoicein = \App\InvoiceIn::with('company')->orderBy('dateIssue','DESC')->get();
         Session::forget('sessDataProduct');
         Session::forget('sessProductIn');
         return view('invoiceIn.index')
@@ -121,7 +121,6 @@ class InvoiceInController extends Controller {
                         ->with('konto', $this->konto2list)
                         ->with('file',$file)
                         ->with('marketplaces', $this->marketplaces)
-                        ->with('displayCancel', 'true')
                         ->with('actInvo', 'active')
                         ->with('obj', \App\InvoiceIn::find($id));
     }

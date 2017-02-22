@@ -59,6 +59,7 @@ class ProductController extends Controller {
         if ($idProG > 0) {
             $q->where('product.idProductGroup', $idProG);
         }
+        $q->orderBy('product.name');
         $product = $q->paginate(40);
 
         return view('product.index')

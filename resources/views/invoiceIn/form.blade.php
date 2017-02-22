@@ -124,7 +124,7 @@
 <div class="form-group"> <div class="col-md-2 col-md-offset-10"> <b>TOTAL: {!! $priceTot or '0' !!} EUR </b> </div> </div>
 
     <input class="btn btn-md btn-success pull-right" type="submit" value="Submit">
-    <a style="display: {!!$displayCancel or 'none'!!}" class="btn btn-sm btn-danger pull-left" href="{!!URL::to('invoicein')!!}">Cancel</a>
+    <a class="btn btn-sm btn-danger pull-left" href="{!!URL::to('invoicein')!!}">Cancel</a>
 </div>
 </div>
 </div>

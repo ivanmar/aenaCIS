@@ -61,7 +61,7 @@ class InvoiceOutController extends Controller {
         return $invoiceout->id;
     }
     public function index() {
-        $invoiceout = \App\InvoiceOut::with('company')->get();
+        $invoiceout = \App\InvoiceOut::with('company')->orderBy('nrInvoice','DESC')->get();
         Session::forget('sessInvoOut');
         Session::forget('sessProductIn');
 
@@ -108,7 +108,6 @@ class InvoiceOutController extends Controller {
                         ->with('customer', $customer)
                         ->with('products', $products)
                         ->with('paymentType', $this->paymentType)
-                        ->with('displayCancel', 'true')
                         ->with('actInvo', 'active')
                         ->with('obj', \App\InvoiceOut::find($id));
     }
