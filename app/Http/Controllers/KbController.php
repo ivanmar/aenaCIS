@@ -29,16 +29,18 @@ class KbController extends Controller {
         $kb->save();
         
         $files=$this->request->file('file');
-        foreach ($files as $file) {
-                $extension = strtolower($file->getClientOriginalExtension());
-                $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
-                $file->move('public/upload/kb/', $filename);
-                $f = new \App\FileUpload;
-                $f->nameEnc = $filename;
-                $f->nameOrig = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension());
-                $f->fileExt = $extension;
-                $f->idKb = $kb->id;
-                $f->save();
+        if($files && is_array($files)) {
+            foreach ($files as $file) {
+                    $extension = strtolower($file->getClientOriginalExtension());
+                    $filename = substr(str_shuffle('abcefghijklmnopqrstuvwxyz1234567890'), 0, 14).'.'.$extension;
+                    $file->move('public/upload/kb/', $filename);
+                    $f = new \App\FileUpload;
+                    $f->nameEnc = $filename;
+                    $f->nameOrig = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension());
+                    $f->fileExt = $extension;
+                    $f->idKb = $kb->id;
+                    $f->save();
+            }
         }
         return $kb->id;
     }
