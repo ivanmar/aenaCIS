@@ -18,8 +18,10 @@
                         {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-2">
+    @if(isset($indEdit))
                         <span class="cFieldName">Št. računa</span>
-                        {!! Form::text('nrInvoice', (isset($lastNrInvoice) ? $lastNrInvoice : $obj->nrInvoice), array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
+       {!! Form::text('nrInvoice', $obj->nrInvoice, array('class' => 'form-control input-sm','id'=>'nrInvoice')) !!}
+    @endif
                     </div>
                     <div class="col-md-2 col-md-offset-1">
                         <span class="cFieldName"> Datum oddaje</span>

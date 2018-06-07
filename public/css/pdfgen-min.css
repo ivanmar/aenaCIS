@@ -1,0 +1,52 @@
+* {margin: 0; padding: 0;}
+body { background-color: #fff; font-size: 12px; font-family: "DejaVu Sans", monospace;}
+.clr{clear:both;}
+.page { size: 21cm 29.7cm; page-break-after: always; }
+.page:last-child { page-break-after: never; }
+.last {page-break-after: avoid;}
+header { position: fixed; top: 0px; left: 0px; right: 0px; height: 40px; }
+footer { position: fixed; bottom: 0px; left: 0px; right: 0px; height: 40px; }
+table {width: 100%}
+table,th,td { border-collapse:collapse;}
+td {padding:3px; vertical-align: top;}
+ul {color: #333; list-style: element; padding: 10px;margin-left: 10px;}
+ul.decimal {list-style: decimal}
+ul.alpha {list-style: lower-alpha}
+p {text-align:justify; line-height: 15px;}
+h1{font-size: 22px;padding:30px 0; color: #555}
+h2{font-size: 20px;padding:20px 0; color: #444}
+h3{font-size: 14px;font-weight: 600;padding:15px 0; color: #333}
+h4{font-size: 12px;font-weight: 400;padding:8px 0; color: #222}
+.brd-no {border:none;}
+.brd-all {border:1px solid black;}
+.brd-top {border-top: 1px solid black;}
+.brd-down {border-bottom: 1px solid #555;}
+.brd-right {border-right: 1px solid #555;}
+.txt-right {text-align: right;}
+.txt-left {text-align: left;}
+.txt-center {text-align:center;}
+.txt-middle {vertical-align: middle;}
+.txt-top {vertical-align: top;}
+.txt-big {font-size:14px;}
+.txt-small {font-size:10px;}
+.txt-xsmall {font-size:9px;}
+.txt-xxsmall {font-size:8px;}
+.txt-italic {font-style:italic;}
+.txt-bold {font-weight: 600;}
+.txt-upper {text-transform:uppercase;}
+.txt-lower {text-transform:lowercase;}
+.h10{height:10px;} .h20{height:20px;} .h40{height:40px;} .h50{height:50px;} .h60{height:60px;} .h80{height:80px;}
+.w100 {width: 100px} .w150 {width: 150px} .w200 {width: 200px} .w300 {width: 300px} .w400 {width: 400px} .w500 {width: 500px}
+.w10p {width: 10%} .w20p {width: 20%} .w30p {width: 30%} .w40p {width: 40%} .w50p {width: 50%} 
+.w60p {width: 60%} .w70p {width: 70%} .w80p {width: 80%} .w90p {width: 90%} .w100p {width: 100%}
+.pad5{padding:5px;} .pad10{padding:10px;} .pad20{padding:20px;} .pad30{padding:30px;} .pad40{padding:40px;} .pad60{padding:60px;}
+.mar20{margin:20px;} .mar40{margin:40px;} .mar60{margin:60px;}
+.black{color: #000}
+.gray{color: #555}
+.gray-light{color: #777}
+.red{color: #800000}
+.blue{color: #5056d5}
+
+.float-left {float: left; display: inline-block;}
+.float-right {float: right; display: inline-block;}
+

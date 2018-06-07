@@ -2,9 +2,9 @@
     <head>
         <title>Izvjesce Meritve</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen.css">
+        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen-min.css">
     </head>
-    <body>
+    <body class="pad30">
         <div class="page"> 
             <table class="front">
                 <tr><td colspan="7"><img src="{!!base_path('public/img/real-logo.gif')!!}" width="300"></td>

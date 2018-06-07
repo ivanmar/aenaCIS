@@ -10,7 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

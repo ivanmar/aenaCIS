@@ -2,14 +2,17 @@
 <html>
     <head>
         <title>aenaCIS - A1 Informatika d.o.o.</title>
-        {!! HTML::style('public/css/jquery-ui.min.css') !!}
-        {!! HTML::style('public/css/bootstrap.min.css') !!}
-        {!! HTML::style('public/css/font-awesome.min.css') !!}
-        {!! HTML::style('public/css/bootstrap-custom.css') !!}
+        {!! HTML::style('css/jquery-ui.min.css') !!}
+        {!! HTML::style('css/bootstrap.css') !!}
+        {!! HTML::style('css/font-awesome.min.css') !!}
+        {!! HTML::style('css/bootstrap-cust.css') !!}
+        {!! HTML::style('css/chosen.min.css') !!}
 
-        {!! HTML::script('public/js/jquery.min.js') !!}
-        {!! HTML::script('public/js/jquery-ui.min.js') !!}
-        {!! HTML::script('public/js/bootstrap.min.js') !!}
+        {!! HTML::script('js/jquery.min.js') !!}
+        {!! HTML::script('js/jquery-ui.min.js') !!}
+        {!! HTML::script('js/bootstrap.min.js') !!}
+        {!! HTML::script('js/datepicker-sl.js') !!}
+        {!! HTML::script('js/chosen.jquery.min.js') !!}
     </head>
     <body>
         <div class="container-fluid">

@@ -2,7 +2,7 @@
     <head>
         <title>DELOVNI NALOG</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen.css">
+        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen-min.css">
     </head>
     <body>
         <div class="page last"> 

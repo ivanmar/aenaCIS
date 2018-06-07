@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 
 class InvoiceOutController extends Controller {
 
-    var $input_rules = ['idCompany' => 'required','nrInvoice' => 'required'];
-    var $paymentType = array( 'none'=>'Izberi' ,'trr'=>'TRR','paypal'=>'paypal','cash'=>'Gotovina');
+    var $input_rules = ['idCompany' => 'required','nrInvoice' => 'integer'];
+    var $paymentType = array( 'none'=>'Izberi' ,'trr'=>'TRR','card'=>'Kartica','paypal'=>'paypal','cash'=>'Gotovina');
 
     public function __construct(Request $request){
         $this->middleware('auth');
@@ -15,18 +15,14 @@ class InvoiceOutController extends Controller {
     private function insertMainSql($id = 0) {
         if ($id > 0) {
             $invoiceout = \App\InvoiceOut::find($id);
-            $indEdit=true;
         } else {
             $invoiceout = new \App\InvoiceOut;
-            $indEdit=false;
         }
         $paymentType = $this->request->input('paymentType');
         $invoiceout->paymentType = $paymentType;
-        if($paymentType == 'cash') {
-            $invoiceout->nrInvoice = 0;
-        } else {
-            $invoiceout->nrInvoice = $this->request->input('nrInvoice');
-        }
+
+        $invoiceout->nrInvoice = ($id == 0) ? DB::table('invoiceOut')->max('nrInvoice') +1: $this->request->input('nrInvoice');
+
         $invoiceout->idCompany = $this->request->input('idCompany');
         $invoiceout->dateIssue = $this->request->input('dateIssue');
         $invoiceout->shipCost = cisNumFix( $this->request->input('shipCost') );
@@ -51,7 +47,7 @@ class InvoiceOutController extends Controller {
                 $invoiceoutart->priceUnit = $priceUnit;
                 $invoiceoutart->idInvoiceOut = $invoiceout->id;
                 $invoiceoutart->save();
-                if(! $indEdit) {
+                if($id == 0) {
                   DB::table('product')->where('id', $val['idProduct'])->decrement('stockQty', $val['qty']);
                 }
            }
@@ -61,26 +57,41 @@ class InvoiceOutController extends Controller {
         return $invoiceout->id;
     }
     public function index() {
-        $invoiceout = \App\InvoiceOut::with('company')->orderBy('nrInvoice','DESC')->get();
+        $idCust = ($this->request->has('idCustomer')) ? $this->request->input('idCustomer') : 0;
+        $year = ($this->request->has('year')) ? $this->request->input('year') : 0;
+        
+        $q= DB::table('invoiceOut')->select('invoiceOut.id', 'nrInvoice','dateIssue','company.name AS cname','nrRef')
+                ->join('company','invoiceOut.idCompany','=','company.id');
+        if ($idCust > 0) {
+            $q->where('idCompany', $idCust);
+        }
+        if ($year > 0) {
+            $q->where('dateIssue', '>', $year . '-0-0');
+            $q->where('dateIssue', '<', ($year + 1) . '-0-0');
+        }
+        $invoiceout = $q->orderBy('nrInvoice','desc')->paginate(50);
+        
         Session::forget('sessInvoOut');
         Session::forget('sessProductIn');
 
         return view('invoiceOut.index')
                         ->with('actInvo', 'active')
+                        ->with('customer', cisGetCompList())
+                        ->with('years', ovrGetYearList())
+                        ->with('idCust', $idCust)
+                        ->with('year', $year)
                         ->with('obj', $invoiceout);
     }
 
     public function create() {
         $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
         $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
-        $lastNrInvoice = DB::table('invoiceOut')->max('nrInvoice');
         return view('invoiceOut.form')
                         ->with('formAction', 'invoiceout.store')
                         ->with('formMethod', 'POST')
                         ->with('customer', $customer)
                         ->with('products', $products)
                         ->with('paymentType', $this->paymentType)
-                        ->with('lastNrInvoice', $lastNrInvoice + 1)
                         ->with('actInvo', 'active')
                         ->with('obj', new \App\InvoiceOut);
     }
@@ -106,6 +117,7 @@ class InvoiceOutController extends Controller {
                         ->with('formAction', 'invoiceout.update')
                         ->with('formMethod', 'PUT')
                         ->with('customer', $customer)
+                        ->with('indEdit', true)
                         ->with('products', $products)
                         ->with('paymentType', $this->paymentType)
                         ->with('actInvo', 'active')

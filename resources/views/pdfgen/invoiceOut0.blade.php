@@ -2,13 +2,24 @@
     <head>
         <title>Račun</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen.css">
+        <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen-min.css">
+        <style>
+            table.front {border: 0; font-size: 11px; letter-spacing: 2px; l}
+            table.front td{ text-align: left; border: solid 1px #888; padding: 10px;}
+
+            table.article0{border:0; margin-bottom: 15px; font-size:10px; line-height: 22px; }
+            table.article0 th {word-wrap:break-word;  border:solid 1px #888; font-weight:400; background:#ddd;text-align:center;vertical-align: top;}
+            table.article0 td {border:solid 1px #888;}
+            
+            div.inv-desc {width:96%; border:solid 1px #777; min-height: 80px; margin: 20px 0 15px 0; padding: 5px; font-size:10px;line-height: 18px;}
+        </style>
     </head>
-    <body>
-        <div class="page last">
+    <body class="pad40">
+        <div class="page">
             <table class="front">
                 <tr>
-                    <td colspan="3" class="txt-xsmall"> <b>A1 INFORMATIKA D.O.O.</b> <br> DŠ: 88334244 <br> Naslov: Preglov trg 2, Ljubljana <br> TRR: SI56 1010 0005 3116 904 pri banki Koper</td>
+                    <td colspan="3" class="txt-xsmall"> <b>A1 INFORMATIKA D.O.O.</b> <br> DŠ: 88334244 <br> 
+                        Naslov: Brilejeva 6, Ljubljana <br> TRR: SI56 0288 9026 2723 976 pri banki NLB</td>
                     <td> <img  class='float-right' src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
                 </tr>
                 <tr><td colspan="4"> <h1 class="txt-center"> RAČUN : <?php echo substr($dateIssue, 0, 4); ?>-{!!$nrInvoice!!} </h1></td> </tr>
@@ -19,7 +30,7 @@
                     <td class="txt-small" colspan="2"><p class="txt-right"> Kraj : Ljubljana </p> </td> 
                 </tr>
                 <tr><td class="txt-small"> Sedež </td> <td class="txt-small"> {!!$zipCode !!} &nbsp; {!!$city !!} </td>
-                    <td class="txt-small" colspan="2"> <p class="txt-right"> Rok plačila : {!!$dateDue !!} </p> </td> 
+                    <td class="txt-small" colspan="2"> <p class="txt-right"> Rok plačila : 15 dni </p> </td> 
                 </tr>
                 <tr><td class="txt-small"> DDV št </td> <td class="txt-small"> {!!$ddvCode !!} </td> 
                     <td class="txt-small" colspan="2">  </td> 

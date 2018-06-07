@@ -1,0 +1,115 @@
+body { 
+    font-size: 13px;
+}
+
+table {margin: 10px 0 0 0;}
+
+span.top-userName {
+    display: inline-block;
+    padding-top: 16.5px;
+    padding-bottom: 16.5px;
+    color: #aaa;
+}
+.form-control {
+    border: 1px solid #777;
+    color: #444;
+    height: auto;
+}
+.form-control:focus {
+    border-color: red;
+    box-shadow: none;
+}
+select.input-sm {  height: auto; font-size: 11px; padding: 4px }
+
+.cInputRowMarker {border: 2px solid #2a6394;}
+.cStat-red { background-color: #ff3333; color: #ff3333;}
+.cStat-orange { background-color: orange; color: orange;}
+.cStat-green { background-color: lime; color: lime;}
+.cFieldName {color: #1E368A;}
+.cFieldName-blue {color: #2a6394;}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #aaa;
+}
+thead td {
+    background-color: #333;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 5px 0px;
+}
+
+.popover-content input, .popover-content select { width: 220px; margin:5px 0 5px 0;}
+
+div.div-striped:nth-of-type(odd) {
+    background: #e0e0e0;
+}
+div.div-striped:nth-of-type(even) {
+    background: #FFFFFF;
+}
+.responsCalObj {
+    position: relative; height: auto; overflow: hidden;
+    background: #fff;
+}
+.responsCalObj .fc td, .responsCalObj .fc th {
+    border-color: #777;
+}
+.responsCalObj .fc-day-number {
+    color: #777;
+}
+
+.btn-success {border-color: #0e960e;}
+.btn-primary {border-color: #0a5596;}
+.btn-warning {border-color: #985f0d;}
+.btn-danger { border-color: #761c19;}
+.btn-info {border-color: #167f9f;}
+
+.ui-widget-content { border: 1px solid #aaa;}
+.displayNone { display:none;}
+.displayInline { display:inline;}
+.displayBlock { display:block;}
+
+.actions a {display: inline-block;}
+.actions a i {margin-right: 7px; font-size: 19px; color: #0a5596;}
+
+caption { color: #333; padding: 3px; font-size: 12px; }
+caption.tableActions { 
+    color: #337ab7;
+    background: none;
+    padding: 3px; 
+    font-size: 14px;
+    line-height: 25px;
+}
+caption.tableActions a i {font-size: 22px;  padding-left: 20px; color: #337ab7; }
+
+i.top-icons { color:  #2f9520;}
+i.top-icons:hover { color: #1c5714;}
+
+i.emScrHelp {color: #2f9520; font-size: 14px; padding-left: 15px; cursor: help;}
+i.emInpHelp {color: #2f9520; font-size: 14px;}
+div.popover-content { max-width: 100%; max-height: 500px; overflow: auto; }
+
+footer {text-align: center; color: #444}
