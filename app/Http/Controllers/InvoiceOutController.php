@@ -60,8 +60,8 @@ class InvoiceOutController extends Controller {
         $idCust = ($this->request->has('idCustomer')) ? $this->request->input('idCustomer') : 0;
         $year = ($this->request->has('year')) ? $this->request->input('year') : 0;
         
-        $q= DB::table('invoiceOut')->select('invoiceOut.id', 'nrInvoice','dateIssue','company.name AS cname','nrRef')
-                ->join('company','invoiceOut.idCompany','=','company.id');
+        $q= DB::table('invoiceOut')->select('invoiceOut.id', 'nrInvoice','dateIssue','company.name AS cname','nrRef','indStorno')
+                ->leftJoin('company','invoiceOut.idCompany','=','company.id');
         if ($idCust > 0) {
             $q->where('idCompany', $idCust);
         }
@@ -139,9 +139,7 @@ class InvoiceOutController extends Controller {
         } else {
             $cName='končni kupec'; $cAddress=''; $cDdv = ''; $cZip=''; $cCity='';
         }
-
         $items = DB::table('invoiceOutArt')->where('idInvoiceOut', $id)->get();
-
         $data = array(
             'company' => $cName, 'nrInvoice' => $invoiceout->nrInvoice,'dateIssue'=>$invoiceout->dateIssue,'dateDue'=>$invoiceout->dateDue,
             'address' => $cAddress,'ddvCode' => $cDdv, 'zipCode' => $cZip, 'city' => $cCity,'shipCost'=>$invoiceout->shipCost,
@@ -158,6 +156,7 @@ class InvoiceOutController extends Controller {
  //       }
         DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->delete();
         DB::table('invoiceOut')->where('id',$id)->delete();
+        DB::table('storno')->where('idInvoiceOut',$id)->delete();
         
         Session::flash('message', 'Successfully deleted');
         return redirect('invoiceout');

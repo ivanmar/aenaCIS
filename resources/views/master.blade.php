@@ -37,10 +37,19 @@
                                 <li><a href="{!! URL::to('invoiceout') !!}">Računi oddaja</a></li>
                                 <li><a href="{!! URL::to('invoicein') !!}">Računi prejem</a></li>
                                 <li><a href="{!! URL::to('reclamation') !!}">Reklamacije</a></li>
+                                <li><a href="{!! URL::to('storno') !!}">Storno</a></li>
                             </ul>
                         </li>
                         <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('project') !!}">Projekti</a></li>
-                        <li class="{!! $actComp or ''!!}"><a href="{!! URL::to('company') !!}">Podjetja</a></li>
+                        
+                        <li class="dropdown {!! $actComp or ''!!}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Podjetja <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{!! URL::to('company/create') !!}">Dodaj podjetje</a></li>
+                                <li><a href="{!! URL::to('company') !!}">Seznam podjet</a></li>
+                                <li><a href="{!! URL::to('contract') !!}">Pogodbe</a></li>
+                            </ul>
+                        </li>
                         <li class="{!! $actCont or ''!!}"><a href="{!! URL::to('contact') !!}">Kontakti</a></li>
                         <li class="{!! $actKb or ''!!}">  <a href="{!! URL::to('kb') !!}">KB</a></li>
                         <li class="{!! $actProd or ''!!}">  <a href="{!! URL::to('product') !!}">Produkti</a></li>

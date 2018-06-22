@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class ReclamationController extends Controller {
 
-    var $input_rules = ['dateStart' => 'required','idProduct' => 'required'];
+    var $input_rules = ['dateStart' => 'required','idProduct' => 'required | integer | min:1'];
     protected $statusRecl = array('sprejeto' => 'Sprejeto', 'refunt' => 'Refundirano', 'preklic' => 'Preklicano');
 
     public function __construct(Request $request){

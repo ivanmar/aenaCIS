@@ -1,0 +1,6 @@
+
+tbl: contract
+tbl: fileUpload add idContract + add all in foreign keys
+tbl: invoiceInArt, invoiceOutArt in saleOrderArt add foreign keys
+tbl: invoiceOut InvoiceIn del priceNet and amountTax
+tbl: add storno, invCirc

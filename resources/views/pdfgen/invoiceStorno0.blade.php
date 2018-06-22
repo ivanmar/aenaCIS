@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Račun</title>
+        <title>Dobropis</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen-min.css">
         <style>
@@ -22,7 +22,11 @@
                         Naslov: Preglov trg 2, Ljubljana <br> TRR: SI56 0288 9026 2723 976 pri banki NLB</td>
                     <td> <img  class='float-right' src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
                 </tr>
-                <tr><td colspan="4"> <h1 class="txt-center"> RAČUN : <?php echo substr($dateIssue, 0, 4); ?>-{!!$nrInvoice!!} </h1></td> </tr>
+                <tr><td colspan="4"> <h1 class="txt-center"> DOBROPIS
+                            NA RAČUN ŠT. {!!substr($dateIssueInv, 0, 4).'-'.$nrInvoice!!} </h1>
+                        <p class="txt-bold txt-right"> Dobropis št.: {!!substr($dateIssue, 0, 4).'-'.$nrStorno!!} </p>
+                    
+                    </td> </tr>
                 <tr><td class="txt-small"><b> Kupec </b> </td>  <td class="txt-small"> <b> {!!$company!!} </b></td>
                     <td class="txt-small" colspan="2"> <p class="txt-right">Datum : {!!$dateIssue!!}</p> </td> 
                 </tr>
@@ -30,7 +34,7 @@
                     <td class="txt-small" colspan="2"><p class="txt-right"> Kraj : Ljubljana </p> </td> 
                 </tr>
                 <tr><td class="txt-small"> Sedež </td> <td class="txt-small"> {!!$zipCode !!} &nbsp; {!!$city !!} </td>
-                    <td class="txt-small" colspan="2"> <p class="txt-right"> Rok plačila : 15 dni </p> </td> 
+                    <td class="txt-small" colspan="2"> </td> 
                 </tr>
                 <tr><td class="txt-small"> DDV št </td> <td class="txt-small"> {!!$ddvCode !!} </td> 
                     <td class="txt-small" colspan="2">  </td> 
@@ -61,23 +65,13 @@
                     <td>{!!$value->nameItem!!}</td>
                     @endif
                     <?php
-                    $totPriceQty += $value->priceUnit * $value->qty;
+                    $totPriceQty += $value->priceUnit * $value->qty * -1;
                     ?>
                     <td class="txt-center">{!!$value->qty!!}</td>
                     <td class="txt-right">{!!number_format($value->priceUnit, 2,',','')!!}</td>
-                    <td class="txt-right">{!!number_format($value->priceUnit * $value->qty, 2,',','')!!}</td>
+                    <td class="txt-right">{!!number_format($value->priceUnit * $value->qty * -1, 2,',','')!!}</td>
                 </tr>
                 @endforeach
-                @if($shipCost > 0)
-                <tr>
-                    <td class="txt-center">{!!$key +2!!}</td>
-                    <td> Dostava </td>
-                    <?php $totPriceQty += $shipCost; ?>
-                    <td class="txt-center"> 1 </td>
-                    <td class="txt-right">{!!number_format($shipCost, 2,',','')!!}</td>
-                    <td class="txt-right">{!!number_format($shipCost, 2,',','')!!}</td>
-                </tr>
-                @endif
 
                 <tr>
                     <td class="txt-right" colspan="4"><b>Skupaj : (EUR)</b> </td>
@@ -90,7 +84,7 @@
             </p>
             
             <div class="inv-desc">
-                <b> OPIS RAČUNA :</b> <br>
+                <b> OPIS DOBROPISA :</b> <br>
                         {!!$desc!!} 
             </div>
             

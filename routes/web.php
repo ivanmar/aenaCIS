@@ -13,7 +13,7 @@
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/', 'TicketController@index');
+Route::get('/', 'DashboardController@index');
 
 
 Route::get('/js/getcontactlist/{reqterm}', 'JsController@getContactList');
@@ -64,3 +64,10 @@ Route::resource('saleorder', 'SaleOrderController');
 
 Route::get('/reclamation/{id}/destroy', 'ReclamationController@destroy');
 Route::resource('reclamation', 'ReclamationController');
+
+Route::get('/storno/{id}/destroy', 'StornoController@destroy');
+Route::resource('storno', 'StornoController');
+
+Route::get('/contract/{id}/destroy', 'ContractController@destroy');
+Route::get('/contract/delfile/{id}', 'ContractController@delFile');
+Route::resource('contract', 'ContractController');

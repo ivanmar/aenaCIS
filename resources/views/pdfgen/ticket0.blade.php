@@ -3,19 +3,33 @@
         <title>DELOVNI NALOG</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link media="all" type="text/css" rel="stylesheet" href="css/pdfgen-min.css">
+        <style>
+table.front {border: 0; font-size: 11px; letter-spacing: 2px; line-height: 20px;}
+table.front td{ text-align: left; border: solid 1px #888; padding: 10px;}
+table.front .desc {height: 150px;}
+table.front td.top-date p {margin: 10px 0; display: block;}
+table.front td.top-date span.itxt {float:right; display: inline-block;}
+table .name-row {color: #003366; font-weight: 600;}
+
+#brd-no0 {border: 0;}
+#brd-no1 {border: 0;}
+#brd-no2 {border: 0;}
+#brd-no3 {border: 0;}
+
+        </style>
     </head>
-    <body>
-        <div class="page last"> 
+    <body class="pad40">
+        <div class="page"> 
             <table class="front">
-                <tr><td colspan="2" id="brd-no0"> <img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"> </td>
+                <tr><td colspan="1" id="brd-no0"> <img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"> </td>
                     <td colspan="6" id="brd-no1"> 
                         <b>A1 INFORMATIKA D.O.O. </b><br>
                             <span class="txt-xsmall">Dolenjska cesta 242, 1000 Ljubljana<br>
                                   064 170003 / www.aena.si </span>
                     </td>
 
-                    <td colspan="2" class="top-date" id="brd-no2">
-                        <p><span class="name-row"> Datum poročila :</span> <span class="itxt"> {!! date('d-m-Y') !!} </span></p>
+                    <td colspan="3" class="top-date" id="brd-no2">
+                        <p> Datum poročila : <b>{!! date('d.m.Y') !!}</b>  </p>
                     </td>
                 </tr>
                 <tr><td colspan="10" id="brd-no3"><h1 class="txt-center"> DELOVNI NALOG ŠT: {!! date('Y').'-'.$id !!} </h1></td> </tr>

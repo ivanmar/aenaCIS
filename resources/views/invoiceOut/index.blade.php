@@ -20,8 +20,7 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <td>ID</td>
-            <td>Račun</td>
+            <td>št.Račun</td>
             <td>Datum oddaje</td>
             <td>Podjetje</td>
             <td>Sklic</td>
@@ -31,8 +30,11 @@
     </thead>
     <tbody>
         @foreach($obj as $key => $value)
-        <tr>
-            <td>{!! $value->id !!}</td>
+          @if($value->indStorno)
+           <tr class="warning">
+          @else
+           <tr>
+          @endif
             <td>{!! $value->nrInvoice !!}</td>
             <td>{!! $value->dateIssue !!}</td>
           @if (isset($value->cname))

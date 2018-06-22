@@ -112,7 +112,7 @@
                         {!! $qty !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
-                        <span class="cFieldName">cena enote : </span>
+                        <span class="cFieldName">cena en.: </span>
                         {!! $priceUnit !!}
                     </div>
                     <div class="col-md-1 col-md-offset-1">
