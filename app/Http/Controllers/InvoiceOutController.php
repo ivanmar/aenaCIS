@@ -24,6 +24,7 @@ class InvoiceOutController extends Controller {
         $invoiceout->nrInvoice = ($id == 0) ? DB::table('invoiceOut')->max('nrInvoice') +1: $this->request->input('nrInvoice');
 
         $invoiceout->idCompany = $this->request->input('idCompany');
+        $invoiceout->idInvCirc=($this->request->input('idInvCirc')>0)?$this->request->input('idInvCirc'):null;
         $invoiceout->dateIssue = $this->request->input('dateIssue');
         $invoiceout->shipCost = cisNumFix( $this->request->input('shipCost') );
         $invoiceout->desc = $this->request->input('desc');
@@ -84,13 +85,15 @@ class InvoiceOutController extends Controller {
     }
 
     public function create() {
-        $products = array('0' => 'izberi produkt') + DB::table('product')->pluck('name','id')->toArray();
-        $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $products = array('0' => 'izberi produkt') + DB::table('product')->orderBy('name')->pluck('name','id')->toArray();
+        $customer = array('0' => 'končni kupec') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
+        $invCirc = array('0' => 'izberi') + DB::table('invCirc')->pluck('name','id')->toArray();
         return view('invoiceOut.form')
                         ->with('formAction', 'invoiceout.store')
                         ->with('formMethod', 'POST')
                         ->with('customer', $customer)
                         ->with('products', $products)
+                        ->with('invCirc', $invCirc)
                         ->with('paymentType', $this->paymentType)
                         ->with('actInvo', 'active')
                         ->with('obj', new \App\InvoiceOut);
@@ -102,10 +105,27 @@ class InvoiceOutController extends Controller {
         Session::flash('message', 'Successfully created');
         return redirect('invoiceout');
     }
+    public function copy($id) {
+        $invOld = \App\InvoiceOut::find($id);
+        $invNew = $invOld->replicate();
+        $invNew->dateIssue = date('Y-m-d');
+        $invNew->nrInvoice = DB::table('invoiceOut')->max('nrInvoice') +1;
+        $invNew->save();
+        $objects=DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
+            foreach($objects as $obj) {
+                $objOld = \App\InvoiceOutArt::find($obj->id);
+                $objNew = $objOld->replicate();
+                $objNew->idInvoiceOut = $invNew->id;
+                $objNew->save();
+                
+            }
+        return redirect('invoiceout/'.$invNew->id.'/edit');
+    }
     
     public function edit($id) {
-        $products = DB::table('product')->pluck('name','id')->toArray();
-        $customer = array('0' => 'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $products = DB::table('product')->orderBy('name')->pluck('name','id')->toArray();
+        $customer = array('0' => 'končni kupec') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
+        $invCirc = array('0' => 'izberi') + DB::table('invCirc')->pluck('name','id')->toArray();
         $invoiceoutart = DB::table('invoiceOutArt')->where('idInvoiceOut',$id)->get();
         $j=0;
         foreach($invoiceoutart as $key => $val) {
@@ -119,6 +139,7 @@ class InvoiceOutController extends Controller {
                         ->with('customer', $customer)
                         ->with('indEdit', true)
                         ->with('products', $products)
+                        ->with('invCirc', $invCirc)
                         ->with('paymentType', $this->paymentType)
                         ->with('actInvo', 'active')
                         ->with('obj', \App\InvoiceOut::find($id));

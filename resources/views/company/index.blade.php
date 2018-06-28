@@ -22,7 +22,6 @@
             <td>email</td>
             <td>mesto</td>
             <td>naslov</td>
-            <td></td>
             <td width="70"></td>
         </tr>
     </thead>
@@ -36,7 +35,6 @@
             <td>{!! $value->email !!}</td>
             <td>{!! $value->city !!} </td>
             <td>{!! $value->address !!}</td>
-            <td> </td>
             <td>
                 <a class="btn btn-xs btn-info" href="{!! URL::to('company/' . $value->id . '/edit') !!}">E</a>
                 <a class="btn btn-xs btn-danger" href="{!! URL::to('company/' . $value->id . '/destroy') !!}"

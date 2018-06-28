@@ -90,7 +90,7 @@ class ContactController extends Controller {
         $cnt=0;
         $cnt += DB::table('ticket')->where('idContact',$id)->count();
         if($cnt==0) {
-            DB::transaction(function($id) use ($id) {
+            DB::transaction(function() use ($id) {
                 DB::table('contact')->where('id',$id)->delete();
             });
             Session::flash('message', 'Successfully deleted');

@@ -11,6 +11,7 @@ return array(
     'App\\Contact' => $baseDir . '/app/Models/Contact.php',
     'App\\Contract' => $baseDir . '/app/Models/Contract.php',
     'App\\FileUpload' => $baseDir . '/app/Models/FileUpload.php',
+    'App\\InvCirc' => $baseDir . '/app/Models/InvCirc.php',
     'App\\InvoiceIn' => $baseDir . '/app/Models/InvoiceIn.php',
     'App\\InvoiceInArt' => $baseDir . '/app/Models/InvoiceInArt.php',
     'App\\InvoiceOut' => $baseDir . '/app/Models/InvoiceOut.php',

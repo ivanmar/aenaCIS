@@ -98,7 +98,7 @@ class CompanyController extends Controller {
         $cnt += DB::table('invoiceOUT')->where('idCompany',$id)->count();
         $cnt += DB::table('contact')->where('idCompany',$id)->count();
         if($cnt==0) {
-            DB::transaction(function($id) use ($id) {
+            DB::transaction(function() use ($id) {
                 DB::table('company')->where('id',$id)->delete();
             });
             Session::flash('message', 'Successfully deleted');

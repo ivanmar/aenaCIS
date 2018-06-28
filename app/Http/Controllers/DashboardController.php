@@ -10,17 +10,31 @@ class DashboardController extends Controller {
     }
     
     public function index() {
+        $dataInv = array();
         
-        $dateToday = date('Y-m-d');
-        $timeToday =  strtotime($dateToday);
+        $dt = date("Y-m-d");
+        $dateShow = date( "Y-m-d", strtotime( "$dt +3 day" ) );
         
-        
- // MESURE       
-        $statusMes=array();
-        $dateSqlShow = date('Y-m-d',strtotime(date('Y-m-d').' +1 Month'));
+        $circ = DB::table('invCirc')->get();
+        foreach($circ as $key => $val) {
+            $q = DB::table('invoiceOut')->select('invoiceOut.id','dateIssue','company.name as cname','invCirc.name as circname','circSyntax')
+                    ->leftJoin('company','idCompany','=','company.id')
+                    ->join('invCirc','idInvCirc','=','invCirc.id')
+                    ->where('idInvCirc',$val->id)
+                    ->orderBy('invoiceOut.dateIssue', 'desc')->first();
+            
+            if(isset($q->id)) {
+                $dateCirc = date("Y-m-d",strtotime($q->dateIssue. '+'.$val->circSyntax)); 
+                if(strtotime($dateCirc) <= strtotime($dateShow)) {
+                    $dataInv[] = $q;
+                }
+            }
+            
+        }
+
 
         return view('dashboard')
-                        ->with('statusMes', null);
+                        ->with('dataInv', $dataInv);
     }
 
 }

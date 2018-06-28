@@ -405,6 +405,7 @@ class ComposerStaticInit5faf0916d22986cfa16a4ed0be23549b
         'App\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
         'App\\Contract' => __DIR__ . '/../..' . '/app/Models/Contract.php',
         'App\\FileUpload' => __DIR__ . '/../..' . '/app/Models/FileUpload.php',
+        'App\\InvCirc' => __DIR__ . '/../..' . '/app/Models/InvCirc.php',
         'App\\InvoiceIn' => __DIR__ . '/../..' . '/app/Models/InvoiceIn.php',
         'App\\InvoiceInArt' => __DIR__ . '/../..' . '/app/Models/InvoiceInArt.php',
         'App\\InvoiceOut' => __DIR__ . '/../..' . '/app/Models/InvoiceOut.php',

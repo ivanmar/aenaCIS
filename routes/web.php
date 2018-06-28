@@ -54,6 +54,7 @@ Route::get('/service/{id}/destroy', 'ServiceController@destroy');
 Route::resource('service', 'ServiceController');
 
 Route::get('/invoiceout/{id}/destroy', 'InvoiceOutController@destroy');
+Route::get('/invoiceout/copy/{id}', 'InvoiceOutController@copy');
 Route::resource('invoiceout', 'InvoiceOutController');
 
 Route::get('/invoicein/{id}/destroy', 'InvoiceInController@destroy');
@@ -71,3 +72,6 @@ Route::resource('storno', 'StornoController');
 Route::get('/contract/{id}/destroy', 'ContractController@destroy');
 Route::get('/contract/delfile/{id}', 'ContractController@delFile');
 Route::resource('contract', 'ContractController');
+
+Route::get('/invcirc/{id}/destroy', 'InvCircController@destroy');
+Route::resource('invcirc', 'InvCircController');

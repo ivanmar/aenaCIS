@@ -38,6 +38,7 @@
                                 <li><a href="{!! URL::to('invoicein') !!}">Računi prejem</a></li>
                                 <li><a href="{!! URL::to('reclamation') !!}">Reklamacije</a></li>
                                 <li><a href="{!! URL::to('storno') !!}">Storno</a></li>
+                                <li><a href="{!! URL::to('invcirc') !!}">ponavljajoči rač.</a></li>
                             </ul>
                         </li>
                         <li class="{!! $actProj or ''!!}"><a href="{!! URL::to('project') !!}">Projekti</a></li>

@@ -111,8 +111,7 @@ class InvoiceInController extends Controller {
             Session::put('sessInvoIn', array_add($sessInvoIn = Session::get('sessInvoIn'),$j, $tmparr));
             $j++;
         }
-        
-        
+
         return view('invoiceIn.form')
                         ->with('formAction', 'invoicein.update')
                         ->with('formMethod', 'PUT')
