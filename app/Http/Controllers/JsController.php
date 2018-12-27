@@ -55,7 +55,7 @@ class JsController extends Controller {
     }
     public function addSessInvoOut () {
         $sessData=Session::get('sessInvoOut');
-        $index=count($sessData);
+        $index=(is_array($sessData))?count($sessData):0;
         $idProduct = $this->request->input('idProduct');
         $nameItem = $this->request->input('nameItem');
         $priceUnit = $this->request->input('priceUnit');
@@ -65,7 +65,7 @@ class JsController extends Controller {
     }
     public function addSessInvoIn () {
         $sessData=Session::get('sessInvoIn');
-        $index=count($sessData);
+        $index=(is_array($sessData))?count($sessData):0;
         $idProduct = $this->request->input('idProduct');
         $sKonto = $this->request->input('sKonto');
         $qty = $this->request->input('qty');

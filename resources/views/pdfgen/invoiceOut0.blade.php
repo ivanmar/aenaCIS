@@ -19,7 +19,7 @@
             <table class="front">
                 <tr>
                     <td colspan="3" class="txt-xsmall"> <b>A1 INFORMATIKA D.O.O.</b> <br> DŠ: 88334244 <br> 
-                        Naslov: Preglov trg 2, Ljubljana <br> TRR: SI56 0288 9026 2723 976 pri banki NLB</td>
+                        Naslov: 30. Avgusta 4, 1260 Ljubljana-Polje <br> TRR: SI56 0288 9026 2723 978 pri banki NLB</td>
                     <td> <img  class='float-right' src="{!!base_path('public/img/a1_logo.png')!!}" width="70"></td>
                 </tr>
                 <tr><td colspan="4"> <h1 class="txt-center"> RAČUN : <?php echo substr($dateIssue, 0, 4); ?>-{!!$nrInvoice!!} </h1></td> </tr>

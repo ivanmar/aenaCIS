@@ -24,7 +24,7 @@ table .name-row {color: #003366; font-weight: 600;}
                 <tr><td colspan="1" id="brd-no0"> <img src="{!!base_path('public/img/a1_logo.png')!!}" width="70"> </td>
                     <td colspan="6" id="brd-no1"> 
                         <b>A1 INFORMATIKA D.O.O. </b><br>
-                            <span class="txt-xsmall">Dolenjska cesta 242, 1000 Ljubljana<br>
+                            <span class="txt-xsmall">30. Avgusta 4, 1260 Ljubljana-Polje<br>
                                   064 170003 / www.aena.si </span>
                     </td>
 

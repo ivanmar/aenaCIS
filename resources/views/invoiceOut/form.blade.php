@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <div class="col-md-5">
                         <span class="cFieldName">Stranka</span>
-                        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control selChose','id'=>'idCompany')) !!}
+                        {!! Form::select('idCompany', $customer, $obj->idCompany, array('class' => 'form-control','id'=>'idCompany')) !!}
                     </div>
                     <div class="col-md-2 col-md-offset-2">
     @if(isset($indEdit))
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-md-2 col-md-offset-10">
                         <span class="cFieldName">Ponovitev</span>
-                        {!! Form::select('idInvCirc', $invCirc, $obj->idInvCirc, array('class' => 'form-control')) !!}
+                        {!! Form::select('idInvCirc', $invCirc, $obj->idInvCirc, array('class' => 'form-control','id'=>'idInvCirc')) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -144,7 +144,7 @@
 {!! Form::close() !!}
 
 <script>
-    $('select.selChose').chosen({allow_single_deselect: true});
+
     window.onload = function() {
         // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
         if (sessionStorage.getItem('idCompany') === "idCompany") {
@@ -156,6 +156,9 @@
 
         var nrInvoice = sessionStorage.getItem('nrInvoice');
         if (nrInvoice !== null) $('#nrInvoice').val(nrInvoice);
+        
+        var idInvCirc = sessionStorage.getItem('idInvCirc');
+        if (idInvCirc !== null) $('#idInvCirc').val(idInvCirc);
 
         var dateIssue= sessionStorage.getItem('dateIssue');
         if (dateIssue !== null) $('#dateIssue').val(dateIssue);
@@ -177,6 +180,7 @@
     window.onbeforeunload = function() {
         sessionStorage.setItem("idCompany", $('#idCompany').val());
         sessionStorage.setItem("nrInvoice", $('#nrInvoice').val());
+        sessionStorage.setItem("idInvCirc", $('#idInvCirc').val());
         sessionStorage.setItem("dateIssue", $('#dateIssue').val());
         sessionStorage.setItem("descInternal", $('#descInternal').val());
         sessionStorage.setItem("shipCost", $('#shipCost').val());
@@ -190,6 +194,7 @@ $('#addProduct').click(function (e) {
     e.preventDefault();
     var idProduct = $('#idProduct').val();
     if(idProduct > 0) {
+        
     $.ajax({type: "POST",
         url: "/js/addsessinvoout",
         data: {

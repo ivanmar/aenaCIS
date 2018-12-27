@@ -47,7 +47,7 @@ class ContactController extends Controller {
     }
 
     public function create() {
-        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array(''=>'končni kupec') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
         return view('contact.form')
                         ->with('formAction', 'contact.store')
                         ->with('formMethod', 'POST')
@@ -66,7 +66,7 @@ class ContactController extends Controller {
     }
 
     public function edit($id) {
-        $compList = array(''=>'končni kupec') + DB::table('company')->pluck('name','id')->toArray();
+        $compList = array(''=>'končni kupec') + DB::table('company')->orderBy('name')->pluck('name','id')->toArray();
         return view('contact.form')
                         ->with('formAction', 'contact.update')
                         ->with('formMethod', 'PUT')
