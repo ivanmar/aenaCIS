@@ -6,7 +6,7 @@
         <style>
 table.front {border: 0; font-size: 11px; letter-spacing: 2px; line-height: 20px;}
 table.front td{ text-align: left; border: solid 1px #888; padding: 10px;}
-table.front .desc {height: 150px;}
+table.front .desc {height: 100px;}
 table.front td.top-date p {margin: 10px 0; display: block;}
 table.front td.top-date span.itxt {float:right; display: inline-block;}
 table .name-row {color: #003366; font-weight: 600;}
@@ -66,7 +66,10 @@ table .name-row {color: #003366; font-weight: 600;}
                     <td colspan="5"> {!! ucwords($uname) !!} / {!! date('d-m-Y') !!} </td> 
                 </tr>
             </table>
-            <p class="txt-italic txt-xsmall txt-right">
+            <p class="txt-small">
+                SPLOŠNI POGOJI: <br><br>
+                * Naročnik se soglaša, da A1 Informatika d.o.o. za namene svojega poslovanja in v času opravljanja dela ima dostop do<br> 
+                 &nbsp; &nbsp;vseh podatkov shranjenih na računalniški opremi ki je predmet delovnega naloga. <br>
                 * Veljajo splošni pogoji servisiranja, vključno se ogradimo od kakršnekoli posredne ali neposredne odgovornosti zaradi izgube podatkov.<br>
                 * Jamstvo za opravljeno delo in vgrajeno opremo je 30 dni, če ni drugače definirano od proizvajalca opreme.<br>
                 * Rok za prevzam opreme je 20 dni po koncu dela. Po poteku roka, ne jamčimo za opremo.
